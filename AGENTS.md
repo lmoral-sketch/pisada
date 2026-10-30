@@ -1,10 +1,10 @@
-# AGENTS.md — Cumbre Café
+# AGENTS.md — Pisada
 
 ## Proyecto
 
-**Cumbre Café** es una tienda de comercio electrónico de café de especialidad, construida
-como trabajo semestral del ramo **INFB8091 — Desempeño de Sistemas** (UTEM, 2º semestre 2026,
-profesor Javier Aranda).
+**Pisada** es una tienda de comercio electrónico de zapatillas e indumentaria urbana,
+construida como trabajo semestral del ramo **INFB8091 — Desempeño de Sistemas**
+(UTEM, 2º semestre 2026, profesor Javier Aranda).
 
 El objetivo académico **no es el comercio en sí**, sino disponer de un sitio real y medible
 sobre el cual **generar carga sintética y evaluar su desempeño**. Toda decisión de diseño se
@@ -12,15 +12,17 @@ subordina a esa finalidad: si una opción hace el sitio más bonito pero menos m
 descarta.
 
 ### Alcance funcional (Fase 1.1 del enunciado)
-- Catálogo de productos con **filtros y búsqueda** (origen, proceso, nivel de tueste, formato, precio).
-- **Carrito de compras** persistente por sesión.
+- Catálogo de productos con **filtros y búsqueda** (categoría, marca, talla, color, género, precio).
+- **Modelo de variantes:** cada producto tiene múltiples SKU por combinación de **talla y color**,
+  con **stock propio por variante**.
+- **Carrito de compras** persistente por sesión, que opera sobre variantes, no sobre productos.
 - **Flujo de checkout simulado** con el sandbox de un medio de pago disponible en Chile.
   **Nunca** se integra una pasarela de pago real ni se procesan datos de tarjeta reales.
 - **Registro e inicio de sesión** de usuario.
 - Al menos tres páginas con **distinta carga de datos**, de forma deliberada:
   - `/` (home) — liviana: destacados y banner
-  - `/catalogo` — pesada: listado paginado con filtros y muchos ítems
-  - `/producto/[slug]` — media: ficha de cata, perfil de tueste, productor, relacionados
+  - `/catalogo` — pesada: listado paginado con filtros facetados y muchos ítems
+  - `/producto/[slug]` — media: galería, matriz de tallas con disponibilidad, guía de calce, relacionados
 - **Google Analytics 4** con eventos `view_item`, `add_to_cart`, `begin_checkout` y `purchase`,
   más métricas de engagement.
 
@@ -30,6 +32,10 @@ descarta.
 - Instrumentación del servidor para medir **CPU, memoria e I/O** durante las pruebas.
 - Métricas de respuesta reportadas siempre con **mediana y percentiles p90, p95 y p99**,
   nunca solo con el promedio.
+- **Contención de stock bajo concurrencia.** El descuento de inventario por variante es un punto
+  de serialización real: varios usuarios virtuales comprando el mismo SKU compiten por la misma
+  fila. Se mide el tiempo de espera en ese bloqueo, porque es el cuello de botella que mejor se
+  explica con teoría de colas y análisis operacional.
 
 ### Stack
 - **Next.js** (App Router) + **PostgreSQL**.
@@ -145,7 +151,7 @@ descarta.
 ## Estructura
 
 ```
-proyecto/
+pisada/
 ├── AGENTS.md              Este archivo
 ├── README.md
 ├── .gitignore

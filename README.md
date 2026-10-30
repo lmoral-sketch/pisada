@@ -1,11 +1,16 @@
-# Cumbre Café
+# Pisada
 
-Tienda de comercio electrónico de café de especialidad, desarrollada como trabajo semestral
-del ramo **INFB8091 — Desempeño de Sistemas** (UTEM, 2º semestre 2026).
+Tienda de comercio electrónico de zapatillas e indumentaria urbana, desarrollada como trabajo
+semestral del ramo **INFB8091 — Desempeño de Sistemas** (UTEM, 2º semestre 2026).
 
 > **Fin académico.** El comercio es el sujeto de estudio, no el objetivo: el propósito del
 > proyecto es **evaluar el desempeño de un sitio web bajo distintas condiciones de carga**.
 > El checkout es simulado y no procesa pagos reales.
+
+Los productos tienen **variantes de talla y color con stock propio**. Esa decisión no es
+cosmética: el descuento de inventario por variante crea un **punto de serialización** que, bajo
+usuarios concurrentes compitiendo por el mismo SKU, produce espera en cola medible. Es el
+fenómeno central que el trabajo analiza.
 
 ## Qué hay acá
 

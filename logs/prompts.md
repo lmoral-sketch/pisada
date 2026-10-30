@@ -78,3 +78,23 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   - Creado `AGENTS.md` con las reglas del agente, reglas específicas de desempeño,
     verificación obligatoria, cierre de entrega, áreas de expertise y convenciones técnicas.
   - Creado este `logs/prompts.md` con el historial retroactivo de la sesión.
+  - Creados `README.md`, `.gitignore` y `docs/decisiones.md` (decisiones D-01 a D-05).
+  - Inicializado el repositorio Git. Primer commit: `5bf5079`.
+
+## 2026-10-30 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "Otro rubro". El usuario rechaza la propuesta de tostaduría de café. Ante cuatro
+  alternativas ofrecidas (tecnología, librería, indumentaria/zapatillas, vinos), elige
+  **indumentaria / zapatillas**.
+- **Cambios:**
+  - Rubro definitivo: **Pisada**, tienda de zapatillas e indumentaria urbana, con variantes de
+    **talla y color** y stock por variante.
+  - `AGENTS.md`: actualizado el nombre y el alcance funcional. Agregado el modelo de variantes
+    y una regla de medición nueva sobre la **contención de stock bajo concurrencia**.
+  - `docs/decisiones.md`: reescrita la decisión **D-02** con la justificación del nuevo rubro y
+    dejando registrada la propuesta anterior descartada. Agregados dos pendientes: cantidad de
+    variantes del catálogo semilla y estrategia de bloqueo para el descuento de stock
+    (pesimista con `SELECT ... FOR UPDATE` frente a optimista con actualización condicional),
+    que conviene medir y comparar.
+  - `README.md`: actualizado el nombre y la descripción.
+- **Propuestas no aprobadas:** rubro tostaduría de café de especialidad ("Cumbre Café"),
+  descartado por el equipo.

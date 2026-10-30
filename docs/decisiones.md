@@ -20,21 +20,49 @@ directamente con el objeto de estudio.
 
 ---
 
-## D-02 — Rubro: tostaduría de café de especialidad
+## D-02 — Rubro: zapatillas e indumentaria urbana
 
-**Decisión.** El comercio es **Cumbre Café**, una tostaduría de café de especialidad.
+**Decisión.** El comercio es **Pisada**, tienda de zapatillas e indumentaria urbana, con
+**variantes de talla y color** y stock por variante.
 
-**Justificación.** El requisito de "al menos 2-3 páginas con distinta carga de datos" se cumple
-mejor con un dominio cuyos productos tengan **muchos atributos ortogonales**: origen, variedad,
-proceso, nivel de tueste, notas de cata, formato de molienda y tamaño. Eso produce:
+> *Propuesta previa descartada:* una tostaduría de café de especialidad. Se cambió por decisión
+> del equipo. La justificación de aquella opción era la riqueza de atributos para filtros; el
+> rubro elegido la conserva y además agrega el modelo de variantes, que es más exigente.
 
-- un **catálogo pesado**, con filtros múltiples y paginación real;
-- un **detalle de producto de peso medio**, con ficha de cata, perfil de tueste, datos del
-  productor y productos relacionados;
-- un **home liviano**, con destacados.
+**Justificación.** Tres razones, en orden de importancia para el trabajo:
+
+1. **Contención real sobre el stock.** Es la ventaja decisiva. Cada SKU (producto + talla +
+   color) tiene su propio inventario, y el descuento de stock en el checkout obliga a
+   **serializar el acceso a esa fila**. Cuando varios usuarios virtuales compran la misma
+   combinación de forma concurrente, aparece un **punto de serialización genuino** con espera
+   en cola. Eso permite:
+   - analizar el sistema con **teoría de colas** y **análisis operacional** (Unidades 2 y 3 del
+     ramo) sobre un recurso real, no sobre un ejemplo de pizarrón;
+   - aplicar la **ley de Amdahl** con sentido: la fracción serializable del checkout acota la
+     mejora alcanzable por más CPU, y eso se puede **demostrar con mediciones propias**.
+
+   Un catálogo sin variantes no produce este fenómeno: las lecturas escalan bien y el único
+   cuello de botella observable sería CPU o ancho de banda.
+
+2. **Embudo de conversión más exigente.** La selección de talla es un paso adicional entre ver
+   el producto y agregarlo al carrito, y una fuente natural de abandono (talla sin stock). El
+   embudo `view_item → add_to_cart → begin_checkout → purchase` que pide la Fase 2 queda más
+   rico y con un punto de fuga que se puede medir en GA4.
+
+3. **Distinta carga de datos entre páginas**, que es requisito explícito del enunciado:
+   - **home liviano**: destacados y banner;
+   - **catálogo pesado**: listado paginado con filtros facetados por categoría, marca, talla,
+     color, género y precio — las facetas obligan a agregaciones sobre las variantes;
+   - **detalle intermedio**: galería, matriz de tallas con disponibilidad, guía de calce y
+     productos relacionados.
 
 Esa diferencia de peso entre páginas es **material experimental**, no un defecto: permite
 observar cómo se degradan de manera distinta bajo la misma carga.
+
+**Consecuencia para los generadores de carga.** El escenario de pico debe incluir, de forma
+deliberada, un perfil de usuarios que compitan por **el mismo SKU popular** (simulando un
+lanzamiento o una liquidación). Sin ese perfil, la contención de stock no se manifiesta y se
+pierde el hallazgo más interesante del trabajo.
 
 ---
 
@@ -84,5 +112,8 @@ en XML difíciles de revisar en un diff, y su ejecución por GUI es menos reprod
 - [ ] Proveedor de despliegue concreto y sus límites de recursos
 - [ ] Medio de pago en sandbox (Transbank Webpay Plus tiene ambiente de integración público)
 - [ ] Mecanismo de instrumentación de recursos del servidor
-- [ ] Tamaño del catálogo semilla (incide en el peso del listado)
+- [ ] Tamaño del catálogo semilla y cantidad de variantes por producto (inciden en el peso del
+      listado y en la intensidad de la contención)
+- [ ] Estrategia de bloqueo para el descuento de stock (`SELECT ... FOR UPDATE` frente a
+      actualización condicional optimista) — conviene **medir ambas** y comparar
 - [ ] Probabilidades de transición del CBMG para los perfiles de usuario sintético
