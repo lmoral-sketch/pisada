@@ -135,3 +135,40 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   Queda pendiente levantar la base antes de poder dar por verificada la Fase 1.1.
 - **Pendiente:** carrito, checkout con descuento de stock, autenticación, integración de GA4
   y los escenarios de k6.
+
+## 2026-10-30 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "Instalo Docker" — el equipo opta por levantar PostgreSQL con Docker Compose en
+  lugar de usar una base administrada en la nube.
+- **Cambios:**
+  - `web/src/lib/carrito.ts`: carrito identificado por token en cookie, con `ON CONFLICT`
+    para resistir peticiones concurrentes del mismo usuario. Opera sobre variantes, no sobre
+    productos.
+  - `web/src/lib/checkout.ts`: **núcleo del trabajo.** Dos estrategias de control de
+    concurrencia para el descuento de stock, ambas instrumentadas:
+    - *pesimista*, con `SELECT ... FOR UPDATE`, que mide la espera real en el gestor de
+      bloqueos de PostgreSQL;
+    - *optimista*, con actualización condicional `WHERE stock >= cantidad` y reintentos,
+      que mide el trabajo desperdiciado en vez de la espera.
+    Se eligen por variable de entorno o por parámetro de consulta, para poder correr los
+    mismos escenarios de k6 contra ambas. Los items se ordenan por `variante_id` antes de
+    tomar bloqueos, para evitar interbloqueos.
+  - `web/src/app/api/carrito/route.ts` y `web/src/app/api/checkout/route.ts`: endpoints REST
+    con códigos de respuesta que distinguen compra exitosa (200), stock insuficiente (409) y
+    conflicto por contención (503).
+  - `web/src/app/carrito/page.tsx`, `web/src/components/boton-pagar.tsx` y
+    `web/src/components/selector-variante.tsx`.
+  - `web/src/components/analytics.tsx` y `web/src/lib/ga.ts`: GA4 con el embudo completo
+    `view_item → add_to_cart → begin_checkout → purchase`, más un evento propio
+    `compra_sin_stock` que explica el punto de fuga bajo carga. No se carga si falta
+    `NEXT_PUBLIC_GA_ID`, para no contaminar la propiedad con tráfico de pruebas.
+  - `docs/decisiones.md`: agregadas las decisiones **D-06** (REST en vez de Server Actions,
+    para que k6 pueda ejecutar el embudo), **D-07** (el stock se descuenta al pagar, no al
+    agregar al carrito) y **D-08** (orden global de bloqueo).
+  - **Verificación:** `tsc --noEmit` y `npm run build` sin errores. Se corrigió un error de
+    tipos detectado en la verificación: las dos estrategias devolvían formas distintas y se
+    unificaron en el tipo `ResultadoDescuento`.
+- **Defectos conocidos:** sigue sin ejecutarse contra una base de datos real. Nada de lo
+  anterior —carrito, checkout, contención, eventos de GA4— ha sido probado en funcionamiento.
+  La verificación hasta aquí es solo de compilación.
+- **Pendiente:** levantar PostgreSQL y correr la semilla, recorrer el embudo completo en el
+  navegador, autenticación de usuarios, escenarios de k6 y despliegue.

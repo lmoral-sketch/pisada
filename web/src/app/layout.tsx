@@ -8,6 +8,7 @@
 
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Analytics } from '@/components/analytics';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -42,6 +43,12 @@ export default function RootLayout({
             >
               Trail
             </Link>
+            <Link
+              href="/carrito"
+              className="ml-auto rounded-md border border-neutral-300 px-3 py-1.5 text-sm dark:border-neutral-700"
+            >
+              Carrito
+            </Link>
           </nav>
         </header>
 
@@ -54,6 +61,8 @@ export default function RootLayout({
             son simuladas: no se procesan pagos reales.
           </p>
         </footer>
+
+        <Analytics />
       </body>
     </html>
   );

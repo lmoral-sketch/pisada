@@ -20,6 +20,7 @@ import {
 import { medirPagina } from '@/lib/instrumentar';
 import { precio, etiquetaCampo, valorCampo } from '@/lib/formato';
 import { TarjetaProducto } from '@/components/tarjeta-producto';
+import { SelectorVariante } from '@/components/selector-variante';
 
 export const dynamic = 'force-dynamic';
 
@@ -99,49 +100,21 @@ export default async function DetalleProducto({
             {producto.descripcion}
           </p>
 
-          {stockTotal === 0 ? (
-            <p className="rounded-md bg-neutral-100 px-4 py-3 text-sm text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400">
-              Producto agotado en todas sus tallas.
-            </p>
-          ) : (
-            <div className="flex flex-col gap-4">
-              <h2 className="text-sm font-medium">Elige tu talla</h2>
-              {[...porColor.entries()].map(([nombreColor, { hex, variantes }]) => (
-                <div key={nombreColor}>
-                  <div className="mb-2 flex items-center gap-2">
-                    <span
-                      className="h-4 w-4 rounded-full border border-neutral-300 dark:border-neutral-700"
-                      style={{ backgroundColor: hex }}
-                    />
-                    <span className="text-xs text-neutral-600 dark:text-neutral-400">
-                      {nombreColor}
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {variantes
-                      .slice()
-                      .sort((a, b) => a.talla_orden - b.talla_orden)
-                      .map((v) => (
-                        <button
-                          key={v.id}
-                          type="button"
-                          disabled={v.stock === 0}
-                          data-sku={v.sku}
-                          title={
-                            v.stock === 0
-                              ? 'Sin stock'
-                              : `${v.stock} ${v.stock === 1 ? 'unidad' : 'unidades'}`
-                          }
-                          className="min-w-12 rounded-md border border-neutral-300 px-3 py-2 text-sm transition enabled:hover:border-neutral-900 disabled:cursor-not-allowed disabled:text-neutral-300 disabled:line-through dark:border-neutral-700 dark:enabled:hover:border-neutral-100 dark:disabled:text-neutral-700"
-                        >
-                          {v.talla}
-                        </button>
-                      ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          <SelectorVariante
+            nombreProducto={producto.nombre}
+            marca={producto.marca}
+            categoria={producto.categoria}
+            precioClp={producto.precio_clp}
+            variantes={producto.variantes}
+          />
+
+          {/* Dato operativo útil para correlacionar el abandono del embudo con
+              la disponibilidad real al momento de la visita. */}
+          <p className="text-xs text-neutral-500">
+            {stockTotal} {stockTotal === 1 ? 'unidad disponible' : 'unidades disponibles'} en{' '}
+            {producto.variantes.filter((v) => v.stock > 0).length} de{' '}
+            {producto.variantes.length} combinaciones.
+          </p>
 
           {/* Ficha técnica: es lo que da peso intermedio a esta página. */}
           <dl className="mt-2 divide-y divide-neutral-200 border-t border-neutral-200 text-sm dark:divide-neutral-800 dark:border-neutral-800">

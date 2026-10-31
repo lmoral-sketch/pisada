@@ -107,6 +107,61 @@ en XML difíciles de revisar en un diff, y su ejecución por GUI es menos reprod
 
 ---
 
+## D-06 — API REST en lugar de Server Actions
+
+**Decisión.** El carrito y el checkout se exponen como endpoints REST
+(`/api/carrito`, `/api/checkout`), no como Server Actions de Next.js.
+
+**Justificación.** Las Server Actions se invocan con un identificador cifrado que cambia en
+cada compilación y requieren cabeceras internas del framework. k6 no puede ejecutarlas de
+forma estable ni legible. Con endpoints REST, el generador de carga recorre exactamente el
+mismo embudo que un cliente real, y los scripts siguen siendo válidos aunque se recompile la
+aplicación.
+
+**Consecuencia adicional.** Los códigos de respuesta se eligieron para que el generador
+distinga los desenlaces sin leer el cuerpo:
+
+| Código | Significado |
+|---|---|
+| `200` | Compra exitosa |
+| `409` | Stock insuficiente — **resultado de negocio legítimo, no un error** |
+| `503` | Conflicto por contención extrema: se agotaron los reintentos |
+
+La distinción entre `409` y error real es importante para el informe: contar los `409` dentro
+de la tasa de error llevaría a concluir que el sistema falla cuando en realidad está agotando
+inventario, que es el comportamiento esperado.
+
+---
+
+## D-07 — El stock se descuenta al pagar, no al agregar al carrito
+
+**Decisión.** Agregar un producto al carrito **no** reserva inventario. El descuento ocurre
+únicamente dentro de la transacción de checkout.
+
+**Justificación.** Reservar al agregar al carrito desplazaría la contención fuera del
+checkout y repartiría la espera entre dos puntos distintos, diluyendo el fenómeno que el
+trabajo quiere medir. Además, es como opera la mayoría del comercio electrónico real.
+
+**Consecuencia.** El carrito puede contener items cuyo stock se agotó mientras el usuario
+decidía. Eso no es un defecto: es la fuente del rechazo `409` y el punto de fuga del embudo
+que se analiza en la Fase 2.
+
+---
+
+## D-08 — Orden global de bloqueo para evitar interbloqueos
+
+**Decisión.** Antes de descontar stock, los items del carrito se ordenan por `variante_id`.
+
+**Justificación.** Si dos transacciones concurrentes bloquearan las mismas dos filas en orden
+distinto —una A→B y la otra B→A— se produciría un **interbloqueo** y PostgreSQL abortaría una
+de ellas. Tomar siempre los bloqueos en el mismo orden global elimina esa posibilidad por
+construcción, sin costo adicional.
+
+Es un detalle fácil de pasar por alto que solo se manifiesta bajo concurrencia, es decir,
+justo durante las pruebas de carga y no durante el desarrollo.
+
+---
+
 ## Pendientes de decisión
 
 - [ ] Proveedor de despliegue concreto y sus límites de recursos
