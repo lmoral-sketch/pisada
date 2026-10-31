@@ -142,7 +142,7 @@ descarta.
 
 ## Convenciones técnicas
 
-- Código de la aplicación en `app/`; generadores de carga en `carga/`; documentación en `docs/`.
+- Código de la aplicación en `web/`; generadores de carga en `carga/`; documentación en `docs/`.
 - Nombres de archivos en minúsculas con guiones.
 - Las consultas a la base de datos se concentran en una capa propia, nunca dispersas en los
   componentes de interfaz.
@@ -160,7 +160,15 @@ pisada/
 ├── docs/
 │   ├── decisiones.md      Decisiones de diseño y su justificación
 │   └── arquitectura.md    Arquitectura del sistema (va en el informe)
-├── app/                   Aplicación Next.js
+├── docker-compose.yml     PostgreSQL local con límites de recursos explícitos
+├── web/                   Aplicación Next.js
+│   ├── db/
+│   │   ├── esquema.sql    Modelo de datos
+│   │   └── semilla.mjs    Generador del catálogo (reproducible, semilla fija)
+│   └── src/
+│       ├── lib/           Acceso a datos, métricas e instrumentación
+│       ├── components/
+│       └── app/           Rutas
 └── carga/
     ├── escenarios/        Scripts k6 (baja, normal, pico)
     └── resultados/        Reportes de las corridas (ignorado parcialmente por Git)

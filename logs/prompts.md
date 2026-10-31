@@ -98,3 +98,40 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   - `README.md`: actualizado el nombre y la descripción.
 - **Propuestas no aprobadas:** rubro tostaduría de café de especialidad ("Cumbre Café"),
   descartado por el equipo.
+
+## 2026-10-30 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "Sí, dale" — aprobación para iniciar la aplicación Next.js y el modelo de datos.
+- **Cambios:**
+  - Creado el proyecto Next.js 15.5.4 en `web/` (TypeScript, App Router, Tailwind v4).
+    Dependencias agregadas, todas justificadas: `pg` (acceso a PostgreSQL),
+    `@types/pg` y `prom-client` (métricas en formato Prometheus).
+  - `web/db/esquema.sql`: modelo de datos con `marca`, `categoria`, `talla`, `color`,
+    `producto`, `variante`, `usuario`, `carrito`, `carrito_item`, `pedido` y `pedido_item`.
+    El inventario vive en `variante.stock`, a nivel de SKU. Se agregó `variante.version`
+    para habilitar la comparación entre bloqueo optimista y pesimista. Los índices son
+    deliberadamente mínimos y se documentó la omisión del índice de texto sobre
+    `producto.nombre`, para medir primero el costo del `ILIKE`.
+  - `web/db/semilla.mjs`: generador de catálogo con **semilla fija**, de modo que el
+    conjunto de datos sea reproducible entre corridas y entre equipos. Por defecto 240
+    productos; un 12 % de las variantes nace sin stock para generar abandono medible.
+    Las marcas son ficticias.
+  - `web/src/lib/metricas.ts`: registro Prometheus con métricas de proceso (CPU, memoria,
+    event loop), duración de peticiones y de consultas en histogramas separados, estado del
+    pool, compras rechazadas por stock, y el histograma `espera_bloqueo_stock_segundos`.
+  - `web/src/lib/db.ts`: pool de PostgreSQL con tamaño configurable por `PG_POOL_MAX`,
+    helper `consultar()` instrumentado y `enTransaccion()` para el checkout.
+  - `web/src/lib/catalogo.ts`: consultas del catálogo en SQL directo, sin ORM.
+  - `web/src/lib/instrumentar.ts` y `web/src/lib/formato.ts`.
+  - `web/src/app/`: home (liviana), catálogo con filtros facetados y paginación (pesada),
+    detalle de producto con matriz de tallas (intermedia), y `/api/metricas`.
+  - `docker-compose.yml` con PostgreSQL 16 y límites explícitos de 1 CPU y 512 MB.
+  - `web/.env.example`, scripts `semilla` y `typecheck` en `package.json`.
+  - `AGENTS.md`: corregida la estructura, la aplicación vive en `web/` y no en `app/`.
+  - **Verificación:** `npx tsc --noEmit` sin errores y `npm run build` exitoso. Las tres
+    rutas quedaron marcadas como dinámicas, que es lo buscado.
+- **Defectos conocidos:** la aplicación **no se ha ejecutado contra una base de datos real**.
+  El equipo no tiene Docker ni PostgreSQL instalados, de modo que el esquema no ha sido
+  aplicado, la semilla no se ha corrido y ninguna página se ha visto renderizada con datos.
+  Queda pendiente levantar la base antes de poder dar por verificada la Fase 1.1.
+- **Pendiente:** carrito, checkout con descuento de stock, autenticación, integración de GA4
+  y los escenarios de k6.

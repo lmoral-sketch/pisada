@@ -1,0 +1,31 @@
+# PostgreSQL local para desarrollo.
+#
+# Los límites de recursos son deliberadamente bajos y se declaran de forma
+# explícita: el trabajo necesita que el punto de saturación aparezca dentro del
+# rango de carga que podemos generar, y necesita que sea REPRODUCIBLE. Una base
+# de datos sin límites daría resultados distintos en cada equipo del grupo.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pisada-db
+    environment:
+      POSTGRES_USER: pisada
+      POSTGRES_PASSWORD: pisada
+      POSTGRES_DB: pisada
+    ports:
+      - "5432:5432"
+    volumes:
+      - datos-postgres:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pisada"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  datos-postgres:
