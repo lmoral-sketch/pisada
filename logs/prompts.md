@@ -172,3 +172,35 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   La verificación hasta aquí es solo de compilación.
 - **Pendiente:** levantar PostgreSQL y correr la semilla, recorrer el embudo completo en el
   navegador, autenticación de usuarios, escenarios de k6 y despliegue.
+
+## 2026-10-31 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "ya quedo instalado docker, continuemos con lo que SIGUE, pero tambien
+  explicame en detalle que es docker de forma facil, como se puede utilizar en el ambito, y
+  como nos servira en el proyecto."
+- **Cambios:**
+  - Diagnóstico: Docker Desktop quedó instalado y su CLI responde (v29.9.2), pero el motor
+    no arranca. Causa raíz confirmada con `Win32_Processor`: `VMMonitorModeExtensions=True`
+    (la CPU i7-9700F soporta VT-x) pero `VirtualizationFirmwareEnabled=False`, es decir, la
+    virtualización está **desactivada en la BIOS/UEFI**. Requiere intervención del usuario.
+  - `carga/escenarios/comun.js`: modelo **CBMG** con probabilidades de transición entre
+    estados (home, catálogo, producto, carrito, checkout, salir), métricas propias de k6,
+    pasos del embudo y think time. Los 409 y 503 se etiquetan `esperado: no` para quedar
+    fuera de la tasa de error sin dejar de contabilizarse.
+  - `carga/escenarios/baja.js`, `normal.js` y `pico.js`: los tres escenarios que exige el
+    enunciado. El de pico usa escalones y sin umbrales de corte, para poder observar qué
+    ocurre más allá del punto de saturación.
+  - `carga/escenarios/contencion.js`: escenario adicional en que todos los usuarios
+    virtuales compiten por la **misma variante**. Sin él, con un catálogo de cientos de
+    productos la probabilidad de colisión es ínfima y la contención de stock quedaría
+    invisible.
+  - `web/src/components/selector-variante.tsx`: agregados los atributos `data-variante` y
+    `data-sku` a los botones de talla, para que el generador descubra desde el HTML las
+    variantes comprables, igual que haría una persona mirando la matriz de tallas.
+  - `carga/README.md` con instalación de k6, orden de ejecución recomendado y qué observar.
+  - **Verificación:** `npm run build` sin errores.
+- **Defectos conocidos:** la aplicación sigue sin ejecutarse contra una base de datos y los
+  escenarios de k6 **no se han corrido ni una vez**. Están escritos pero no validados: es
+  probable que el extractor de variantes o alguna probabilidad del CBMG necesiten ajuste
+  tras la primera corrida real.
+- **Pendiente:** habilitar VT-x en la BIOS, levantar PostgreSQL, correr la semilla, recorrer
+  el embudo, validar los escenarios, autenticación y despliegue.

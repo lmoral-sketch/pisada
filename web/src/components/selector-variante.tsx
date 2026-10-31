@@ -132,6 +132,11 @@ export function SelectorVariante({
                     type="button"
                     disabled={v.stock === 0}
                     onClick={() => setSeleccionada(v)}
+                    // Atributo estable para que el generador de carga pueda
+                    // descubrir las variantes comprables desde el HTML, igual
+                    // que haría una persona al mirar la matriz de tallas.
+                    data-variante={v.id}
+                    data-sku={v.sku}
                     title={
                       v.stock === 0
                         ? 'Sin stock'
