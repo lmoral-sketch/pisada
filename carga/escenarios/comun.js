@@ -129,16 +129,24 @@ export function extraerSlugs(html) {
  */
 export function extraerVariantes(html) {
   const ids = [];
-  // Los botones de talla llevan su key de React, pero lo estable es el atributo
-  // de control del componente. Se buscan los que NO estén deshabilitados.
-  const patron = /<button[^>]*?>/g;
+  const patron = /<button[^>]*data-variante="(\d+)"[^>]*>/g;
   let coincidencia;
+
   while ((coincidencia = patron.exec(html)) !== null) {
     const etiqueta = coincidencia[0];
-    if (etiqueta.includes('disabled')) continue;
-    const id = etiqueta.match(/data-variante="(\d+)"/);
-    if (id) ids.push(Number(id[1]));
+
+    // Hay que comprobar el ATRIBUTO disabled, no la mera presencia de la
+    // palabra. El class de Tailwind incluye variantes como
+    // `disabled:cursor-not-allowed` y `disabled:line-through`, de modo que
+    // buscar el texto "disabled" da verdadero para TODOS los botones y
+    // descartaría también los comprables.
+    //
+    // React renderiza el booleano como disabled="" cuando está activo.
+    if (/\sdisabled=""/.test(etiqueta)) continue;
+
+    ids.push(Number(coincidencia[1]));
   }
+
   return ids;
 }
 

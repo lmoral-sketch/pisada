@@ -108,3 +108,61 @@ se han ejecutado ni una vez: son los que entregarán la curva de saturación y l
 percentiles del informe.
 
 ---
+
+## E-02 — Validación de los generadores de carga
+
+**Fecha:** 3 de noviembre de 2026
+**Herramienta:** k6 v2.3.0
+
+### Defecto encontrado en el generador
+
+La primera ejecución de los scripts reveló que **ningún usuario virtual lograba comprar**.
+El diagnóstico, forzando el embudo paso a paso, mostró que la función `extraerVariantes()`
+devolvía cero variantes en todos los productos, pese a que el HTML sí traía 18 botones de
+talla.
+
+**Causa.** La función descartaba los botones deshabilitados comprobando si la etiqueta HTML
+contenía el texto `disabled`:
+
+```js
+if (etiqueta.includes('disabled')) continue;   // ← incorrecto
+```
+
+Pero el atributo `class` generado por Tailwind incluye variantes como
+`disabled:cursor-not-allowed`, `disabled:text-neutral-300` y `disabled:line-through`. Esa
+condición era verdadera para **todos** los botones, de modo que se descartaban también los
+comprables.
+
+**Corrección.** Comprobar el atributo real, que React renderiza como `disabled=""`:
+
+```js
+if (/\sdisabled=""/.test(etiqueta)) continue;  // ← correcto
+```
+
+Tras la corrección, el embudo completo funciona desde k6: se detectaron entre 14 y 26
+variantes comprables por producto y se concretaron compras con respuesta `200`.
+
+**Lección para el informe.** Un generador de carga con un defecto silencioso **no falla: miente**.
+Esta corrida habría reportado tiempos de respuesta excelentes y cero errores, con la
+conclusión implícita de que el sistema aguanta sin problemas — cuando en realidad jamás
+ejercitó el checkout, que es el camino caro. Validar que el generador hace lo que se cree
+que hace es parte del método, no un paso opcional.
+
+### Línea base confirmada (carga baja, 5 usuarios virtuales, 4 min)
+
+| Métrica | Valor |
+|---|---|
+| `http_req_duration` mediana | 20,66 ms |
+| p(90) | 33,69 ms |
+| p(95) | **37,65 ms** |
+| p(99) | 46,72 ms |
+| máximo | 60,81 ms |
+| Tasa de error | 0,00 % |
+| Iteraciones completas | 74 |
+| Compras concretadas | 5 |
+| `pisada_checkout_duracion` p(95) | 37,25 ms |
+
+La conversión fue de 5 compras en 74 sesiones (**6,8 %**), algo por encima del 1 % a 3 %
+típico del comercio real, pero del orden de magnitud correcto. Al calibrar el CBMG con datos
+reales de GA4 (Etapa II de la modelación) convendrá bajar la probabilidad de la transición
+`producto → carrito`.
