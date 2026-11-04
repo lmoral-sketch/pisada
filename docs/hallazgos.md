@@ -166,3 +166,157 @@ La conversión fue de 5 compras en 74 sesiones (**6,8 %**), algo por encima del 
 típico del comercio real, pero del orden de magnitud correcto. Al calibrar el CBMG con datos
 reales de GA4 (Etapa II de la modelación) convendrá bajar la probabilidad de la transición
 `producto → carrito`.
+
+---
+
+## E-03 — Los tres escenarios de carga y la curva de saturación
+
+**Fecha:** 3–4 de noviembre de 2026
+**Entorno:** PostgreSQL 16 en contenedor con 1 CPU y 512 MB; aplicación Next.js en modo
+producción; pool de 10 conexiones; catálogo de 240 productos y 4552 variantes.
+**Instrumentación:** muestreo de `/api/metricas` cada segundo durante toda la ejecución.
+
+### Resumen de los tres escenarios
+
+| Escenario | VU | Duración | p(95) | p(99) | Throughput | Error |
+|---|---|---|---|---|---|---|
+| Carga baja | 5 | 4 min | 37,65 ms | 46,72 ms | — | 0,00 % |
+| Carga normal | 25 | 10 min | 36,12 ms | 45,90 ms | 4,88 req/s | 0,00 % |
+| Pico | hasta 350 | 14 min | **118,72 ms** | **199,01 ms** | **31,48 req/s** | 0,01 % |
+
+De 5 a 25 usuarios el tiempo de respuesta **no se movió** (incluso bajó levemente): el
+sistema tenía holgura de sobra. Recién en el escenario de pico aparece la degradación, con
+el p(95) multiplicándose por 3,3.
+
+La tasa de error en el pico fue de 3 peticiones fallidas sobre 26.447, y la conversión del
+embudo se mantuvo en 99,61 %. **El sistema nunca colapsó.**
+
+### Curva de utilización de CPU por escalón
+
+Cruzando el muestreo del servidor con el calendario de escalones de `pico.js`:
+
+| Escalón | U (CPU de la aplicación) | Pool en espera (media) | Pool en espera (máximo) |
+|---|---|---|---|
+| 25 VU | 9,2 % | 0,00 | 0 |
+| 50 VU | 16,3 % | 0,00 | 0 |
+| 100 VU | 28,2 % | 0,00 | 0 |
+| 200 VU | 52,6 % | 0,11 | 4 |
+| **350 VU** | **76,1 %** | **0,77** | **26** |
+
+**La utilización crece de forma casi lineal con los usuarios**, lo que confirma que dentro de
+este rango el sistema todavía opera en la zona estable (`ρ < 1`) que describe la teoría de
+colas. La CPU por usuario virtual, en cambio, **decrece** (0,368 %/VU a 25 usuarios frente a
+0,217 %/VU a 350): cada usuario consume menos CPU por unidad de tiempo porque pasa una
+proporción creciente del tiempo esperando, no siendo servido. Es la firma del encolamiento.
+
+### El punto de saturación no se alcanzó
+
+Extrapolando la pendiente del último tramo (0,157 % de CPU por usuario virtual entre 200 y
+350 VU), la utilización llegaría al 100 % alrededor de los **503 usuarios virtuales**.
+
+> **Esto es una proyección, no una medición.** La extrapolación lineal es optimista: a
+> medida que `ρ → 1` el comportamiento deja de ser lineal y la degradación se acelera
+> (`W = 1/(μ(1−ρ))` crece de forma hiperbólica). El punto real de saturación estará
+> **antes** de los 503 usuarios. Confirmarlo exige una corrida que llegue a 600 u 800 VU.
+
+### Primera señal del pool como cuello de botella
+
+En el escalón de 350 VU, `pisada_pool_conexiones{estado="en_espera"}` llegó a **26
+peticiones esperando** una conexión libre, con el pool en su máximo de 10. Es la primera
+aparición de una cola real sobre el pool.
+
+Fue transitorio (media de 0,77), pero marca la dirección: **el pool de conexiones, y no la
+CPU, será probablemente el primer recurso en saturarse**. Es un parámetro de capacidad que
+podemos variar (`PG_POOL_MAX`), lo que lo convierte en un buen objeto de experimentación.
+
+---
+
+## Aplicación de las leyes operacionales
+
+### Ley de Utilización — `U = X · S`
+
+Sobre el escenario de pico completo (850 s):
+
+```
+B (CPU ocupada)  = 298,1 s
+T (duración)     = 850 s
+C (peticiones)   = 26.447
+
+U = B/T = 35,1 %
+X = C/T = 31,11 peticiones/s
+S = B/C = 11,27 ms de CPU por petición
+
+Comprobación:  U = X · S = 31,11 × 0,01127 = 35,1 %  ✓
+```
+
+La ley se verifica sobre datos propios. El valor interesante es **S = 11,27 ms de CPU por
+petición**, que es el tiempo de servicio real del recurso, independiente de la carga. Con
+él, la utilización a cualquier throughput es predecible: a 60 peticiones/s se esperaría
+`U = 60 × 0,01127 = 67,6 %`.
+
+> Nota metodológica: esta `U` promedia rampas y mesetas, por lo que es menor que el 76,1 %
+> observado en el escalón de 350 VU. Para el informe conviene repetir el cálculo por meseta,
+> donde se cumple mejor el **supuesto de equilibrio de flujo**.
+
+### Costo de las consultas, medido
+
+| Consulta | Ejecuciones | Tiempo medio |
+|---|---|---|
+| `catalogo_listado` | 12.589 | **8,49 ms** |
+| `catalogo_conteo` | 12.589 | **4,55 ms** |
+| `producto_variantes` | 9.380 | 4,66 ms |
+| `carrito_items` | 2.962 | 5,29 ms |
+
+**Hallazgo:** el `COUNT(*)` para la paginación cuesta **4,55 ms, un 54 % de lo que cuesta el
+listado completo**, pese a no devolver ni una fila de datos. Entre ambos suman 13,04 ms de
+los ~44 ms que tarda la página de catálogo: la base de datos explica cerca del 30 % del
+tiempo de esa página.
+
+Es un candidato concreto de optimización para la sección de propuestas de mejora: el conteo
+exacto podría reemplazarse por una estimación, o cachearse, o eliminarse usando paginación
+por cursor.
+
+### Ley de Amdahl sobre el checkout
+
+```
+Wq medio (espera de bloqueo de stock) = 3,23 ms
+Duración media del checkout            = 44,95 ms
+
+Fracción serializada    = 3,23 / 44,95 = 7,2 %
+Fracción paralelizable  = f = 0,928
+Aceleración máxima      = 1/(1 − f) = 13,9x
+```
+
+Aplicando `A = 1/[(1−f) + f/k]`:
+
+| Factor de mejora `k` | Aceleración `A` | Mejora |
+|---|---|---|
+| 2 | 1,87x | 87 % |
+| 4 | 3,29x | 229 % |
+| 8 | 5,32x | 432 % |
+| ∞ | **13,9x** | **techo absoluto** |
+
+**Interpretación.** Por mucha CPU que se le agregue al checkout, **no puede mejorar más de
+13,9 veces**, porque el 7,2 % de su tiempo es espera serializada sobre el bloqueo de stock y
+esa fracción no se paralela. Reducirla exige un cambio de diseño —repartir el inventario en
+varias filas por SKU, o reservar fuera de la transacción—, no más hardware.
+
+> Esta cifra es **específica de nuestro nivel de carga actual**, donde la contención es baja.
+> El escenario `contencion.js`, que concentra a todos los usuarios sobre un mismo SKU, debería
+> aumentar la fracción serializada de forma sustancial y **bajar** el techo de Amdahl. Medir
+> ambos casos y mostrar cómo el techo se desploma al subir la contención es el experimento
+> más contundente que puede ofrecer el informe.
+
+---
+
+## Qué falta medir
+
+- [ ] Corrida de pico con salida en serie temporal (`--out json`) para obtener el throughput
+      **por escalón** y poder trazar la curva `X` frente a usuarios virtuales, que es donde
+      se ve el aplanamiento característico de la saturación.
+- [ ] Escalones hasta 600–800 VU para **alcanzar** el punto de saturación en vez de
+      extrapolarlo.
+- [ ] Variar `PG_POOL_MAX` (5, 10, 20) y observar cómo se desplaza el cuello de botella.
+- [ ] Correr `contencion.js` y recalcular el techo de Amdahl bajo contención alta.
+- [ ] Estimar `ρ`, `λ` y `μ` del bloqueo de stock y contrastar el `Wq` de M/M/1 contra el
+      observado.

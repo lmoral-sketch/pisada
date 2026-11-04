@@ -263,3 +263,37 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
 - **Defectos conocidos:** el escenario de pico seguía ejecutándose al cierre de esta entrada.
   La aplicación no se ha reconstruido tras agregar la autenticación, y la base en ejecución
   aún no tiene la tabla `sesion`.
+
+## 2026-11-04 | agente: Claude Code (claude-opus-5)
+- **Prompt:** (evento de tarea en segundo plano) Finalización del escenario de pico de k6.
+- **Cambios:**
+  - Analizados los resultados de los tres escenarios y construida la **curva de utilización
+    por escalón**, cruzando el muestreo del servidor con el calendario de `pico.js`.
+  - `carga/analizar-serie.py`: script que procesa la serie temporal de `/api/metricas`,
+    calcula la utilización por escalón y aplica la ley de utilización y la ley de Amdahl.
+  - `carga/resultados/metricas-serie-2026-11-03.txt`: serie temporal cruda, versionada.
+  - `docs/hallazgos.md`: experimento **E-03** completo.
+- **Resultados principales:**
+  - Pico (hasta 350 VU): p(95) = 118,72 ms, p(99) = 199,01 ms, 31,48 req/s, 3 fallas sobre
+    26.447 peticiones, conversión del embudo 99,61 %. **El sistema no colapsó.**
+  - Utilización de CPU por escalón: 9,2 % (25 VU), 16,3 % (50), 28,2 % (100), 52,6 % (200),
+    **76,1 % (350)**. Crecimiento casi lineal, pero la CPU *por usuario* decrece de
+    0,368 %/VU a 0,217 %/VU: firma del encolamiento.
+  - **Punto de saturación no alcanzado.** Extrapolación lineal: ~503 VU. Se deja constancia
+    de que la extrapolación es optimista, porque cerca de `ρ = 1` la degradación se acelera.
+  - **Primera cola sobre el pool:** 26 peticiones en espera con el pool en su máximo de 10,
+    durante el escalón de 350 VU. El pool, y no la CPU, será probablemente el primer recurso
+    en saturarse.
+  - **Ley de utilización verificada sobre datos propios:** `U = X·S` con B = 298,1 s,
+    T = 850 s, C = 26.447 → U = 35,1 %, X = 31,11 pet/s, S = **11,27 ms de CPU por petición**.
+  - **Costo de consultas medido:** el `COUNT(*)` de la paginación cuesta 4,55 ms, un **54 %
+    de lo que cuesta el listado completo** (8,49 ms), sin devolver una sola fila de datos.
+    Candidato concreto de optimización.
+  - **Ley de Amdahl aplicada:** fracción serializada del checkout = **7,2 %**, techo de
+    aceleración = **13,9x**. Por mucha CPU que se agregue, el checkout no puede mejorar más
+    que eso: reducir esa fracción exige rediseño, no hardware.
+- **Defectos conocidos:** el resumen de k6 es agregado, de modo que **no hay throughput por
+  escalón** y no se puede trazar la curva `X` frente a usuarios virtuales, que es donde se ve
+  el aplanamiento de la saturación. Requiere repetir el pico con `--out json`.
+- **Pendiente:** corrida con serie temporal, escalones hasta 600–800 VU, variar `PG_POOL_MAX`,
+  correr `contencion.js` y recalcular Amdahl bajo contención alta, GA4 y despliegue.
