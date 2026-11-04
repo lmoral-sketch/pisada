@@ -204,3 +204,35 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   tras la primera corrida real.
 - **Pendiente:** habilitar VT-x en la BIOS, levantar PostgreSQL, correr la semilla, recorrer
   el embudo, validar los escenarios, autenticación y despliegue.
+
+## 2026-11-03 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "ya active lo de la bios" — tras habilitar Intel VT-x en la BIOS de la placa
+  ASUS PRIME H310M-E R2.0.
+- **Cambios:**
+  - Verificado `HypervisorPresent: True`. Docker Desktop arrancó: motor 29.9.2, 8 CPUs.
+  - **PostgreSQL levantado** con `docker compose up -d`. Confirmado que los límites se
+    aplicaron: `NanoCpus: 1000000000` (1 CPU) y `Memory: 536870912` (512 MB).
+  - **Esquema aplicado y semilla ejecutada:** 240 productos, 4552 variantes, 539 sin stock
+    (11,8 %), 80.989 unidades.
+  - **Embudo verificado de extremo a extremo**: home, catálogo, catálogo con filtros,
+    detalle de producto, agregar al carrito y checkout. Primera compra real registrada
+    (pedido 1). Verificación visual en el navegador del catálogo con filtros y de la matriz
+    de tallas con las combinaciones agotadas deshabilitadas.
+  - **Prueba de contención ejecutada:** 60 compras simultáneas sobre una variante con 50
+    unidades, en ambas estrategias. Resultado idéntico y correcto: 50 compras exitosas, 10
+    rechazos con `409`, stock final 0, **cero variantes con stock negativo en toda la base**
+    y ningún interbloqueo.
+  - Creado `docs/hallazgos.md` con el experimento **E-01**: línea base de tiempos, resultados
+    de ambas estrategias y el hallazgo inesperado.
+- **Hallazgo:** la estrategia optimista **no reintentó ni una vez**. Causa: en PostgreSQL
+  bajo `READ COMMITTED`, un `UPDATE` sobre una fila bloqueada no falla, sino que **espera** y
+  luego reevalúa la condición. Es decir, la implementación "optimista" también hace cola
+  sobre la misma fila, lo que explica que ambas estrategias midan prácticamente lo mismo
+  (25 ms frente a 23 ms). Contradice la hipótesis documentada en `checkout.ts`, y queda
+  registrado como tal.
+- **Defectos conocidos:** los escenarios de k6 siguen sin ejecutarse. La prueba de contención
+  se hizo con `curl` en paralelo, suficiente para demostrar correctitud pero no para
+  caracterizar la degradación ni obtener la curva de saturación.
+- **Pendiente:** correr los escenarios de k6, repetir la prueba optimista con aislamiento
+  `REPEATABLE READ` para que la comparación tenga sentido, autenticación, GA4 con propiedad
+  real y despliegue.
