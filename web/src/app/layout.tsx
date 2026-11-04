@@ -44,8 +44,14 @@ export default function RootLayout({
               Trail
             </Link>
             <Link
+              href="/cuenta"
+              className="ml-auto text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+            >
+              Mi cuenta
+            </Link>
+            <Link
               href="/carrito"
-              className="ml-auto rounded-md border border-neutral-300 px-3 py-1.5 text-sm dark:border-neutral-700"
+              className="rounded-md border border-neutral-300 px-3 py-1.5 text-sm dark:border-neutral-700"
             >
               Carrito
             </Link>

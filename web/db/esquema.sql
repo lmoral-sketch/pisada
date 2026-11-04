@@ -18,6 +18,7 @@
 --    poder compararla contra el bloqueo pesimista (SELECT ... FOR UPDATE).
 -- =============================================================================
 
+DROP TABLE IF EXISTS sesion         CASCADE;
 DROP TABLE IF EXISTS pedido_item    CASCADE;
 DROP TABLE IF EXISTS pedido         CASCADE;
 DROP TABLE IF EXISTS carrito_item   CASCADE;
@@ -111,6 +112,21 @@ CREATE TABLE usuario (
   nombre     TEXT NOT NULL,
   creado_en  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- Sesiones iniciadas. El token vive en una cookie httpOnly.
+--
+-- Nota de desempeño: esta tabla se consulta en CADA petición de un usuario
+-- autenticado, así que es un camino de acceso caliente. Su índice primario
+-- sobre el token es lo que impide que esa consulta se vuelva un cuello de
+-- botella propio.
+CREATE TABLE sesion (
+  token      TEXT PRIMARY KEY,
+  usuario_id INTEGER NOT NULL REFERENCES usuario(id) ON DELETE CASCADE,
+  creado_en  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  expira_en  TIMESTAMPTZ NOT NULL
+);
+
+CREATE INDEX idx_sesion_usuario ON sesion (usuario_id);
 
 -- -----------------------------------------------------------------------------
 -- Carrito

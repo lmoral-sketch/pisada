@@ -236,3 +236,30 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
 - **Pendiente:** correr los escenarios de k6, repetir la prueba optimista con aislamiento
   `REPEATABLE READ` para que la comparación tenga sentido, autenticación, GA4 con propiedad
   real y despliegue.
+
+## 2026-11-03 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "mira en canvas el profesor a subido este material, si necesitas alguno hazmelo
+  saber", seguido del envío de Cátedra 1.2 Teoría de Colas, Cátedra 1.1 Análisis Operacional,
+  Texto Apoyo Ley de Little, documento de QoS de CPU y tres sets de ejercicios.
+- **Cambios:**
+  - Material copiado a `material/catedras/`, `material/apoyo/` y `material/ejercicios/`.
+  - `NOTAS.md`: nueva sección 8 con las fórmulas de teoría de colas (Kendall, M/M/1, M/M/s,
+    M/M/1/k, Little) y las variables y leyes del análisis operacional.
+  - **`proyecto/docs/marco-teorico.md`**: documento nuevo que traduce el formalismo del ramo
+    a las métricas que el sistema emite. Descompone Pisada en cinco estaciones de servicio
+    siguiendo el modelo del servidor central, mapea cada variable operacional a su fuente de
+    medición, y plantea cómo aplicar las cuatro leyes y el modelo M/M/1 al bloqueo de stock.
+  - Autenticación completada en la sesión anterior: `auth.ts`, `/api/auth`, `/cuenta`,
+    `formulario-cuenta.tsx` y tabla `sesion` en el esquema. Typecheck limpio.
+- **Conexión conceptual registrada:** las probabilidades de transición del CBMG **son** las
+  razones de visita `Vᵢ` de la ley del flujo forzado. El modelo de carga del material de
+  "Modelos de Carga en la Web" y las leyes operacionales de la Unidad 2 describen el mismo
+  modelo desde dos ángulos. Eso explica cuantitativamente por qué los escenarios de
+  navegación aleatoria no saturan el stock: `V_checkout` es pequeña por diseño del CBMG.
+- **Resultados de k6, carga sostenida normal (25 VU, 10 min):** p95 = 36,12 ms,
+  p99 = 45,9 ms, 3038 peticiones, throughput 4,88 req/s, **0 % de error**, 852 iteraciones y
+  52 compras. Prácticamente idéntico a la línea base de 5 VU (p95 = 37,65 ms): a 25 usuarios
+  el sistema **todavía no muestra degradación alguna**.
+- **Defectos conocidos:** el escenario de pico seguía ejecutándose al cierre de esta entrada.
+  La aplicación no se ha reconstruido tras agregar la autenticación, y la base en ejecución
+  aún no tiene la tabla `sesion`.
