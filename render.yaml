@@ -1,0 +1,37 @@
+# Despliegue en Render (https://render.com)
+#
+# NOTA DE DESEMPEÑO: el plan gratuito entrega 0,1 CPU y 512 MB de RAM. Esa
+# limitación es una VENTAJA para este trabajo, no un estorbo: hace que el punto
+# de saturación aparezca con una carga que podemos generar desde un notebook, y
+# que los resultados sean reproducibles.
+#
+# Advertencia importante para las mediciones: el plan gratuito SUSPENDE el
+# servicio tras 15 minutos sin tráfico, y reactivarlo toma cerca de un minuto.
+# Antes de cualquier corrida de k6 hay que despertar el sitio y descartar las
+# primeras peticiones, o el arranque en frío contaminará los percentiles.
+
+services:
+  - type: web
+    name: pisada
+    runtime: docker
+    dockerfilePath: ./web/Dockerfile
+    dockerContext: ./web
+    plan: free
+    region: oregon
+    healthCheckPath: /
+    envVars:
+      # La cadena de conexión se pega a mano en el panel de Render.
+      # NUNCA se escribe en este archivo: va al repositorio.
+      - key: DATABASE_URL
+        sync: false
+      # Identificador de medición de GA4. También se incrusta en el bundle del
+      # cliente durante la compilación (ver ARG en el Dockerfile).
+      - key: NEXT_PUBLIC_GA_ID
+        sync: false
+      # Tamaño del pool. Con 0,1 CPU conviene un pool pequeño: más conexiones
+      # no dan más paralelismo real y sí más contención.
+      - key: PG_POOL_MAX
+        value: "5"
+      # Estrategia de concurrencia por defecto.
+      - key: ESTRATEGIA_STOCK
+        value: pesimista

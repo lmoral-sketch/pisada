@@ -297,3 +297,36 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   el aplanamiento de la saturación. Requiere repetir el pico con `--out json`.
 - **Pendiente:** corrida con serie temporal, escalones hasta 600–800 VU, variar `PG_POOL_MAX`,
   correr `contencion.js` y recalcular Amdahl bajo contención alta, GA4 y despliegue.
+
+## 2026-11-04 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "GA4 y deploy" — prioridad acordada para el camino crítico del LAB1.
+- **Cambios:**
+  - **Resuelto el pendiente de la sesión anterior:** se regeneró la base (ahora incluye la
+    tabla `sesion`) y se reconstruyó la aplicación con la autenticación.
+  - **Autenticación verificada de extremo a extremo:** registro (200), sesión activa (200),
+    registro duplicado (409), clave incorrecta (401), correo inexistente (401), ingreso
+    correcto (200) y cierre de sesión. La defensa contra ataque de temporización funciona:
+    clave incorrecta tardó 39,55 ms y correo inexistente 40,60 ms, **1 ms de diferencia**,
+    indistinguibles.
+  - `web/next.config.ts`: salida `standalone`, que reduce la imagen de ~1,2 GB a 323 MB.
+  - `web/Dockerfile`: construcción en tres etapas, usuario sin privilegios, telemetría
+    desactivada. `NEXT_PUBLIC_GA_ID` declarado como ARG porque se incrusta en el bundle del
+    cliente durante la compilación, no en ejecución.
+  - `web/.dockerignore` y `render.yaml` con las cuatro variables de entorno.
+  - **Imagen construida y verificada:** 323 MB; el contenedor arranca en 120 ms y sirve
+    `/`, `/catalogo`, `/cuenta` y `/api/metricas` contra PostgreSQL. Contenedor e imagen de
+    prueba eliminados tras la verificación.
+  - `docs/despliegue.md`: guía paso a paso de GA4 (incluido el acceso para
+    `j.aranda@utem.cl`), base en Neon y despliegue en Render, con lista de verificación.
+- **Incidente resuelto:** el servidor local anterior quedó huérfano ocupando el puerto 3000
+  tras detener su tarea, de modo que el servidor nuevo no podía arrancar y las peticiones a
+  `/api/auth` devolvían 404 contra el binario viejo. Se identificó el proceso por puerto
+  (PID 8048, iniciado a las 23:16 del 3 de noviembre) y se cerró puntualmente.
+- **Advertencias registradas para las mediciones en la nube:** el plan gratuito de Render
+  suspende el servicio tras 15 minutos de inactividad (hay que despertarlo antes de cada
+  corrida o el arranque en frío contamina los percentiles); entrega 0,1 CPU y 512 MB, muy por
+  debajo del contenedor local, de modo que los escalones de `pico.js` serán excesivos; y la
+  latencia desde Chile suma 100–200 ms por petición, que debe tratarse como una estación de
+  servicio más y no atribuirse a la aplicación.
+- **Defectos conocidos:** nada desplegado aún. GA4, Neon, GitHub y Render requieren cuentas
+  del equipo y quedan a la espera.
