@@ -320,3 +320,138 @@ varias filas por SKU, o reservar fuera de la transacción—, no más hardware.
 - [ ] Correr `contencion.js` y recalcular el techo de Amdahl bajo contención alta.
 - [ ] Estimar `ρ`, `λ` y `μ` del bloqueo de stock y contrastar el `Wq` de M/M/1 contra el
       observado.
+
+---
+
+## E-04 — Contención alta sobre un mismo SKU: dos lecciones metodológicas
+
+**Fecha:** 4 de noviembre de 2026
+**Escenario:** `contencion.js`, escalones hasta 120 VU, todos comprando la **misma variante**.
+
+Este experimento produjo el resultado más valioso del trabajo hasta ahora, pero no el que se
+esperaba: produjo **dos lecciones sobre cómo NO medir**.
+
+### Primer intento: el inventario se agotó
+
+La corrida inicial partió con 3000 unidades y se vendieron las 3000 en la primera mitad. Las
+4234 peticiones restantes recibieron `409` inmediato, sin tocar el bloqueo.
+
+El resultado fue engañoso: `pisada_checkout_duracion` promedió **17,02 ms**, *más rápido* que
+los 44,95 ms del escenario de pico. La lectura ingenua sería "la contención mejora el
+desempeño", cuando en realidad la mitad de la corrida medía **rechazos rápidos, no compras**.
+
+> **Lección.** En una prueba de carga sobre un recurso consumible, hay que garantizar que el
+> recurso no se agote, o la segunda mitad del experimento mide un sistema distinto del que se
+> quería estudiar. Se subió el stock a 30.000 unidades para las corridas definitivas.
+
+### Segundo problema: el instrumento no medía lo mismo en ambas estrategias
+
+Al revisar el código se detectó que `pisada_espera_bloqueo_stock_segundos` cubría intervalos
+distintos según la estrategia:
+
+| Estrategia | Qué abarcaba el temporizador |
+|---|---|
+| Pesimista | **Solo** el `SELECT ... FOR UPDATE` |
+| Optimista | **Toda** la función, incluidos los `UPDATE` |
+
+La comparación estaba sesgada a favor de la pesimista por construcción. Se corrigió
+envolviendo ambas en `try/finally` sobre el tramo completo de *adquirir y modificar*.
+
+> **Lección.** Antes de comparar dos implementaciones, hay que verificar que el instrumento
+> mide el mismo intervalo en ambas. Un sesgo de instrumentación produce diferencias que
+> parecen reales y no lo son.
+
+### El hallazgo central: los resultados no son reproducibles
+
+Con el instrumento corregido se repitieron ambas corridas. Comparando las dos tandas, con
+**configuración idéntica**:
+
+| Métrica | Tanda 1 | Tanda 2 |
+|---|---|---|
+| pesimista p(95) | 63,88 ms | **7,85 s** |
+| pesimista p(99) | 19,76 s | 19,63 s |
+| pesimista fallas | 7,85 % | 7,00 % |
+| pesimista throughput | 30,30/s | 30,30/s |
+| optimista p(95) | **9,96 s** | 49,63 ms |
+| optimista p(99) | 19,81 s | 9,84 s |
+| optimista fallas | 7,82 % | 1,51 % |
+| optimista throughput | 29,37/s | 45,99/s |
+
+El p(95) de cada estrategia **varió en dos órdenes de magnitud entre corridas idénticas**, y
+el orden entre ambas se invirtió: la tanda 1 sugería que la pesimista era muy superior, la
+tanda 2 sugiere lo contrario.
+
+**Conclusión: con una corrida por estrategia no se puede distinguir cuál es mejor.** La
+diferencia observada está dentro del ruido del experimento.
+
+### Por qué varía tanto
+
+El p(99) de ~19,6 s aparece en las cuatro corridas y es sospechosamente cercano a **dos veces
+el `connectionTimeoutMillis` de 10 s** configurado en el pool. La interpretación más
+plausible es que a 120 VU sobre un único SKU el sistema entra en un régimen inestable:
+
+1. Las transacciones se encolan sobre la fila del SKU.
+2. Mientras esperan, **retienen su conexión del pool**.
+3. El pool de 10 se agota; las peticiones nuevas esperan una conexión.
+4. Algunas superan el tiempo límite y fallan.
+5. Al liberarse, la carga acumulada vuelve a saturar el pool.
+
+Es un ciclo de realimentación: la cola del bloqueo **propaga la saturación al pool**, que es
+un recurso compartido por todo el sitio. Eso explica por qué el p(95) global se degrada a
+segundos aunque la mediana siga en ~13 ms: la mayoría de las peticiones pasa bien y una cola
+larga de peticiones queda atrapada.
+
+Pequeñas diferencias en el instante exacto en que se cruza ese umbral producen resultados
+muy distintos. **El sistema es caótico en este régimen**, y eso es un hallazgo legítimo:
+coincide con lo que predice la teoría de colas cuando `ρ → 1`.
+
+### Lo que sí puede afirmarse
+
+| Afirmación | ¿Sostenida por los datos? |
+|---|---|
+| A 120 VU sobre un mismo SKU el sistema se degrada severamente | **Sí.** p(99) ≈ 20 s en las cuatro corridas |
+| Aparecen fallas reales, no solo rechazos de negocio | **Sí.** Entre 1,5 % y 7,9 % |
+| La mediana se mantiene sana (~13-15 ms) | **Sí.** En las cuatro corridas |
+| El cuello de botella se propaga del bloqueo al pool | **Plausible**, consistente con el p(99) ≈ 2× el tiempo límite. Falta confirmarlo |
+| Una estrategia es mejor que la otra | **No.** La varianza entre corridas supera la diferencia |
+
+### Ley de Little sobre la cola del bloqueo
+
+Con los datos de la tanda corregida:
+
+```
+pesimista:  X = 13,85 compras/s · Wq = 45,4 ms  →  Lq = X·Wq = 0,63 transacciones en cola
+optimista:  X = 22,58 compras/s · Wq = 35,2 ms  →  Lq = X·Wq = 0,79 transacciones en cola
+```
+
+Son valores bajos *en promedio*, lo que refuerza la interpretación anterior: el problema no
+es una cola permanentemente larga, sino **episodios de saturación** que el promedio diluye.
+Es un buen ejemplo de por qué el enunciado insiste en percentiles y no en promedios.
+
+### Ley de Amdahl bajo contención
+
+Fracción serializada del checkout, con el instrumento corregido:
+
+| Escenario | Wq | Checkout | Fracción serie | Techo de Amdahl |
+|---|---|---|---|---|
+| Carga normal, SKU al azar | 3,2 ms | 44,9 ms | 7,2 % | **13,9x** |
+| Contención, pesimista | 45,4 ms | 353,9 ms | 12,8 % | **7,8x** |
+| Contención, optimista | 35,2 ms | 166,4 ms | 21,2 % | **4,7x** |
+
+**El techo de mejora se desploma al subir la contención: de 13,9x a menos de 5x.** Por mucha
+CPU que se agregue, bajo contención el checkout no puede mejorar más que eso. Esta es la
+demostración empírica, con datos propios, de lo que la Ley de Amdahl predice en abstracto.
+
+> Advertencia: estas cifras provienen de **una corrida por configuración** y, dada la varianza
+> documentada arriba, deben tomarse como **órdenes de magnitud**, no como valores precisos.
+
+### Qué hacer para cerrar este experimento
+
+- [ ] **Repetir cada configuración al menos 5 veces** y reportar mediana y rango, no una
+      corrida. Es la corrección más importante.
+- [ ] Bajar la carga a 30–60 VU, donde el sistema probablemente aún no entre en el régimen
+      inestable, y comparar ahí las estrategias con menos ruido.
+- [ ] Instrumentar explícitamente el tiempo de espera **por una conexión del pool**, para
+      confirmar o descartar la hipótesis de propagación.
+- [ ] Probar con `PG_POOL_MAX` mayor: si la hipótesis es correcta, un pool más grande debería
+      retrasar el colapso.

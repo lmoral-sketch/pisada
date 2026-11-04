@@ -330,3 +330,39 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   servicio más y no atribuirse a la aplicación.
 - **Defectos conocidos:** nada desplegado aún. GA4, Neon, GitHub y Render requieren cuentas
   del equipo y quedan a la espera.
+
+## 2026-11-04 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "Voy con GA4" — el equipo se hace cargo de crear la propiedad de Analytics.
+  Mientras tanto se ejecuta el experimento de contención pendiente.
+- **Cambios:**
+  - Ejecutado `contencion.js` sobre un mismo SKU, en cuatro corridas (dos por estrategia).
+  - **Corregido un sesgo de instrumentación en `checkout.ts`:** el histograma
+    `espera_bloqueo_stock_segundos` cubría solo el `SELECT ... FOR UPDATE` en la estrategia
+    pesimista, pero toda la función en la optimista. Las dos métricas no medían el mismo
+    intervalo, de modo que la comparación estaba sesgada por construcción. Ambas se
+    envolvieron en `try/finally` sobre el tramo completo de adquirir y modificar.
+  - `docs/hallazgos.md`: experimento **E-04**.
+  - Resultados versionados en `carga/resultados/contencion-{pesimista,optimista}.json`.
+- **Hallazgo principal, y es negativo:** los resultados **no son reproducibles**. Entre dos
+  tandas con configuración idéntica, el p(95) de cada estrategia varió en dos órdenes de
+  magnitud (pesimista: 63,88 ms frente a 7,85 s; optimista: 9,96 s frente a 49,63 ms) y el
+  orden entre ambas se invirtió. **Con una corrida por estrategia no se puede concluir cuál
+  es mejor:** la diferencia observada está dentro del ruido del experimento. Se deja
+  registrado como tal en lugar de elegir la tanda que confirmaba la hipótesis.
+- **Hipótesis del comportamiento inestable:** el p(99) de ~19,6 s aparece en las cuatro
+  corridas y es cercano al doble del `connectionTimeoutMillis` de 10 s. La explicación
+  plausible es un ciclo de realimentación: las transacciones encoladas en el bloqueo del SKU
+  **retienen su conexión del pool**, el pool de 10 se agota, las peticiones nuevas esperan
+  conexión y algunas superan el tiempo límite. La cola del bloqueo **propaga la saturación al
+  pool**, que es compartido por todo el sitio. Falta instrumentar la espera por conexión para
+  confirmarlo.
+- **Segundo error metodológico corregido:** la primera corrida agotó el inventario (3000
+  unidades vendidas de 3000) y la segunda mitad midió rechazos rápidos en vez de compras, lo
+  que daba un checkout *más rápido* bajo contención. Se subió el stock a 30.000.
+- **Ley de Amdahl bajo contención:** el techo de mejora cae de **13,9x** en carga normal a
+  **7,8x** (pesimista) y **4,7x** (optimista) bajo contención. Son órdenes de magnitud, no
+  valores precisos, dada la varianza documentada.
+- **Defectos conocidos:** el experimento necesita al menos 5 repeticiones por configuración
+  para tener poder estadístico. Las cifras actuales no permiten comparar las estrategias.
+- **Pendiente:** repeticiones, bajar la carga a 30–60 VU para salir del régimen inestable,
+  instrumentar la espera por conexión del pool, y las cuentas de GA4, Neon, GitHub y Render.

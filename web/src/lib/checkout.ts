@@ -75,30 +75,45 @@ async function descontarPesimista(
   varianteId: number,
   cantidad: number,
 ): Promise<ResultadoDescuento> {
+  // El temporizador cubre TODA la operación de adquirir el recurso y
+  // modificarlo, no solo la espera del bloqueo.
+  //
+  // Esto es deliberado y corrige un sesgo de medición detectado el 4 de
+  // noviembre: originalmente este temporizador se cerraba justo después del
+  // SELECT ... FOR UPDATE, dejando el UPDATE fuera, mientras que el de la
+  // estrategia optimista cubría toda su función. Las dos métricas no medían el
+  // mismo intervalo, de modo que la comparación entre estrategias estaba
+  // sesgada a favor de la pesimista. Ambas deben abarcar el mismo tramo.
   const fin = esperaBloqueoStock.startTimer({ estrategia: 'pesimista' });
 
-  // La espera ocurre dentro de esta consulta: PostgreSQL no la devuelve hasta
-  // que el bloqueo de la fila está disponible.
-  const { rows } = await cliente.query<{ stock: number; sku: string }>(
-    'SELECT stock, sku FROM variante WHERE id = $1 FOR UPDATE',
-    [varianteId],
-  );
+  try {
+    // La espera ocurre dentro de esta consulta: PostgreSQL no la devuelve
+    // hasta que el bloqueo de la fila está disponible.
+    const { rows } = await cliente.query<{ stock: number; sku: string }>(
+      'SELECT stock, sku FROM variante WHERE id = $1 FOR UPDATE',
+      [varianteId],
+    );
 
-  fin();
+    const variante = rows[0];
+    if (!variante || variante.stock < cantidad) {
+      return {
+        ok: false,
+        sku: variante?.sku ?? String(varianteId),
+        disponible: variante?.stock ?? 0,
+      };
+    }
 
-  const variante = rows[0];
-  if (!variante || variante.stock < cantidad) {
-    return { ok: false, sku: variante?.sku ?? String(varianteId), disponible: variante?.stock ?? 0 };
+    await cliente.query(
+      'UPDATE variante SET stock = stock - $1, version = version + 1 WHERE id = $2',
+      [cantidad, varianteId],
+    );
+
+    // La estrategia pesimista no reintenta: espera. Se informa cero para que
+    // ambas estrategias compartan la misma forma de resultado.
+    return { ok: true, reintentos: 0 };
+  } finally {
+    fin();
   }
-
-  await cliente.query(
-    'UPDATE variante SET stock = stock - $1, version = version + 1 WHERE id = $2',
-    [cantidad, varianteId],
-  );
-
-  // La estrategia pesimista no reintenta: espera. Se informa cero para que
-  // ambas estrategias compartan la misma forma de resultado.
-  return { ok: true, reintentos: 0 };
 }
 
 /**
