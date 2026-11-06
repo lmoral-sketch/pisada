@@ -455,3 +455,83 @@ demostración empírica, con datos propios, de lo que la Ley de Amdahl predice e
       confirmar o descartar la hipótesis de propagación.
 - [ ] Probar con `PG_POOL_MAX` mayor: si la hipótesis es correcta, un pool más grande debería
       retrasar el colapso.
+
+---
+
+## E-05 — GA4 conectado, y una limitación importante del generador de carga
+
+**Fecha:** 6 de noviembre de 2026
+**ID de medición:** `G-P8EWE6D7G3` (propiedad *Pisada*)
+
+### Verificación de la instrumentación
+
+- La etiqueta `gtag.js` se sirve en todas las páginas.
+- La librería carga efectivamente: `window.google_tag_manager` registra el contenedor
+  `G-P8EWE6D7G3`.
+- El embudo completo se recorrió en un navegador real (ficha → talla → carrito → pago) y la
+  compra quedó registrada en la base como **pedido 20205**.
+
+### Defecto de interfaz encontrado y corregido
+
+Tras una compra exitosa, el mensaje de confirmación **desaparecía sin que el usuario
+alcanzara a leerlo**. Causa: `BotonPagar` llamaba a `router.refresh()` al confirmarse el
+pago; como el checkout vacía el carrito, el refresco volvía a renderizar la página en su
+estado vacío, lo que desmontaba el propio componente que mostraba la confirmación.
+
+Se quitó ese refresco. Es un defecto que **solo se ve recorriendo el flujo en un navegador**:
+las pruebas con `curl` y con k6 lo daban por correcto, porque el endpoint respondía `200`.
+
+> Vale como argumento metodológico para el informe: verificar por API no sustituye verificar
+> la experiencia real. Son dos planos distintos, igual que los dos planos de indicadores que
+> pide la Fase 2.
+
+### LIMITACIÓN IMPORTANTE: k6 no ejecuta JavaScript
+
+**k6 es un cliente HTTP, no un navegador.** Descarga el HTML pero no ejecuta los scripts de
+la página. En consecuencia:
+
+> **El tráfico sintético de k6 NO genera eventos en GA4.** Ni un `view_item`, ni un
+> `add_to_cart`, ni un `purchase`, por muchos usuarios virtuales que se lancen.
+
+Esto tiene dos consecuencias, una buena y una que obliga a cambiar el plan.
+
+**La buena:** la propiedad de GA4 **no se contamina** con el tráfico de las pruebas de carga.
+Las métricas de engagement reflejarán solo visitas humanas reales, que es lo que corresponde.
+
+**La que obliga a cambiar el plan:** la Fase 2 pide comparar los indicadores de experiencia
+de usuario **en condiciones normales frente a bajo carga generada**. Si la carga de k6 es
+invisible para GA4, esa comparación no sale sola.
+
+### Cómo resolverlo
+
+El diseño correcto del experimento es **separar los dos roles**:
+
+| Rol | Quién | Qué mide |
+|---|---|---|
+| **Carga de fondo** | k6 | Satura el servidor (plano A: servidor e infraestructura) |
+| **Usuario observado** | Personas del equipo navegando | Vive la degradación (plano B: experiencia) |
+
+**Procedimiento propuesto:**
+
+1. **Sesión de control.** Con el sitio en reposo, los integrantes navegan el embudo completo
+   varias veces. GA4 registra Core Web Vitals, duración de sesión y conversión en condiciones
+   normales.
+2. **Sesión bajo carga.** Se lanza `pico.js` contra el sitio desplegado y, **mientras corre**,
+   los mismos integrantes repiten exactamente el mismo recorrido.
+3. **Comparación.** Se contrastan ambas sesiones en GA4, segmentando por franja horaria.
+
+Esto no es un parche: es **más fiel** a lo que el enunciado quiere medir. La pregunta de la
+Fase 2 es cómo se degrada la experiencia de un usuario real cuando el sistema está cargado, y
+la única forma honesta de responderla es que un usuario real la viva mientras el sistema está
+cargado.
+
+> Alternativa descartada: enviar los eventos al **Measurement Protocol** de GA4 desde el
+> servidor. Funciona técnicamente, pero los eventos sintéticos no traen Core Web Vitals
+> reales, que se miden en el navegador, y además ensuciarían la propiedad con sesiones
+> ficticias. Se deja anotada por completitud.
+
+### Pendiente de esta parte
+
+- [ ] Dar acceso a `j.aranda@utem.cl` en la propiedad (requisito del enunciado)
+- [ ] Verificar los cinco eventos en DebugView con el sitio desplegado
+- [ ] Ejecutar el protocolo de dos sesiones descrito arriba, una vez desplegado

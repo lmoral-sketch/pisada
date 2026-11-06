@@ -366,3 +366,34 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   para tener poder estadístico. Las cifras actuales no permiten comparar las estrategias.
 - **Pendiente:** repeticiones, bajar la carga a 30–60 VU para salir del régimen inestable,
   instrumentar la espera por conexión del pool, y las cuentas de GA4, Neon, GitHub y Render.
+
+## 2026-11-06 | agente: Claude Code (claude-opus-5)
+- **Prompt:** Consultas sobre la creación de la propiedad de GA4 (objetivos de negocio y
+  configuración del flujo de datos), seguidas del ID de medición obtenido.
+- **Cambios:**
+  - Recomendados los objetivos **Generar ventas** y **Ver la interacción y la retención de
+    usuarios**, que son los que habilitan los informes de embudo y de engagement de la Fase 2.
+  - `web/.env`: configurado `NEXT_PUBLIC_GA_ID=G-P8EWE6D7G3`. El archivo sigue ignorado por
+    Git, verificado.
+  - Reconstruida la aplicación; la etiqueta queda embebida en el bundle del cliente.
+  - Levantado de nuevo el entorno: Docker, PostgreSQL con los datos persistidos en el
+    volumen, y el servidor.
+  - **Verificado en navegador real:** gtag.js carga, window.google_tag_manager registra el
+    contenedor, y el embudo completo se recorrió con éxito. Compra registrada como el
+    pedido 20205.
+  - **Corregido un defecto de interfaz:** tras una compra exitosa el mensaje de confirmación
+    desaparecía sin alcanzar a leerse, porque el refresco volvía a renderizar la página del
+    carrito ya vacío y eso desmontaba el componente que mostraba la confirmación. Solo se
+    detecta recorriendo el flujo en un navegador: curl y k6 lo daban por correcto porque el
+    endpoint respondía 200.
+  - `docs/hallazgos.md`: experimento **E-05**.
+- **Limitación importante registrada:** **k6 no ejecuta JavaScript**, de modo que el tráfico
+  sintético **no genera ningún evento en GA4**. Lo bueno es que la propiedad no se contamina
+  con las pruebas de carga. Lo que obliga a cambiar el plan es que la Fase 2 pide comparar
+  los indicadores de experiencia en condiciones normales frente a bajo carga, y esa
+  comparación no sale sola. El diseño correcto separa los roles: k6 genera la carga de fondo
+  mientras **personas reales del equipo** navegan el mismo recorrido, antes y durante.
+- **Defectos conocidos:** falta dar acceso a j.aranda@utem.cl en la propiedad; los eventos
+  aún no se verifican en DebugView contra el sitio desplegado, que todavía no existe.
+- **Pendiente:** GitHub, Neon, Render, el protocolo de dos sesiones para GA4, repeticiones
+  del experimento de contención y el informe técnico.

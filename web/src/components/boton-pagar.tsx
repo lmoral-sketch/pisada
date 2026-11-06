@@ -58,7 +58,10 @@ export function BotonPagar({ items, totalClp }: Props) {
       if (respuesta.ok && datos.ok) {
         comprar(datos.pedido_id, articulos, datos.total_clp);
         setResultado({ tipo: 'exito', pedidoId: datos.pedido_id });
-        router.refresh();
+        // No se refresca aquí a propósito. El checkout vacía el carrito, así
+        // que un refresco volvería a renderizar la página del carrito en su
+        // estado vacío, lo que desmonta este componente y hace desaparecer la
+        // confirmación antes de que el usuario alcance a leerla.
         return;
       }
 
