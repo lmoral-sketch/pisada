@@ -17,7 +17,13 @@ services:
     dockerfilePath: ./web/Dockerfile
     dockerContext: ./web
     plan: free
-    region: oregon
+    # Ohio, para que coincida con la región de la base en Neon (us-east-2).
+    #
+    # No es un detalle: la latencia entre aplicación y base se paga en CADA
+    # consulta, y la página de catálogo hace tres. Con la base en São Paulo y
+    # la aplicación en Oregon, una sola página sumaría cerca de 600 ms solo en
+    # viajes de red, y las mediciones reflejarían la red y no el sistema.
+    region: ohio
     healthCheckPath: /
     envVars:
       # La cadena de conexión se pega a mano en el panel de Render.

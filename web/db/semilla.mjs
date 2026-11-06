@@ -221,18 +221,37 @@ async function main() {
       if (!coloresDelProducto.includes(c)) coloresDelProducto.push(c);
     }
 
+    // Las variantes de un producto se insertan en UNA sola sentencia.
+    //
+    // No es microoptimización: contra una base remota, cada consulta cuesta un
+    // viaje de ida y vuelta completo. Con inserciones de a una, sembrar 4552
+    // variantes contra Neon en Ohio tomaba unos 11 minutos frente a 8 segundos
+    // en local. Agrupando por producto, el número de viajes baja de 4552 a 240.
+    const valores = [];
+    const marcadores = [];
     for (const colorId of coloresDelProducto) {
       for (const tallaId of tallas) {
         // Un 12% de las combinaciones nace sin stock: es realista y genera
         // puntos de abandono medibles en el embudo de conversión.
         const stock = aleatorio() < 0.12 ? 0 : entre(1, 40);
-        await cliente.query(
-          'INSERT INTO variante (producto_id, talla_id, color_id, sku, stock) VALUES ($1, $2, $3, $4, $5)',
-          [productoId, tallaId, colorId, `PSD-${productoId}-${tallaId}-${colorId}`, stock],
+        const i = valores.length;
+        marcadores.push(`($${i + 1}, $${i + 2}, $${i + 3}, $${i + 4}, $${i + 5})`);
+        valores.push(
+          productoId,
+          tallaId,
+          colorId,
+          `PSD-${productoId}-${tallaId}-${colorId}`,
+          stock,
         );
         totalVariantes++;
       }
     }
+
+    await cliente.query(
+      `INSERT INTO variante (producto_id, talla_id, color_id, sku, stock)
+       VALUES ${marcadores.join(', ')}`,
+      valores,
+    );
   }
 
   // --- Resumen -------------------------------------------------------------

@@ -164,17 +164,39 @@ Ese es el valor que debe ir en el flujo de datos de GA4.
 
 Estas tres cosas pueden arruinar los datos del informe si no se tienen en cuenta.
 
-### El servicio se suspende
+### Dos servicios se suspenden, no uno
 
-El plan gratuito de Render **apaga el servicio tras 15 minutos sin tráfico**, y reactivarlo
-toma cerca de un minuto. Antes de cualquier corrida de k6:
+El plan gratuito de Render **apaga el servicio tras 15 minutos sin tráfico** y tarda cerca de
+un minuto en reactivarse. El plan gratuito de Neon hace lo mismo con la base: la **suspende
+tras 5 minutos de inactividad** y tarda unos 500 ms en despertar.
+
+Antes de cualquier corrida de k6 hay que despertar **ambos**:
 
 ```bash
-curl https://pisada.onrender.com/
+curl https://pisada.onrender.com/catalogo
 ```
 
-Esperar a que responda, y recién entonces lanzar la prueba. Si no, las primeras peticiones
-medirán un arranque en frío y los percentiles saldrán inservibles.
+Se usa `/catalogo` y no `/` a propósito: esa página consulta la base, de modo que una sola
+petición despierta el servicio **y** el compute de Neon. Esperar a que responda con normalidad
+(repetir hasta que el tiempo baje a lo habitual) y recién entonces lanzar la prueba.
+
+Si no, las primeras peticiones medirán dos arranques en frío encadenados y los percentiles
+saldrán inservibles.
+
+### La región de la base debe coincidir con la de la aplicación
+
+La latencia entre aplicación y base se paga **en cada consulta**, no una vez por página. La
+página de catálogo ejecuta tres consultas: con la base en São Paulo y la aplicación en
+Oregon, serían unos 600 ms de pura red por página.
+
+Por eso ambas quedan en **us-east-2 (Ohio)**. La latencia Chile → Estados Unidos sigue
+existiendo, pero se paga una sola vez por página y se trata como lo que es: **una estación de
+servicio más** en la ley general del tiempo de respuesta, medida y declarada por separado.
+
+> Consecuencia práctica observada: sembrar el catálogo contra Neon con inserciones de a una
+> tomaba **11 minutos**, frente a 8 segundos en local, porque cada una de las 4552
+> inserciones era un viaje de ida y vuelta. Se agruparon por producto, bajando de 4552
+> viajes a 240.
 
 ### Los recursos son muy acotados
 

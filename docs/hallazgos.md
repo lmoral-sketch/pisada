@@ -535,3 +535,87 @@ cargado.
 - [ ] Dar acceso a `j.aranda@utem.cl` en la propiedad (requisito del enunciado)
 - [ ] Verificar los cinco eventos en DebugView con el sitio desplegado
 - [ ] Ejecutar el protocolo de dos sesiones descrito arriba, una vez desplegado
+
+---
+
+## E-06 — El costo de la red, medido: la ley general del tiempo de respuesta en acción
+
+**Fecha:** 6 de noviembre de 2026
+**Bases comparadas:** PostgreSQL local en contenedor (Docker) y Neon en AWS us-east-2 (Ohio),
+medidas desde Chile. Mediana de 7 repeticiones por consulta.
+
+### Resultados
+
+| Operación | Local | Neon (Ohio) | Factor |
+|---|---|---|---|
+| Conectar | 29,3 ms | 1135,7 ms | 38,8x |
+| `SELECT 1` (solo red) | 0,7 ms | **134,8 ms** | 199x |
+| Conteo de productos | 0,6 ms | 135,6 ms | 226x |
+| Listado con agregación | 1,3 ms | 137,5 ms | 108x |
+| Conteo del catálogo | 1,0 ms | 135,8 ms | 141x |
+
+A primera vista, Neon parece **200 veces más lento**. Esa lectura sería un error de análisis.
+
+### Descomposición: separar la red del trabajo real
+
+`SELECT 1` no hace trabajo apreciable en el servidor: su tiempo es, esencialmente, **el viaje
+de ida y vuelta**. Restándolo de las demás consultas queda el trabajo real:
+
+| Consulta | Trabajo local | Trabajo en Neon |
+|---|---|---|
+| Conteo de productos | ~0 ms | 0,7 ms |
+| Listado con agregación | 0,6 ms | **2,7 ms** |
+| Conteo del catálogo | 0,3 ms | 1,0 ms |
+
+**La base de Neon hace el mismo trabajo en pocos milisegundos.** De los 137,5 ms que tarda el
+listado, **134,8 ms son red y 2,7 ms son cómputo**: la red explica el **98 %** del tiempo.
+
+Neon resulta unas 4 veces más lento en cómputo puro, lo que es esperable en un plan gratuito
+compartido, pero esa diferencia es **irrelevante** frente a la latencia.
+
+### Lectura con la teoría del ramo
+
+Esto es la **ley general del tiempo de respuesta** de la Cátedra 1.1 de Análisis Operacional:
+
+```
+R = Σ Vᵢ · Rᵢ
+```
+
+El tiempo de respuesta es la suma de los tiempos de cada estación, **ponderada por su razón
+de visita**. La red no es "ruido de medición": es una **estación de servicio más**, con su
+propio tiempo de servicio, y hay que declararla como tal.
+
+El factor crítico es la **razón de visita `V`**. La página de catálogo ejecuta **tres**
+consultas, de modo que visita la estación de red tres veces:
+
+| Ubicación de la aplicación | V | R por página solo en red |
+|---|---|---|
+| En Chile, base en Ohio | 3 | **~405 ms** |
+| En Ohio, base en Ohio | 3 | ~3 ms |
+
+**Conclusión operativa:** desplegar la aplicación en la misma región que la base no es una
+preferencia, es la diferencia entre un sitio usable y uno inservible. Es la justificación
+cuantitativa de la decisión de poner Render en Ohio.
+
+### Consecuencia práctica observada durante el trabajo
+
+Sembrar el catálogo contra Neon con inserciones de a una tomó **cerca de 11 minutos**, frente
+a 8 segundos en local. Causa: 4552 inserciones × ~135 ms de viaje = 10,2 minutos de pura red.
+
+Se agrupó la inserción de variantes por producto, bajando de **4552 viajes a 240**. Es la
+misma ley aplicada a la inversa: reducir la razón de visita a la estación cara.
+
+### Implicancias para las mediciones de la Fase 2
+
+1. **Los tiempos locales y los de la nube no son comparables sin descontar la red.** El
+   informe debe reportar ambos por separado.
+2. **La latencia Chile → Estados Unidos se paga una vez por página**, no por consulta, siempre
+   que aplicación y base estén juntas. Es aceptable y se declara.
+3. **Antes de cada corrida de k6 hay que despertar ambos servicios.** El tiempo de conexión de
+   1135 ms que se observó corresponde a la base suspendida: Neon escala a cero tras 5 minutos
+   de inactividad. En régimen, conectar cuesta ~135 ms.
+
+### Herramienta
+
+La medición es reproducible con `web/db/medir-latencia.mjs`, que acepta dos cadenas de
+conexión y reporta medianas, factor y trabajo descontada la red.
