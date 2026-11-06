@@ -128,6 +128,39 @@ export const comprasSinStock = obtenerOCrear(
     }),
 );
 
+/**
+ * Tiempo de espera para obtener una conexión libre del pool.
+ *
+ * Es la segunda cola del sistema, y la hipótesis del experimento E-04 es que
+ * resulta ser la decisiva: las transacciones que esperan el bloqueo de un SKU
+ * **retienen su conexión mientras esperan**, de modo que la contención sobre
+ * una sola fila termina agotando un recurso que comparte todo el sitio.
+ *
+ * Sin esta métrica, esa propagación solo podía inferirse de que el p(99) se
+ * parecía al doble del tiempo límite de conexión. Con ella se mide directamente.
+ */
+export const esperaConexion = obtenerOCrear(
+  'pisada_espera_conexion_segundos',
+  () =>
+    new Histogram({
+      name: 'pisada_espera_conexion_segundos',
+      help: 'Tiempo de espera para obtener una conexión del pool de PostgreSQL',
+      buckets: [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5, 10],
+      registers: [registro],
+    }),
+);
+
+/** Peticiones que no consiguieron conexión antes del tiempo límite. */
+export const conexionesAgotadas = obtenerOCrear(
+  'pisada_conexiones_agotadas_total',
+  () =>
+    new Counter({
+      name: 'pisada_conexiones_agotadas_total',
+      help: 'Intentos de obtener conexión que superaron el tiempo límite',
+      registers: [registro],
+    }),
+);
+
 /** Conexiones en uso del pool de PostgreSQL. Detecta agotamiento del pool. */
 export const conexionesPool = obtenerOCrear(
   'pisada_pool_conexiones',

@@ -8,7 +8,13 @@
  */
 
 import { Pool, type PoolClient, type QueryResultRow } from 'pg';
-import { conexionesPool, duracionConsulta, medir } from './metricas';
+import {
+  conexionesAgotadas,
+  conexionesPool,
+  duracionConsulta,
+  esperaConexion,
+  medir,
+} from './metricas';
 
 const global_ = globalThis as unknown as { poolPg?: Pool };
 
@@ -79,7 +85,21 @@ export async function consultar<T extends QueryResultRow>(
 export async function enTransaccion<T>(
   trabajo: (cliente: PoolClient) => Promise<T>,
 ): Promise<T> {
-  const cliente = await pool.connect();
+  // La espera por una conexión se mide por separado del trabajo que se hace
+  // con ella. Es la segunda cola del sistema, y la que propaga la contención
+  // del bloqueo de stock al resto del sitio.
+  const finEspera = esperaConexion.startTimer();
+  let cliente: PoolClient;
+  try {
+    cliente = await pool.connect();
+  } catch (error) {
+    conexionesAgotadas.inc();
+    throw error;
+  } finally {
+    finEspera();
+    actualizarMetricasPool();
+  }
+
   try {
     await cliente.query('BEGIN');
     const resultado = await trabajo(cliente);
