@@ -10,7 +10,7 @@ Profesor: Javier Aranda.
 > reales**.
 
 **Integrantes:** *(pendiente)*
-**Sitio desplegado:** *(pendiente)*
+**Sitio desplegado:** https://pisada.onrender.com
 **Propiedad de GA4:** `G-P8EWE6D7G3`
 
 ---

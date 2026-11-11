@@ -5,7 +5,7 @@ Segundo semestre 2026 · Profesor Javier Aranda
 
 **Proyecto:** Pisada — tienda de zapatillas e indumentaria urbana
 **Repositorio:** https://github.com/lmoral-sketch/pisada
-**Sitio:** *(pendiente)*
+**Sitio:** https://pisada.onrender.com
 **Integrantes:** *(pendiente)*
 
 > **Estado del borrador.** Las secciones marcadas con *(pendiente)* esperan el despliegue y

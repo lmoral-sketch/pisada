@@ -619,3 +619,98 @@ misma ley aplicada a la inversa: reducir la razón de visita a la estación cara
 
 La medición es reproducible con `web/db/medir-latencia.mjs`, que acepta dos cadenas de
 conexión y reporta medianas, factor y trabajo descontada la red.
+
+---
+
+## E-07 — El sitio desplegado: descomposición del tiempo de respuesta real
+
+**Fecha:** 11 de noviembre de 2026
+**Sitio:** https://pisada.onrender.com (Render free, Ohio)
+**Base:** Neon (Ohio), misma región que la aplicación
+**Medido desde:** Chile
+
+### Verificación funcional
+
+Todas las rutas responden y el embudo completo funciona en producción:
+
+| Operación | Resultado |
+|---|---|
+| Catálogo desde Neon | ✅ productos cargando |
+| Etiqueta de GA4 | ✅ presente |
+| Agregar al carrito | ✅ 200 |
+| Checkout | ✅ 200, pedido 1 creado |
+| Registro de usuario | ✅ 200 |
+
+### Incidente de despliegue: Render ignora `render.yaml`
+
+El primer despliegue falló con `failed to read dockerfile: open Dockerfile: no such file or directory`.
+
+**Causa:** Render solo lee `render.yaml` cuando el servicio se crea como **Blueprint**. Al
+crearlo desde *New → Web Service*, ese archivo se ignora por completo y se aplican los valores
+por defecto, que buscan el `Dockerfile` en la raíz del repositorio.
+
+**Solución:** en *Settings → Build & Deploy*, fijar **Root Directory** en `web`. Con eso
+Render opera dentro de esa carpeta, encuentra el `Dockerfile` y usa el contexto correcto.
+
+> Queda anotado porque afecta la reproducibilidad: quien replique el despliegue desde el
+> `render.yaml` debe crear un **Blueprint**, no un Web Service.
+
+### Descomposición del tiempo de respuesta
+
+Tres mediciones independientes sobre las mismas páginas:
+
+| Página | Local (sin red) | Servidor en producción | TTFB desde Chile |
+|---|---|---|---|
+| `/` | 20 ms | 86,3 ms * | 240 ms |
+| `/catalogo` | 44 ms | **40,6 ms** | 348 ms |
+| `/producto/[slug]` | 20 ms | 9,1 ms | 336 ms |
+
+\* El valor del home incluye la primera consulta tras el arranque en frío y está sesgado al alza.
+
+Aplicando la **ley general del tiempo de respuesta** (`R = Σ Vᵢ · Rᵢ`) sobre el catálogo:
+
+```
+R total (TTFB)        = 348 ms
+R servidor (medido)   =  41 ms   ← aplicación + base, ambas en Ohio
+R red (por diferencia)= 307 ms   ← Chile ↔ Ohio
+```
+
+**La red explica el 88 % del tiempo que percibe un usuario chileno.** El sistema que
+construimos aporta 41 ms; los otros 307 son distancia geográfica.
+
+Es la misma conclusión del experimento E-06, ahora medida de extremo a extremo y no solo
+entre aplicación y base.
+
+### Las consultas son más lentas en la nube de lo esperado
+
+| Consulta | Local | Producción | Factor |
+|---|---|---|---|
+| `catalogo_listado` | 8,49 ms | 38,74 ms | 4,6x |
+| `facetas_categorias` | — | 37,72 ms | — |
+| `facetas_marcas` | — | 37,90 ms | — |
+| `facetas_colores` | — | 37,04 ms | — |
+
+Aplicación y base están **en la misma región**, así que esto no es latencia geográfica. Dos
+explicaciones plausibles, que convendría separar:
+
+1. **Render free entrega 0,1 CPU.** El cliente de PostgreSQL y el análisis de resultados
+   corren en un procesador diez veces más lento que el local.
+2. **Neon free usa compute compartido** y puede estar aplicando límites.
+
+La uniformidad de los valores (37-38 ms en consultas de costo muy distinto) sugiere un
+**costo fijo por consulta** más que trabajo real, lo que apunta a la primera explicación o a
+sobrecarga de conexión. Queda como pendiente de investigación.
+
+> Nota metodológica: que el catálogo tarde 40,6 ms en total mientras cada faceta tarda ~37 ms
+> confirma que las consultas se ejecutan **en paralelo** (`Promise.all`), como se diseñó. Si
+> fueran secuenciales, el total sería la suma: unos 190 ms.
+
+### Consecuencias para la Fase 2
+
+1. **Los escalones de `pico.js` hasta 350 usuarios serán excesivos** con 0,1 CPU. Hace falta
+   una corrida exploratoria con 10, 25 y 50 usuarios para calibrar la escala.
+2. **El arranque en frío se confirmó:** el primer acceso tras inactividad tardó 1,45 s frente
+   a 0,64 s ya despierto. Render advierte que puede llegar a 50 s. Hay que despertar el sitio
+   con `curl` antes de cada corrida.
+3. **Los tiempos de la nube y los locales no son comparables sin descontar la red**, y ahora
+   tenemos la cifra para descontarla: ~307 ms desde Chile.

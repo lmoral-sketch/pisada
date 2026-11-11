@@ -130,7 +130,10 @@ git push -u origin master
 
 1. <https://render.com> → registrarse con GitHub.
 2. **New** → **Web Service** → conectar el repositorio.
-3. Render detecta `render.yaml` y toma la configuración de ahí. Verificar que diga:
+3. ⚠️ **Render solo lee `render.yaml` si el servicio se crea como Blueprint.** Creado desde
+   *New → Web Service*, ese archivo se ignora y hay que fijar a mano, en
+   *Settings → Build & Deploy*, el campo **Root Directory** en `web`.
+   Verificar que quede:
    - Runtime: **Docker**
    - Dockerfile path: `./web/Dockerfile`
    - Docker context: `./web`
