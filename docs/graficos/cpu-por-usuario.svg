@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" width="680" height="380" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="680" height="380" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="600" fill="#1a1a1a">CPU consumida POR usuario frente a usuarios concurrentes</text>
+<text x="24" y="50" font-size="11" fill="#8a8a8a">Decrece de forma sostenida: cada usuario pasa mas tiempo esperando que siendo atendido.</text>
+<line x1="70" y1="318.0" x2="630" y2="318.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="322.0" font-size="10" fill="#8a8a8a" text-anchor="end">0.0</text>
+<line x1="70" y1="270.0" x2="630" y2="270.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="274.0" font-size="10" fill="#8a8a8a" text-anchor="end">0.1</text>
+<line x1="70" y1="222.0" x2="630" y2="222.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="226.0" font-size="10" fill="#8a8a8a" text-anchor="end">0.2</text>
+<line x1="70" y1="174.0" x2="630" y2="174.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="178.0" font-size="10" fill="#8a8a8a" text-anchor="end">0.2</text>
+<line x1="70" y1="126.0" x2="630" y2="126.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="130.0" font-size="10" fill="#8a8a8a" text-anchor="end">0.3</text>
+<line x1="70" y1="78.0" x2="630" y2="78.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="82.0" font-size="10" fill="#8a8a8a" text-anchor="end">0.4</text>
+<text x="26" y="198" font-size="10" fill="#8a8a8a" text-anchor="middle" transform="rotate(-90 26 198)">CPU por usuario (%)</text>
+<text x="70.0" y="336" font-size="10" fill="#8a8a8a" text-anchor="middle">25</text>
+<text x="210.0" y="336" font-size="10" fill="#8a8a8a" text-anchor="middle">50</text>
+<text x="350.0" y="336" font-size="10" fill="#8a8a8a" text-anchor="middle">100</text>
+<text x="490.0" y="336" font-size="10" fill="#8a8a8a" text-anchor="middle">200</text>
+<text x="630.0" y="336" font-size="10" fill="#8a8a8a" text-anchor="middle">350</text>
+<path d="M 70.0 97.2 L 210.0 122.4 L 350.0 148.8 L 490.0 160.2 L 630.0 187.8" fill="none" stroke="#e07a3c" stroke-width="2.5"/>
+<circle cx="70.0" cy="97.2" r="4" fill="#ffffff" stroke="#e07a3c" stroke-width="2.5"/>
+<text x="70.0" y="85.2" font-size="10" font-weight="600" fill="#e07a3c" text-anchor="middle">0.4</text>
+<circle cx="210.0" cy="122.4" r="4" fill="#ffffff" stroke="#e07a3c" stroke-width="2.5"/>
+<text x="210.0" y="110.4" font-size="10" font-weight="600" fill="#e07a3c" text-anchor="middle">0.3</text>
+<circle cx="350.0" cy="148.8" r="4" fill="#ffffff" stroke="#e07a3c" stroke-width="2.5"/>
+<text x="350.0" y="136.8" font-size="10" font-weight="600" fill="#e07a3c" text-anchor="middle">0.3</text>
+<circle cx="490.0" cy="160.2" r="4" fill="#ffffff" stroke="#e07a3c" stroke-width="2.5"/>
+<text x="490.0" y="148.2" font-size="10" font-weight="600" fill="#e07a3c" text-anchor="middle">0.3</text>
+<circle cx="630.0" cy="187.8" r="4" fill="#ffffff" stroke="#e07a3c" stroke-width="2.5"/>
+<text x="630.0" y="175.8" font-size="10" font-weight="600" fill="#e07a3c" text-anchor="middle">0.2</text>
+<text x="350" y="358" font-size="10" fill="#8a8a8a" text-anchor="middle">usuarios virtuales concurrentes</text>
+<text x="82" y="300" font-size="11" fill="#1a1a1a">Es la firma del encolamiento, y aparece ANTES de que la latencia se degrade.</text>
+</svg>

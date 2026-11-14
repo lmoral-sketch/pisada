@@ -173,6 +173,8 @@ agotando inventario, que es lo esperable.
 
 ### 5.1 Los tres escenarios
 
+![Percentiles por escenario](graficos/percentiles-escenarios.svg)
+
 | Escenario | VU | p(95) | p(99) | Throughput | Error |
 |---|---|---|---|---|---|
 | Baja | 5 | 37,65 ms | 46,72 ms | — | 0,00 % |
@@ -184,6 +186,10 @@ degradación, con el p(95) multiplicándose por 3,3. El sistema **nunca colapsó
 26.447 peticiones.
 
 ### 5.2 Curva de utilización
+
+![Utilización de CPU frente a usuarios concurrentes](graficos/utilizacion-cpu.svg)
+
+![CPU por usuario](graficos/cpu-por-usuario.svg)
 
 | Usuarios | CPU | Pool en espera (máx) | CPU por usuario |
 |---|---|---|---|
@@ -241,6 +247,8 @@ El `COUNT(*)` de la paginación cuesta **un 54 % de lo que cuesta el listado com
 devolver una sola fila de datos.
 
 ### 5.5 Ley de Amdahl sobre el checkout
+
+![El techo de Amdahl cae con la contención](graficos/techo-amdahl.svg)
 
 | Escenario | Wq | Checkout | Fracción serie | Techo |
 |---|---|---|---|---|

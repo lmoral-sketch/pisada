@@ -714,3 +714,95 @@ sobrecarga de conexión. Queda como pendiente de investigación.
    con `curl` antes de cada corrida.
 3. **Los tiempos de la nube y los locales no son comparables sin descontar la red**, y ahora
    tenemos la cifra para descontarla: ~307 ms desde Chile.
+
+---
+
+## E-08 — Primera carga contra el sitio desplegado, y los gráficos del informe
+
+**Fecha:** 14 de noviembre de 2026
+**Objetivo:** calibrar la escala de carga contra producción, donde Render free entrega
+**0,1 CPU** frente al 1 CPU del contenedor local.
+
+### Arranque en frío, confirmado con cifras
+
+| Acceso | Tiempo |
+|---|---|
+| Primero, tras inactividad | **15,08 s** |
+| Segundo | 0,72 s |
+| Tercero | 0,64 s |
+
+Render advierte en su panel que la suspensión puede demorar las peticiones "50 segundos o
+más". Medimos 15 s. **Confirma que despertar el sitio antes de cada corrida no es opcional:**
+una corrida que empiece en frío tendría sus primeros percentiles dominados por el arranque.
+
+### Carga baja contra producción: el contraste con local
+
+Con **solo 5 usuarios virtuales**, 90 segundos:
+
+| Métrica | Local (1 CPU) | **Producción (0,1 CPU)** | Factor |
+|---|---|---|---|
+| mediana | ~20 ms | **333,93 ms** | 17x |
+| p(90) | 33,69 ms | **894,81 ms** | 27x |
+| p(95) | 37,65 ms | **1,53 s** | **41x** |
+| p(99) | 46,72 ms | **2,45 s** | 52x |
+| Tasa de error | 0 % | 0 % | — |
+
+**Con cinco usuarios, el p(95) en producción ya supera 1,5 segundos.** Localmente, ese mismo
+escenario daba 37,65 ms y el sistema no mostraba degradación alguna hasta los 25 usuarios.
+
+### Interpretación
+
+Hay que descontar los ~307 ms de red medidos en el experimento E-07. Aun así:
+
+```
+p(95) producción        = 1530 ms
+Red (Chile ↔ Ohio)      = ~307 ms
+Servidor (por diferencia) = ~1223 ms
+```
+
+El servidor aporta **1,2 segundos** con apenas cinco usuarios. Comparado con los ~41 ms que
+medimos sin carga en E-07, el servidor se degradó **30 veces** con una carga mínima.
+
+**Causa:** los 0,1 CPU del plan gratuito. No es una décima parte de la capacidad local, sino
+una décima parte **de un núcleo compartido**, con límites de ráfaga. El sistema entra en
+encolamiento casi de inmediato.
+
+### Consecuencia metodológica
+
+**Los escalones de `pico.js` (25 → 350 usuarios) son inaplicables en producción.** A 5
+usuarios ya estamos cerca del límite útil; a 25 el sitio probablemente deje de responder.
+
+Para las mediciones contra producción hay que recalibrar a una escala de **2, 5, 10 y 15
+usuarios**, que es donde está la zona interesante de ese entorno.
+
+> Esto **no invalida** las mediciones locales: las valida como el entorno de estudio
+> correcto. El contenedor con 1 CPU y 512 MB es un sistema **controlado y reproducible**;
+> Render free es un entorno compartido cuyos límites no conocemos ni controlamos. El informe
+> usa el local para el análisis cuantitativo y el desplegado para demostrar el funcionamiento
+> real y medir la experiencia de usuario.
+
+Es, además, un ejemplo directo del **análisis de sensibilidad** que describe la Cátedra 1.1:
+el mismo sistema, bajo dos configuraciones de recursos, exhibe puntos de saturación que
+difieren en un orden de magnitud.
+
+### Gráficos del informe
+
+Se generaron cinco gráficos en `docs/graficos/`, con el script `carga/graficar.py`:
+
+| Archivo | Qué muestra |
+|---|---|
+| `utilizacion-cpu.svg` | Utilización frente a usuarios, con la proyección de saturación |
+| `cpu-por-usuario.svg` | CPU por usuario decreciendo: la firma del encolamiento |
+| `percentiles-escenarios.svg` | p(95) y p(99) de los tres escenarios |
+| `techo-amdahl.svg` | El techo de mejora cayendo de 13,9x a 4,7x |
+| `descomposicion-tiempo.svg` | 88 % red frente a 12 % servidor |
+
+Se escribieron como **SVG a mano, sin librerías de graficación**. El archivo resultante es
+texto: se versiona y se revisa en Git como cualquier otro fuente, y escala sin perder nitidez
+al insertarlo en el informe.
+
+### Pendiente
+
+- [ ] Completar la calibración con 10, 20 y 40 usuarios contra producción
+- [ ] Repetir el experimento de contención 5 veces por estrategia
+      (`bash carga/repetir-contencion.sh 5 1500`, requiere la base local levantada)

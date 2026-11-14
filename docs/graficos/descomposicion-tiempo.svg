@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" width="680" height="300" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="680" height="300" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="600" fill="#1a1a1a">De que esta hecho el tiempo de respuesta, medido desde Chile</text>
+<text x="24" y="50" font-size="11" fill="#8a8a8a">Pagina de catalogo en produccion. Aplicacion y base en Ohio.</text>
+<rect x="70.0" y="110" width="66.0" height="54" fill="#1e3a5f" rx="2"/>
+<text x="103.0" y="143" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">41 ms</text>
+<rect x="136.0" y="110" width="494.0" height="54" fill="#8a8a8a" rx="2"/>
+<text x="383.0" y="143" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">307 ms</text>
+<text x="70" y="98" font-size="11" fill="#1a1a1a">TTFB total: 348 ms</text>
+<rect x="70" y="193" width="14" height="3" fill="#1e3a5f"/>
+<text x="90" y="202" font-size="11" fill="#1a1a1a">Servidor: 12%</text>
+<rect x="176.60000000000002" y="193" width="14" height="3" fill="#8a8a8a"/>
+<text x="196.60000000000002" y="202" font-size="11" fill="#1a1a1a">Red: 88%</text>
+<text x="24" y="250" font-size="11" fill="#1a1a1a">Por la ley general del tiempo de respuesta, la red es una estacion de servicio mas:</text>
+<text x="24" y="268" font-size="11" fill="#1a1a1a">se declara por separado y no se atribuye a la aplicacion.</text>
+</svg>
