@@ -870,3 +870,96 @@ durante una petición. La escritura de pedidos sí toca disco, pero su volumen e
 frente al tráfico de lectura.
 
 Se declara como limitación en vez de presentar una medición que no aportaría información.
+
+---
+
+## E-10 — Carga contra producción y la confirmación definitiva de la varianza
+
+**Fecha:** 15 de noviembre de 2026
+
+### Parte A — Carga sostenida contra el sitio desplegado
+
+12 usuarios virtuales durante 6 minutos contra https://pisada.onrender.com (0,1 CPU).
+
+| Métrica | Valor |
+|---|---|
+| Mediana | 384,7 ms |
+| p(90) | 1.268,4 ms |
+| p(95) | **1.736,6 ms** |
+| p(99) | 4.112,1 ms |
+| Máximo | 4.713,3 ms |
+| **Tasa de error** | **0,00 %** |
+| Throughput | 2,36 req/s |
+| Compras completadas | 24 |
+
+**Lectura.** Con 12 usuarios el p(95) supera 1,7 segundos, pero **sin una sola falla**. El
+sistema no se cae: se encola. Es exactamente el comportamiento que predice la teoría de colas
+cuando `ρ` se acerca a 1 sin superarlo — el tiempo de espera crece, el throughput se mantiene.
+
+Comparado con la línea base local (p95 de 37,65 ms con 5 usuarios), la diferencia es de **46
+veces**, atribuible a los 0,1 CPU del plan gratuito más los ~307 ms de red.
+
+k6 marcó el umbral `p(95)<1500` como cruzado, lo que es correcto: ese umbral se calibró para
+el entorno local.
+
+### Parte B — La varianza, confirmada de forma definitiva
+
+Se repitió el experimento de contención con **configuración idéntica** en las cuatro
+corridas: misma variante, mismo stock repuesto antes de cada una, misma estrategia
+(pesimista), mismo script.
+
+| Repetición | p(95) | p(99) | Media | Throughput | Error | Compras |
+|---|---|---|---|---|---|---|
+| 1 | 17.962 ms | 18.968 ms | 1.780 ms | 19,94/s | 18,98 % | 2.083 |
+| 2 | 18.766 ms | 20.178 ms | 2.335 ms | 15,87/s | 21,28 % | 1.691 |
+| 3 | 10.006 ms | 19.825 ms | 1.013 ms | 27,41/s | 8,73 % | 3.399 |
+| **4** | **36 ms** | **233 ms** | **96 ms** | **49,43/s** | **1,00 %** | **6.802** |
+
+**El p(95) va de 36 ms a 18.766 ms: un factor de 524 entre corridas idénticas.**
+
+La repetición 4 no solo fue 500 veces más rápida: completó **3,3 veces más compras** (6.802
+frente a 2.083) con **un veinteavo de la tasa de error** (1 % frente a 19 %).
+
+### Por qué ocurre: dos regímenes, no un continuo
+
+Las cuatro corridas no muestran una distribución con dispersión alta. Muestran **dos estados
+cualitativamente distintos**:
+
+| | Régimen estable (rep. 4) | Régimen saturado (rep. 1, 2, 3) |
+|---|---|---|
+| p(95) | decenas de ms | decenas de segundos |
+| Error | ~1 % | 9-21 % |
+| Throughput | 49/s | 16-27/s |
+
+El sistema **cae a uno u otro según cómo se encadenen los primeros segundos** de la corrida.
+Es coherente con el ciclo de realimentación descrito en E-04: si las primeras transacciones
+alcanzan a liberar sus conexiones antes de que lleguen las siguientes, el pool nunca se agota
+y el sistema se mantiene estable; si no, el pool se satura y la cola se realimenta.
+
+Es un **sistema biestable**, no un sistema con ruido. Promediar las cuatro corridas produciría
+un número que no describe ninguno de los dos comportamientos reales.
+
+### Consecuencia para las conclusiones del trabajo
+
+Esto **refuerza y no debilita** la conclusión ya documentada en E-04:
+
+> Con la evidencia disponible **no se puede determinar qué estrategia de concurrencia es
+> mejor**. La varianza entre corridas de la misma configuración supera con creces cualquier
+> diferencia entre configuraciones distintas.
+
+Cuatro repeticiones de la misma estrategia difieren en un factor de 524. Cualquier
+comparación entre pesimista y optimista basada en una corrida de cada una estaría midiendo
+**en qué régimen cayó cada corrida**, no la diferencia entre estrategias.
+
+**Para resolverlo** haría falta: correr fuera del régimen inestable (menos usuarios
+virtuales), o repetir decenas de veces y comparar la **proporción de corridas que caen en cada
+régimen**, que es una pregunta distinta y más interesante que comparar medianas.
+
+### Limitación de esta corrida
+
+Se completaron 4 de las 10 repeticiones planificadas (5 por estrategia); la serie se
+interrumpió al detenerse el servidor local. **No hay repeticiones de la estrategia optimista**,
+de modo que la comparación entre estrategias sigue abierta.
+
+Las 4 repeticiones obtenidas son suficientes para sostener la conclusión sobre la varianza,
+que es el hallazgo relevante.
