@@ -9,6 +9,31 @@ El texto en cursiva se puede leer casi literal.
 
 ---
 
+## Reparto de bloques
+
+El enunciado exige que **participen todos los integrantes**. Con cinco personas, cada una
+toma uno o dos bloques. Se puede grabar por separado y unir después.
+
+| Bloque | Minutos | Tema | Presenta |
+|---|---|---|---|
+| 1 | 0:00 – 1:00 | Presentación del equipo y del trabajo | **Catalina Araniz** |
+| 2 | 1:00 – 3:00 | Arquitectura y decisiones de diseño | **Gabriel Araya** |
+| 3 | 3:00 – 5:00 | Demostración del sitio | **Bianca Torres** |
+| 4 | 5:00 – 6:00 | Google Analytics 4 | **Bianca Torres** |
+| 5 | 6:00 – 7:30 | Generadores de carga y modelo CBMG | **Matías Torres** |
+| 6 | 7:30 – 9:30 | Resultados y leyes verificadas | **Lucas Mora** |
+| 7 | 9:30 – 10:30 | Cuellos de botella y propuestas | **Matías Torres** |
+| 8 | 10:30 – 11:30 | Errores metodológicos y cierre | **Catalina Araniz** + todos |
+
+**Tiempo por persona:** Catalina 2 min · Gabriel 2 min · Bianca 3 min · Matías 3,5 min ·
+Lucas 2 min.
+
+> Si alguien prefiere otro bloque, se puede cambiar: lo único obligatorio es que **todos
+> aparezcan**. Si alguien no puede grabar, que al menos aparezca en el bloque 1 presentándose
+> y en el cierre.
+
+---
+
 ## Antes de grabar
 
 ### Requisitos del enunciado, no negociables
@@ -45,9 +70,9 @@ El texto en cursiva se puede leer casi literal.
 **En pantalla:** portada de la presentación con el logo UTEM, el nombre del ramo y los
 integrantes.
 
-**Quién habla:** integrante A.
+**Quién habla:** Catalina Araniz.
 
-> *"Buenas, somos [nombres]. Este es el trabajo semestral de Desempeño de Sistemas,
+> *"Buenas, somos Catalina Araniz, Gabriel Araya, Bianca Torres, Lucas Mora y Matías Torres. Este es el trabajo semestral de Desempeño de Sistemas,
 > INFB8091.*
 >
 > *Construimos Pisada, una tienda de zapatillas e indumentaria urbana. Pero quiero partir
@@ -65,7 +90,7 @@ integrantes.
 
 **En pantalla:** el diagrama del `README.md` en GitHub.
 
-**Quién habla:** integrante A.
+**Quién habla:** Gabriel Araya.
 
 > *"La arquitectura es Next.js con PostgreSQL, empaquetado en Docker y desplegado en Render,
 > con la base de datos en Neon.*
@@ -101,7 +126,7 @@ integrantes.
 
 **En pantalla:** navegación en vivo por https://pisada.onrender.com
 
-**Quién habla:** integrante B.
+**Quién habla:** Bianca Torres.
 
 ### 3.1 Home
 
@@ -141,7 +166,7 @@ integrantes.
 
 **En pantalla:** panel de GA4, propiedad Pisada.
 
-**Quién habla:** integrante B.
+**Quién habla:** Bianca Torres.
 
 > *"Instrumentamos el sitio con Google Analytics 4 usando gtag.js. El profesor tiene acceso
 > de Analista a esta propiedad.*
@@ -172,7 +197,7 @@ integrantes.
 
 **En pantalla:** `carga/escenarios/comun.js` en GitHub, en la sección del CBMG.
 
-**Quién habla:** integrante C.
+**Quién habla:** Matías Torres.
 
 > *"Para generar la carga usamos k6, pero no con un guion fijo. Implementamos un Customer
 > Behavior Model Graph, el modelo del material de cátedra.*
@@ -209,7 +234,7 @@ integrantes.
 
 **En pantalla:** `docs/graficos/percentiles-escenarios.svg`
 
-**Quién habla:** integrante C.
+**Quién habla:** Lucas Mora.
 
 > *"Estos son los percentiles de los tres escenarios. Con 5 usuarios el p95 es de 37
 > milisegundos; con 25 es prácticamente igual, 36; y recién en el pico con 350 usuarios sube a
@@ -258,7 +283,7 @@ integrantes.
 
 **En pantalla:** sección 6 del informe.
 
-**Quién habla:** integrante A o C.
+**Quién habla:** Matías Torres.
 
 > *"El cuello de botella no resultó ser el que esperábamos. No es la CPU ni la base de datos:
 > es el pool de conexiones. Y llega ahí por contagio.*
@@ -291,7 +316,7 @@ integrantes.
 
 **En pantalla:** sección 8 del informe, *Limitaciones y errores metodológicos detectados*.
 
-**Quién habla:** todos, o quien cierre.
+**Quién habla:** Catalina Araniz, con los demás en pantalla si es posible.
 
 > *"Queremos terminar con algo que normalmente no se muestra: los errores que cometimos.*
 >

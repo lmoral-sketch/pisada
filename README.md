@@ -9,7 +9,15 @@ Profesor: Javier Aranda.
 > Las marcas y productos son ficticios, el checkout es simulado y **no se procesan pagos
 > reales**.
 
-**Integrantes:** *(pendiente)*
+**Integrantes:**
+
+| # | Nombre |
+|---|---|
+| 1 | Catalina Emilia Araniz Arancibia |
+| 2 | Gabriel Ignacio Araya López |
+| 3 | Bianca Paola Torres Rivadeneira |
+| 4 | Lucas Ángel Mora Loiza |
+| 5 | Matías Torres Estay |
 **Sitio desplegado:** https://pisada.onrender.com
 **Propiedad de GA4:** `G-P8EWE6D7G3`
 

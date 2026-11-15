@@ -6,7 +6,15 @@ Segundo semestre 2026 · Profesor Javier Aranda
 **Proyecto:** Pisada — tienda de zapatillas e indumentaria urbana
 **Repositorio:** https://github.com/lmoral-sketch/pisada
 **Sitio:** https://pisada.onrender.com
-**Integrantes:** *(pendiente)*
+**Integrantes:**
+
+| # | Nombre |
+|---|---|
+| 1 | Catalina Emilia Araniz Arancibia |
+| 2 | Gabriel Ignacio Araya López |
+| 3 | Bianca Paola Torres Rivadeneira |
+| 4 | Lucas Ángel Mora Loiza |
+| 5 | Matías Torres Estay |
 
 > **Estado del borrador.** Las secciones marcadas con *(pendiente)* esperan el despliegue y
 > los datos de GA4. Todo lo demás está respaldado por mediciones ya realizadas, documentadas

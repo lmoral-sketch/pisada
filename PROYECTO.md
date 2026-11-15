@@ -8,7 +8,15 @@ se encontró y qué quedó fuera.
 **Sitio:** https://pisada.onrender.com
 **Repositorio:** https://github.com/lmoral-sketch/pisada
 **GA4:** `G-P8EWE6D7G3`
-**Integrantes:** *(pendiente)*
+**Integrantes:**
+
+| # | Nombre |
+|---|---|
+| 1 | Catalina Emilia Araniz Arancibia |
+| 2 | Gabriel Ignacio Araya López |
+| 3 | Bianca Paola Torres Rivadeneira |
+| 4 | Lucas Ángel Mora Loiza |
+| 5 | Matías Torres Estay |
 
 ---
 

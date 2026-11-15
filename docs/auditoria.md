@@ -20,7 +20,7 @@ proyecto.
 | Entregables | **4 de 7** |
 | Requisitos del agente de IA | **7 de 8** |
 
-**Brechas que impiden entregar:** 3 (integrantes, video, identidad visual)
+**Brechas que impiden entregar:** 2 (video, identidad visual) — *integrantes resuelto*
 **Brechas que bajan la nota:** 3 (sandbox de pago, datos de GA4, formulario de prompts)
 
 ---
@@ -184,10 +184,12 @@ profesor.
 
 ## Brechas que impiden entregar
 
-### 🔴 B-06 — Faltan los nombres de los integrantes
+### ✅ B-06 — Nombres de los integrantes — RESUELTO
 
-`README.md` línea 12 y `docs/informe-fase1.md` línea 9 dicen *(pendiente)*.
-**30 segundos de trabajo, pero sin esto el trabajo no se puede entregar.**
+Registrados el 15 de noviembre en `README.md`, `docs/informe-fase1.md` y `PROYECTO.md`:
+Catalina Araniz, Gabriel Araya, Bianca Torres, Lucas Mora y Matías Torres.
+
+El reparto de bloques del video entre los cinco está en `docs/guion-video.md`.
 
 ### 🔴 B-07 — Manual de Identidad Visual de UTEM no aplicado
 
@@ -204,8 +206,8 @@ portada del informe. Es lo mínimo defendible.
 
 | Prioridad | Qué | Quién | Tiempo |
 |---|---|---|---|
-| 1 | Nombres de los integrantes (B-06) | 👤 | 1 min |
-| 2 | Coordinar y grabar el video (B-04) | 👥 | 3 h |
+| ~~1~~ | ~~Nombres de los integrantes (B-06)~~ | ✅ | hecho |
+| 1 | Coordinar y grabar el video (B-04) | 👥 | 3 h |
 | 3 | Protocolo de GA4 (B-03) | 👥 | 1 h |
 | 4 | Capturas del panel de GA4 | 👤 | 15 min |
 | 5 | Identidad visual en la presentación (B-07) | 👤 | 30 min |
