@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pisada — Presentación</title>
+<!--
+  Plantilla de presentación para el video, según el Manual de Identidad Visual
+  UTEM 2026.
+
+  CÓMO USARLA
+  1. Abrir este archivo en el navegador
+  2. F11 para pantalla completa
+  3. Avanzar con la flecha derecha o la barra espaciadora; retroceder con la izquierda
+  4. En OBS, compartir esta ventana como fondo y poner la cámara en una esquina
+
+  Las láminas siguen los ocho bloques de docs/guion-video.md.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul-utem: #004EAA;
+    --verde-utem: #78BF26;
+    --celeste-ing: #00B6ED;
+    --tinta: #141414;
+    --suave: #6b6b6b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Aptos, Montserrat, Arial, Helvetica, sans-serif;
+    background: #000;
+    color: var(--tinta);
+    overflow: hidden;
+  }
+
+  .lamina {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    display: none;
+    flex-direction: column;
+    padding: 5vh 7vw;
+    animation: entrar .25s ease;
+  }
+  .lamina.activa { display: flex; }
+  @keyframes entrar { from { opacity: 0 } to { opacity: 1 } }
+
+  /* Barra de color de la facultad, presente en todas las láminas */
+  .lamina::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 10px;
+    background: var(--celeste-ing);
+  }
+
+  .marca {
+    position: absolute;
+    bottom: 3vh; right: 7vw;
+    font-size: 1.1vw;
+    color: var(--suave);
+    letter-spacing: .06em;
+  }
+  .numero {
+    position: absolute;
+    bottom: 3vh; left: 7vw;
+    font-size: 1.1vw;
+    color: var(--celeste-ing);
+    font-weight: 600;
+  }
+
+  .etiqueta {
+    font-size: 1.2vw;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--celeste-ing);
+    margin-bottom: 1.6vh;
+  }
+
+  h1 { font-size: 4vw; font-weight: 700; line-height: 1.15; color: var(--azul-utem); }
+  h2 { font-size: 3.1vw; font-weight: 700; line-height: 1.2; color: var(--azul-utem); margin-bottom: 3vh; }
+
+  p.grande { font-size: 1.8vw; font-weight: 300; line-height: 1.55; color: var(--suave); max-width: 46vw; }
+
+  ul { list-style: none; font-size: 1.65vw; line-height: 1.95; }
+  li { padding-left: 1.5em; position: relative; }
+  li::before {
+    content: '';
+    position: absolute; left: 0; top: .72em;
+    width: .55em; height: .55em;
+    background: var(--verde-utem);
+    border-radius: 50%;
+  }
+  li strong { color: var(--azul-utem); font-weight: 600; }
+
+  .portada { justify-content: center; }
+  .portada .unidad { font-size: 1.4vw; color: var(--suave); line-height: 1.6; margin-bottom: 4vh; }
+  .portada .integrantes { font-size: 1.3vw; color: var(--suave); line-height: 1.8; margin-top: auto; }
+  .logo-marcador {
+    width: 16vw; height: 6vh;
+    border: 2px dashed var(--celeste-ing);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .95vw; color: var(--suave); margin-bottom: 4vh;
+  }
+
+  .cifras { display: flex; gap: 4vw; margin-top: 2vh; }
+  .cifra .valor { font-size: 4.2vw; font-weight: 700; color: var(--celeste-ing); line-height: 1; }
+  .cifra .rotulo { font-size: 1.1vw; color: var(--suave); margin-top: .8vh; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 1.5vw; }
+  th { text-align: left; font-size: 1.05vw; text-transform: uppercase; letter-spacing: .08em;
+       color: var(--celeste-ing); padding-bottom: 1.2vh; border-bottom: 2px solid var(--celeste-ing); }
+  td { padding: 1.3vh 0; border-bottom: 1px solid #e6e6e6; }
+  td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.destacada td { font-weight: 700; color: var(--azul-utem); }
+
+  .figura { flex: 1; display: flex; align-items: center; justify-content: center; padding: 1vh 0; }
+  .figura img { max-width: 100%; max-height: 62vh; }
+
+  .cita {
+    font-size: 2.1vw; font-weight: 300; line-height: 1.5;
+    border-left: 6px solid var(--verde-utem);
+    padding-left: 2vw; color: var(--tinta); max-width: 60vw;
+  }
+
+  .ayuda {
+    position: fixed; bottom: 1vh; left: 50%; transform: translateX(-50%);
+    font-size: .85vw; color: #bbb; background: rgba(0,0,0,.55);
+    padding: .4em 1em; border-radius: 1em; z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<!-- 1 ───────────────────────────────── PORTADA -->
+<section class="lamina activa portada">
+  <div class="logo-marcador">logo UTEM</div>
+  <div class="unidad">
+    Universidad Tecnológica Metropolitana<br>
+    Facultad de Ingeniería · Departamento de Informática y Computación
+  </div>
+  <div class="etiqueta">INFB8091 · Desempeño de Sistemas</div>
+  <h1>Pisada</h1>
+  <p class="grande" style="margin-top:2vh">
+    Evaluación del desempeño de un sitio de comercio electrónico bajo carga
+  </p>
+  <div class="integrantes">
+    Catalina Araniz · Gabriel Araya · Bianca Torres · Lucas Mora · Matías Torres<br>
+    Profesor: Javier Aranda — Noviembre 2026
+  </div>
+  <div class="numero">01</div>
+</section>
+
+<!-- 2 ───────────────────────────────── LA IDEA -->
+<section class="lamina">
+  <div class="etiqueta">De qué se trata</div>
+  <h2>La tienda no es el objetivo.<br>Es el sujeto de estudio.</h2>
+  <p class="grande">
+    Construimos una tienda real para medir <strong>cómo se degrada</strong> cuando se le
+    aplica carga, y explicar por qué usando análisis operacional y teoría de colas.
+  </p>
+  <div class="cifras">
+    <div class="cifra"><div class="valor">240</div><div class="rotulo">productos</div></div>
+    <div class="cifra"><div class="valor">4552</div><div class="rotulo">variantes con stock propio</div></div>
+    <div class="cifra"><div class="valor">4</div><div class="rotulo">escenarios de carga</div></div>
+  </div>
+  <div class="numero">02</div><div class="marca">Pisada · INFB8091</div>
+</section>
+
+<!-- 3 ───────────────────────────────── ARQUITECTURA -->
+<section class="lamina">
+  <div class="etiqueta">Bloque 2 · Arquitectura</div>
+  <h2>Tres decisiones que condicionaron todo</h2>
+  <ul>
+    <li><strong>SQL directo, sin ORM.</strong> El trabajo analiza el costo de las consultas; un ORM las esconde.</li>
+    <li><strong>Contenedor, no serverless.</strong> Serverless no expone la utilización de CPU y memoria, que es lo que hay que medir.</li>
+    <li><strong>Inventario a nivel de SKU.</strong> Cada talla y color tiene su propio stock: ahí nace la cola de espera.</li>
+  </ul>
+  <div class="numero">03</div><div class="marca">Pisada · INFB8091</div>
+</section>
+
+<!-- 4 ───────────────────────────────── EL CBMG -->
+<section class="lamina">
+  <div class="etiqueta">Bloque 5 · Generadores de carga</div>
+  <h2>Los usuarios no siguen un guion fijo</h2>
+  <p class="grande" style="margin-bottom:3vh">
+    Modelo <strong>CBMG</strong>: transiciones con probabilidad, como en el material de cátedra.
+  </p>
+  <table>
+    <tr><th>Desde producto</th><th>Probabilidad</th></tr>
+    <tr><td>Agrega al carrito</td><td>12 %</td></tr>
+    <tr><td>Vuelve al catálogo</td><td>33 %</td></tr>
+    <tr><td>Ve otro producto</td><td>20 %</td></tr>
+    <tr><td>Se va del sitio</td><td>35 %</td></tr>
+  </table>
+  <p class="grande" style="font-size:1.4vw;margin-top:3vh">
+    Conversión medida: <strong>6,8 %</strong>. Si todos compraran, estaríamos midiendo un
+    sistema ficticio.
+  </p>
+  <div class="numero">04</div><div class="marca">Pisada · INFB8091</div>
+</section>
+
+<!-- 5 ───────────────────────────────── RESULTADOS -->
+<section class="lamina">
+  <div class="etiqueta">Bloque 6 · Resultados</div>
+  <h2>Los tres escenarios</h2>
+  <table>
+    <tr><th>Escenario</th><th>Usuarios</th><th>p(95)</th><th>Error</th></tr>
+    <tr><td>Carga baja</td><td>5</td><td>37,65 ms</td><td>0,00 %</td></tr>
+    <tr><td>Carga sostenida</td><td>25</td><td>36,12 ms</td><td>0,00 %</td></tr>
+    <tr class="destacada"><td>Pico</td><td>350</td><td>118,72 ms</td><td>0,01 %</td></tr>
+  </table>
+  <p class="grande" style="font-size:1.4vw;margin-top:3vh">
+    Hasta 25 usuarios el sistema <strong>no se mueve</strong>. Y nunca colapsó.
+  </p>
+  <div class="numero">05</div><div class="marca">Pisada · INFB8091</div>
+</section>
+
+<!-- 6 ───────────────────────────────── CPU POR USUARIO -->
+<section class="lamina">
+  <div class="etiqueta">Bloque 6 · La señal temprana</div>
+  <h2>La CPU por usuario decrece</h2>
+  <div class="figura"><img src="graficos/cpu-por-usuario.svg" alt="CPU por usuario"></div>
+  <p class="grande" style="font-size:1.4vw">
+    Cada usuario pasa más tiempo <strong>esperando</strong> que siendo atendido.
+    Es la firma del encolamiento, y aparece <strong>antes</strong> de que la latencia se note.
+  </p>
+  <div class="numero">06</div><div class="marca">Pisada · INFB8091</div>
+</section>
+
+<!-- 7 ───────────────────────────────── AMDAHL -->
+<section class="lamina">
+  <div class="etiqueta">Bloque 6 · Ley de Amdahl</div>
+  <h2>Calculada, no citada</h2>
+  <div class="figura"><img src="graficos/techo-amdahl.svg" alt="Techo de Amdahl"></div>
+  <p class="grande" style="font-size:1.4vw">
+    Por mucha CPU que se agregue, el checkout <strong>no puede mejorar más de 13,9 veces</strong>.
+    Bajo contención, ese techo cae bajo 5.
+  </p>
+  <div class="numero">07</div><div class="marca">Pisada · INFB8091</div>
+</section>
+
+<!-- 8 ───────────────────────────────── CUELLO DE BOTELLA -->
+<section class="lamina">
+  <div class="etiqueta">Bloque 7 · Cuellos de botella</div>
+  <h2>No era el recurso obvio</h2>
+  <ul>
+    <li>Las transacciones que esperan el bloqueo <strong>retienen su conexión</strong></li>
+    <li>El pool de 10 conexiones <strong>se agota</strong></li>
+    <li>Todo el sitio se degrada, <strong>incluso páginas sin relación</strong></li>
+  </ul>
+  <p class="cita" style="margin-top:4vh">
+    Un recurso serializado contagia su saturación a un recurso compartido.
+  </p>
+  <div class="numero">08</div><div class="marca">Pisada · INFB8091</div>
+</section>
+
+<!-- 9 ───────────────────────────────── MEJORAS -->
+<section class="lamina">
+  <div class="etiqueta">Bloque 7 · Propuestas</div>
+  <h2>Cada una con su evidencia</h2>
+  <ul>
+    <li><strong>Eliminar el COUNT de la paginación.</strong> Cuesta 4,55 ms, el 54 % del listado, sin devolver una fila.</li>
+    <li><strong>No retener la conexión</strong> mientras se espera el bloqueo.</li>
+    <li><strong>Repartir el inventario</strong> de los productos populares en varias filas.</li>
+  </ul>
+  <div class="numero">09</div><div class="marca">Pisada · INFB8091</div>
+</section>
+
+<!-- 10 ──────────────────────────────── HONESTIDAD -->
+<section class="lamina">
+  <div class="etiqueta">Bloque 8 · Lo que normalmente no se muestra</div>
+  <h2>Cuatro errores propios</h2>
+  <ul>
+    <li>El generador <strong>no ejercitaba el checkout</strong> y reportaba tiempos excelentes</li>
+    <li>El inventario <strong>se agotó</strong> a mitad de un experimento</li>
+    <li>El instrumento <strong>medía distinto</strong> en cada estrategia</li>
+    <li>Los resultados de contención <strong>no son reproducibles</strong></li>
+  </ul>
+  <div class="numero">10</div><div class="marca">Pisada · INFB8091</div>
+</section>
+
+<!-- 11 ──────────────────────────────── CIERRE -->
+<section class="lamina" style="justify-content:center">
+  <p class="cita" style="font-size:2.6vw">
+    Con la evidencia disponible no podemos afirmar cuál estrategia de concurrencia es mejor.
+    <br><br>
+    Preferimos decirlo antes que elegir la corrida que nos convenía.
+  </p>
+  <p class="grande" style="margin-top:5vh;font-size:1.5vw">Gracias.</p>
+  <div class="numero">11</div><div class="marca">Pisada · INFB8091</div>
+</section>
+
+<div class="ayuda">← → para navegar · F11 pantalla completa</div>
+
+<script>
+  // Navegación por teclado. Se mantiene mínima a propósito: la presentación se
+  // comparte por pantalla en OBS y cualquier animación extra distrae.
+  const laminas = [...document.querySelectorAll('.lamina')];
+  let actual = 0;
+
+  function mostrar(n) {
+    actual = Math.max(0, Math.min(laminas.length - 1, n));
+    laminas.forEach((l, i) => l.classList.toggle('activa', i === actual));
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', ' ', 'PageDown'].includes(e.key)) { e.preventDefault(); mostrar(actual + 1); }
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); mostrar(actual - 1); }
+    if (e.key === 'Home') mostrar(0);
+    if (e.key === 'End') mostrar(laminas.length - 1);
+  });
+
+  // Oculta la ayuda tras unos segundos para que no salga en la grabación.
+  setTimeout(() => {
+    const a = document.querySelector('.ayuda');
+    if (a) a.style.display = 'none';
+  }, 6000);
+</script>
+</body>
+</html>

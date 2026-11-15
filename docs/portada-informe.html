@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Portada — Informe Fase 1</title>
+<!--
+  Portada del informe técnico, según el Manual de Identidad Visual UTEM 2026.
+
+  Para exportarla a PDF: abrir en el navegador, Ctrl+P, destino "Guardar como
+  PDF", tamaño Carta, márgenes "Ninguno", y activar "Gráficos de fondo".
+
+  El logo se espera en assets/logo-utem.png. Mientras no exista, se muestra un
+  marcador: descargarlo desde utem.cl/universidad/presentacion/identidad/
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Manual de Identidad Visual UTEM 2026, capítulo 4 */
+    --azul-utem: #004EAA;      /* institucional, PANTONE 2145 */
+    --verde-utem: #78BF26;     /* institucional, PANTONE 368  */
+    --celeste-ing: #00B6ED;    /* Facultad de Ingeniería, PANTONE 306 */
+    --tinta: #1a1a1a;
+    --suave: #5a5a5a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    /* Capítulo 5.3: Aptos preferente, Montserrat como alternativa */
+    font-family: Aptos, Montserrat, Arial, Helvetica, sans-serif;
+    color: var(--tinta);
+    background: #e9e9e9;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .hoja {
+    width: 21.59cm;           /* Carta */
+    min-height: 27.94cm;
+    background: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Franja superior con el color de la facultad predominante */
+  .franja-superior {
+    height: 1.1cm;
+    background: var(--celeste-ing);
+    flex-shrink: 0;
+  }
+
+  .contenido {
+    flex: 1;
+    padding: 2.4cm 2.6cm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo {
+    height: 2.1cm;
+    margin-bottom: 1.6cm;
+  }
+
+  .logo img { height: 100%; }
+
+  /* Marcador mientras no exista el archivo del logo */
+  .logo-falta {
+    height: 2.1cm;
+    width: 7cm;
+    border: 2px dashed var(--celeste-ing);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9pt;
+    color: var(--suave);
+    text-align: center;
+    padding: 0 10px;
+    line-height: 1.4;
+  }
+
+  .unidad {
+    font-size: 11pt;
+    line-height: 1.5;
+    color: var(--suave);
+    margin-bottom: 2.2cm;
+  }
+  .unidad strong { color: var(--azul-utem); font-weight: 600; }
+
+  .ramo {
+    font-size: 12pt;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--celeste-ing);
+    margin-bottom: .5cm;
+  }
+
+  h1 {
+    font-size: 27pt;
+    font-weight: 700;
+    line-height: 1.22;
+    color: var(--azul-utem);
+    margin-bottom: .55cm;
+  }
+
+  .bajada {
+    font-size: 13pt;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--suave);
+    max-width: 15cm;
+    margin-bottom: auto;
+  }
+
+  .barra-color {
+    display: flex;
+    height: 5px;
+    width: 9cm;
+    margin: 1.4cm 0;
+  }
+  .barra-color span { flex: 1; }
+
+  .pie { font-size: 11pt; line-height: 1.75; }
+  .pie dt {
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: var(--celeste-ing);
+    font-weight: 600;
+    margin-top: .55cm;
+  }
+  .pie dd { color: var(--tinta); }
+
+  .franja-inferior {
+    height: .55cm;
+    background: var(--azul-utem);
+    flex-shrink: 0;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .hoja { width: 100%; min-height: 100vh; }
+    @page { size: letter; margin: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="hoja">
+    <div class="franja-superior"></div>
+
+    <div class="contenido">
+      <div class="logo">
+        <!-- Al existir assets/logo-utem.png, reemplazar este bloque por:
+             <img src="assets/logo-utem.png" alt="Universidad Tecnológica Metropolitana"> -->
+        <div class="logo-falta">
+          Colocar aquí el logo UTEM<br>
+          <small>assets/logo-utem.png</small>
+        </div>
+      </div>
+
+      <div class="unidad">
+        <strong>Universidad Tecnológica Metropolitana</strong><br>
+        Facultad de Ingeniería<br>
+        Departamento de Informática y Computación
+      </div>
+
+      <div class="ramo">INFB8091 · Desempeño de Sistemas</div>
+
+      <h1>Pisada: evaluación del desempeño de un sitio de comercio electrónico bajo carga</h1>
+
+      <p class="bajada">
+        Informe técnico de la Fase 1. Medición, modelamiento y análisis de la degradación de
+        un sistema web mediante análisis operacional y teoría de colas.
+      </p>
+
+      <div class="barra-color">
+        <span style="background: var(--celeste-ing)"></span>
+        <span style="background: var(--azul-utem)"></span>
+        <span style="background: var(--verde-utem)"></span>
+      </div>
+
+      <dl class="pie">
+        <dt>Integrantes</dt>
+        <dd>
+          Catalina Emilia Araniz Arancibia · Gabriel Ignacio Araya López ·
+          Bianca Paola Torres Rivadeneira · Lucas Ángel Mora Loiza ·
+          Matías Torres Estay
+        </dd>
+
+        <dt>Profesor</dt>
+        <dd>Javier Aranda</dd>
+
+        <dt>Fecha</dt>
+        <dd>Noviembre de 2026 · Segundo semestre</dd>
+      </dl>
+    </div>
+
+    <div class="franja-inferior"></div>
+  </div>
+</body>
+</html>

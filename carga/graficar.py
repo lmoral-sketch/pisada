@@ -16,13 +16,23 @@ import os
 
 SALIDA = os.path.join(os.path.dirname(__file__), '..', 'docs', 'graficos')
 
-# Paleta sobria, legible en impresión en blanco y negro por contraste de tono.
+# Paleta del Manual de Identidad Visual de UTEM (2026).
+#
+# El manual asigna un color propio a cada facultad y establece que "toda pieza
+# visual que represente a una facultad o sus carreras debe usar de forma
+# jerárquica y predominante el color asignado". Por eso el celeste de la
+# Facultad de Ingeniería es la serie principal.
 TINTA = '#1a1a1a'
 SUAVE = '#8a8a8a'
 REJILLA = '#e0e0e0'
-SERIE_A = '#1e3a5f'   # azul noche
-SERIE_B = '#a33c2a'   # rojo ladrillo
-ACENTO = '#e07a3c'    # naranjo
+
+AZUL_UTEM = '#004EAA'      # institucional, PANTONE 2145
+VERDE_UTEM = '#78BF26'     # institucional, PANTONE 368
+CELESTE_ING = '#00B6ED'    # Facultad de Ingeniería, PANTONE 306
+
+SERIE_A = AZUL_UTEM
+SERIE_B = CELESTE_ING
+ACENTO = VERDE_UTEM
 
 
 def escapar(t):
@@ -33,7 +43,7 @@ def lienzo(ancho, alto, titulo, subtitulo=''):
     """Devuelve la cabecera del SVG con título y subtítulo."""
     s = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {ancho} {alto}" '
-        f'width="{ancho}" height="{alto}" font-family="Segoe UI, Helvetica, Arial, sans-serif">',
+        f'width="{ancho}" height="{alto}" font-family="Aptos, Montserrat, Arial, Helvetica, sans-serif">',
         f'<rect width="{ancho}" height="{alto}" fill="#ffffff"/>',
         f'<text x="24" y="30" font-size="16" font-weight="600" fill="{TINTA}">{escapar(titulo)}</text>',
     ]
