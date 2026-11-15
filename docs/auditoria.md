@@ -21,7 +21,7 @@ proyecto.
 | Requisitos del agente de IA | **7 de 8** |
 
 **Brechas que impiden entregar:** 2 (video, identidad visual) — *integrantes resuelto*
-**Brechas que bajan la nota:** 3 (sandbox de pago, datos de GA4, formulario de prompts)
+**Brechas que bajan la nota:** 1 (sandbox de pago) — *GA4 y formulario resueltos*
 
 ---
 
@@ -94,10 +94,10 @@ quedaría invisible.
 
 | Requisito | Estado |
 |---|---|
-| Core Web Vitals | ❌ **B-03** |
-| Tasa de rebote y duración de sesión | ❌ **B-03** |
-| Tasa de conversión del embudo | ⚠️ Medida con k6 (6,8 %); falta la de GA4 |
-| Comparación normal frente a bajo carga | ❌ **B-03** |
+| Core Web Vitals | ⚠️ Medición directa en navegador; GA4 necesita más sesiones |
+| Tasa de rebote y duración de sesión | ⚠️ Requieren volumen que estas corridas no alcanzan |
+| Tasa de conversión del embudo | ✅ 6,8 % medida con k6; 4 compras reales en GA4 |
+| **Comparación normal frente a bajo carga** | ✅ **Catálogo 2,51x, home 1,05x** |
 
 ### 🟡 B-02 — Memoria e I/O no se analizaron
 
@@ -112,15 +112,16 @@ fuga. El I/O de disco queda declarado como no medido, con su justificación.
 > Corrección: la serie temporal capturada el 3 de noviembre **no** incluía las métricas de
 > memoria, porque el filtro del muestreo las excluía. Hubo que volver a medir.
 
-### 🔴 B-03 — Faltan los datos de experiencia de usuario de GA4
+### ✅ B-03 — Datos de experiencia de usuario — RESUELTO
 
-Es la **única sección vacía del informe** (§5.6) y cubre el plano B completo de la Fase 2.
+Ejecutado el 15 de noviembre con el protocolo de dos sesiones sobre el sitio desplegado, con
+un navegador real que ejecuta JavaScript y dispara los eventos de GA4.
 
-**Causa:** k6 no ejecuta JavaScript, de modo que su tráfico no genera eventos en GA4. La
-comparación exige que personas reales naveguen mientras k6 carga el servidor.
+**Resultado principal: degradación diferenciada.** Bajo la misma carga de 12 usuarios
+virtuales, el catálogo se degradó **2,51 veces** (de 394 a 989 ms) mientras el home apenas se
+movió (+5 %). Confirma empíricamente la decisión D-02 de dar peso distinto a cada página.
 
-**Qué hacer:** el protocolo está en `docs/manual-ejecucion.md` §3. Requiere una hora y al
-menos dos personas, **hoy**, porque GA4 demora en consolidar.
+Cuatro compras reales registradas en GA4 con los cinco eventos del embudo. Informe §5.7.
 
 ---
 
@@ -176,9 +177,10 @@ adjunta."* **Ese formulario nunca estuvo entre los archivos recibidos.**
 Nuestro `logs/prompts.md` sigue el formato del repositorio de ejemplo del profesor
 (`jabtools/tiempo`), que es la mejor referencia disponible.
 
-**Qué hacer:** buscarlo en Canvas. Si existe y tiene un formato propio, hay que trasladar las
-14 entradas. Si no aparece, declarar en el informe que se usó el formato del ejemplo del
-profesor.
+**Resuelto:** declarado explícitamente en el informe §8.6. Se adoptó el formato del
+repositorio de ejemplo del propio profesor (`jabtools/tiempo`), con dos campos propios
+añadidos. Si el formulario aparece en Canvas antes de entregar, conviene trasladar las
+entradas.
 
 ---
 
@@ -208,8 +210,8 @@ portada del informe. Es lo mínimo defendible.
 |---|---|---|---|
 | ~~1~~ | ~~Nombres de los integrantes (B-06)~~ | ✅ | hecho |
 | 1 | Coordinar y grabar el video (B-04) | 👥 | 3 h |
-| 3 | Protocolo de GA4 (B-03) | 👥 | 1 h |
-| 4 | Capturas del panel de GA4 | 👤 | 15 min |
+| ~~3~~ | ~~Protocolo de GA4 (B-03)~~ | ✅ | hecho |
+| 3 | Capturas del panel de GA4 | 👤 | 15 min |
 | 5 | Identidad visual en la presentación (B-07) | 👤 | 30 min |
 | 6 | Buscar el formulario en Canvas (B-05) | 👤 | 10 min |
 | 7 | Agregar memoria al informe (B-02) | 🤖 | 20 min |

@@ -292,7 +292,87 @@ hardware.
 
 ### 5.7 Indicadores de experiencia de usuario
 
-*(pendiente — requiere el sitio desplegado y el protocolo de dos sesiones descrito en §7)*
+Medidos sobre el **sitio desplegado**, desde Chile, con un navegador real que ejecuta
+JavaScript y dispara los eventos de GA4.
+
+#### El problema metodológico y cómo se resolvió
+
+**k6 no ejecuta JavaScript.** Es un cliente HTTP: descarga el HTML pero no corre los scripts
+de la página. Su tráfico, por lo tanto, **no genera un solo evento en GA4**.
+
+Eso tiene una consecuencia directa sobre lo que pide la Fase 2: la comparación de la
+experiencia de usuario "en condiciones normales frente a bajo carga generada" **no sale de
+forma automática**. Hace falta que un cliente real navegue mientras k6 carga el servidor.
+
+El protocolo aplicado separa los dos roles:
+
+| Rol | Herramienta | Qué mide |
+|---|---|---|
+| Carga de fondo | k6, 12 usuarios virtuales | Plano A: servidor |
+| Usuario observado | Navegador real recorriendo el embudo | Plano B: experiencia |
+
+#### Resultados: la misma navegación, con y sin carga
+
+Mediana de 5 repeticiones por página, en milisegundos:
+
+| Página | Control | Bajo carga | Degradación |
+|---|---|---|---|
+| Home | 288,8 | 304,2 | **1,05x** |
+| Catálogo | 393,8 | **989,1** | **2,51x** |
+| Catálogo con filtros | 310,4 | 302,7 | 0,98x |
+| Ficha de producto | 194,3 | 218,4 | 1,12x |
+
+**El hallazgo es la degradación diferenciada.** Bajo la misma carga:
+
+- El **home se mantiene prácticamente igual** (+5 %)
+- El **catálogo se degrada dos veces y media**
+
+Esto **confirma empíricamente la decisión D-02**, que fue dar a cada página un peso distinto a
+propósito. La página que ejecuta tres consultas con agregación sobre 4552 variantes es la que
+primero acusa la carga; la que hace una sola consulta acotada apenas la nota.
+
+> El catálogo **con filtros** no se degradó. Es coherente con lo observado en §5.5: el filtro
+> reduce el conjunto sobre el que hay que agregar, de modo que resulta más barato que el
+> listado completo. Bajo carga esa diferencia se amplifica.
+
+#### Operaciones del embudo bajo carga
+
+| Operación | Tiempo |
+|---|---|
+| Agregar al carrito | 168,0 ms |
+| Checkout completo | 178,8 ms |
+
+El checkout respondió `200` y creó el pedido correctamente incluso con la carga encima. A
+este nivel (12 usuarios virtuales) la contención sobre el stock todavía no se manifiesta,
+porque los usuarios sintéticos compran productos distintos.
+
+#### Eventos registrados en GA4
+
+Durante ambas sesiones se dispararon los cuatro eventos del embudo exigidos por el enunciado,
+más el evento propio:
+
+| Evento | Cuándo |
+|---|---|
+| `view_item` | Al abrir una ficha de producto |
+| `add_to_cart` | Al agregar una talla |
+| `begin_checkout` | Al iniciar el pago |
+| `purchase` | Al confirmarse, con `transaction_id` y valor en CLP |
+| `compra_sin_stock` | *(propio)* al rechazarse por inventario agotado |
+
+Se completaron **4 compras reales** en la propiedad (pedidos 9, 10, 11 y 16).
+
+#### Limitación declarada
+
+Las métricas de engagement que calcula GA4 por su cuenta —tasa de rebote, duración de sesión,
+páginas por sesión y Core Web Vitals— **requieren un volumen de sesiones que estas corridas no
+alcanzan**, y GA4 demora hasta 24 horas en consolidarlas.
+
+Las cifras de esta sección provienen de la medición directa en el navegador, que es más
+precisa para el propósito del análisis: entrega el tiempo exacto de cada página en cada
+condición, mientras que GA4 entregaría promedios agregados sobre pocas sesiones.
+
+Se declara como limitación en lugar de presentar cifras de GA4 con respaldo insuficiente.
+
 
 ---
 
@@ -429,7 +509,19 @@ cumple: no hay cobro, no se solicitan datos de tarjeta y la referencia es sinté
 
 Se declara como incumplimiento parcial en lugar de omitirlo.
 
-### 8.6 Otras limitaciones
+### 8.6 Formato del registro de prompts
+
+El enunciado indica que los prompts deben registrarse *"con un formulario que se adjunta"*.
+**Ese formulario no estaba entre los archivos del curso a los que tuvimos acceso.**
+
+Ante la ausencia, se adoptó el formato del **repositorio de ejemplo del propio profesor**
+(`github.com/jabtools/tiempo`), que registra por entrada: fecha, agente y modelo utilizado,
+prompt completo y resumen de los cambios generados. Se agregaron dos campos propios,
+`Defectos conocidos` y `Propuestas no aprobadas`, siguiendo también ese ejemplo.
+
+El registro está en `logs/prompts.md`, con 15 entradas que cubren todo el desarrollo.
+
+### 8.7 Otras limitaciones
 
 - **Las llegadas no son de Poisson.** k6 lanza usuarios en escalones, más sincronizados que
   aleatorios. M/M/1 es una aproximación útil, no exacta.
