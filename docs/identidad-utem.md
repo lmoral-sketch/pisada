@@ -61,7 +61,7 @@ font-family: Aptos, Montserrat, Arial, Helvetica, sans-serif;
 | **Gráficos del informe** | ✅ Regenerados con la paleta UTEM |
 | **Portada del informe** | ✅ `docs/portada-informe.html` |
 | **Plantilla de presentación** | ✅ `docs/presentacion.html` |
-| **Logo** | ⬜ **Falta descargarlo** (ver abajo) |
+| **Logo** | ✅ `docs/assets/` |
 
 ### Los gráficos
 
@@ -74,32 +74,18 @@ Las cinco figuras usan ahora:
 
 ---
 
-## Pendiente: el logo
+## Logo
 
-El logo viene **vectorial dentro de los PDF**, de modo que no se puede extraer como imagen
-sin pérdida de calidad.
+Dos versiones en `docs/assets/`:
 
-**Hay que descargarlo** desde la página oficial:
+| Archivo | Uso |
+|---|---|
+| `logo-utem-horizontal.png` | Identificador completo. Portada del informe y de la presentación |
+| `logo-utem-escudo.png` | Escudo solo. Esquina de las láminas interiores |
 
-👉 https://www.utem.cl/universidad/presentacion/identidad/
-
-Buscar el identificador institucional en **PNG con fondo transparente** o **SVG**, y guardarlo
-como:
-
-```
-proyecto/docs/assets/logo-utem.png
-```
-
-La portada y la presentación ya lo referencian en esa ruta: apenas el archivo exista,
-aparecerá solo.
-
-### Reglas de uso del logo (capítulo 3 del manual)
-
-- **No** alterar proporciones, colores ni tipografías del identificador
-- Respetar el área de resguardo alrededor
-- Sobre fondos oscuros, usar la versión en blanco
-
----
+El escudo aislado se usa únicamente en las láminas interiores, donde el identificador
+completo ya apareció en la portada. Se respetan proporciones, colores y área de resguardo
+según el capítulo 3 del manual.
 
 ## Para la presentación del video
 

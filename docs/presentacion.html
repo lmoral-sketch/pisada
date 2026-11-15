@@ -31,7 +31,10 @@
 
   body {
     font-family: Aptos, Montserrat, Arial, Helvetica, sans-serif;
-    background: #000;
+    /* Fondo blanco, no negro: durante el fundido entre láminas el fondo del
+       body queda a la vista, y con negro se produce un parpadeo oscuro que
+       en la grabación del video se nota mucho. */
+    background: #fff;
     color: var(--tinta);
     overflow: hidden;
   }
@@ -43,7 +46,7 @@
     display: none;
     flex-direction: column;
     padding: 5vh 7vw;
-    animation: entrar .25s ease;
+    animation: entrar .18s ease;
   }
   .lamina.activa { display: flex; }
   @keyframes entrar { from { opacity: 0 } to { opacity: 1 } }
@@ -100,11 +103,17 @@
   .portada { justify-content: center; }
   .portada .unidad { font-size: 1.4vw; color: var(--suave); line-height: 1.6; margin-bottom: 4vh; }
   .portada .integrantes { font-size: 1.3vw; color: var(--suave); line-height: 1.8; margin-top: auto; }
-  .logo-marcador {
-    width: 16vw; height: 6vh;
-    border: 2px dashed var(--celeste-ing);
-    display: flex; align-items: center; justify-content: center;
-    font-size: .95vw; color: var(--suave); margin-bottom: 4vh;
+  .portada .logo-principal { height: 14vh; margin-bottom: 4vh; }
+  .portada .logo-principal img { height: 100%; }
+
+  /* Escudo discreto en la esquina del resto de las láminas, como marca de
+     continuidad. El manual permite el escudo solo cuando el identificador
+     completo ya apareció en la pieza, que es el caso: va en la portada. */
+  .escudo {
+    position: absolute;
+    top: 4vh; right: 7vw;
+    height: 7vh;
+    opacity: .9;
   }
 
   .cifras { display: flex; gap: 4vw; margin-top: 2vh; }
@@ -138,7 +147,10 @@
 
 <!-- 1 ───────────────────────────────── PORTADA -->
 <section class="lamina activa portada">
-  <div class="logo-marcador">logo UTEM</div>
+  <div class="logo-principal">
+    <img src="assets/logo-utem-horizontal.png"
+         alt="Universidad Tecnológica Metropolitana del Estado de Chile">
+  </div>
   <div class="unidad">
     Universidad Tecnológica Metropolitana<br>
     Facultad de Ingeniería · Departamento de Informática y Computación
@@ -169,6 +181,7 @@
     <div class="cifra"><div class="valor">4</div><div class="rotulo">escenarios de carga</div></div>
   </div>
   <div class="numero">02</div><div class="marca">Pisada · INFB8091</div>
+  <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
 </section>
 
 <!-- 3 ───────────────────────────────── ARQUITECTURA -->
@@ -181,6 +194,7 @@
     <li><strong>Inventario a nivel de SKU.</strong> Cada talla y color tiene su propio stock: ahí nace la cola de espera.</li>
   </ul>
   <div class="numero">03</div><div class="marca">Pisada · INFB8091</div>
+  <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
 </section>
 
 <!-- 4 ───────────────────────────────── EL CBMG -->
@@ -202,6 +216,7 @@
     sistema ficticio.
   </p>
   <div class="numero">04</div><div class="marca">Pisada · INFB8091</div>
+  <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
 </section>
 
 <!-- 5 ───────────────────────────────── RESULTADOS -->
@@ -218,6 +233,7 @@
     Hasta 25 usuarios el sistema <strong>no se mueve</strong>. Y nunca colapsó.
   </p>
   <div class="numero">05</div><div class="marca">Pisada · INFB8091</div>
+  <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
 </section>
 
 <!-- 6 ───────────────────────────────── CPU POR USUARIO -->
@@ -230,6 +246,7 @@
     Es la firma del encolamiento, y aparece <strong>antes</strong> de que la latencia se note.
   </p>
   <div class="numero">06</div><div class="marca">Pisada · INFB8091</div>
+  <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
 </section>
 
 <!-- 7 ───────────────────────────────── AMDAHL -->
@@ -242,6 +259,7 @@
     Bajo contención, ese techo cae bajo 5.
   </p>
   <div class="numero">07</div><div class="marca">Pisada · INFB8091</div>
+  <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
 </section>
 
 <!-- 8 ───────────────────────────────── CUELLO DE BOTELLA -->
@@ -257,6 +275,7 @@
     Un recurso serializado contagia su saturación a un recurso compartido.
   </p>
   <div class="numero">08</div><div class="marca">Pisada · INFB8091</div>
+  <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
 </section>
 
 <!-- 9 ───────────────────────────────── MEJORAS -->
@@ -269,6 +288,7 @@
     <li><strong>Repartir el inventario</strong> de los productos populares en varias filas.</li>
   </ul>
   <div class="numero">09</div><div class="marca">Pisada · INFB8091</div>
+  <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
 </section>
 
 <!-- 10 ──────────────────────────────── HONESTIDAD -->
@@ -282,6 +302,7 @@
     <li>Los resultados de contención <strong>no son reproducibles</strong></li>
   </ul>
   <div class="numero">10</div><div class="marca">Pisada · INFB8091</div>
+  <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
 </section>
 
 <!-- 11 ──────────────────────────────── CIERRE -->
@@ -293,6 +314,7 @@
   </p>
   <p class="grande" style="margin-top:5vh;font-size:1.5vw">Gracias.</p>
   <div class="numero">11</div><div class="marca">Pisada · INFB8091</div>
+  <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
 </section>
 
 <div class="ayuda">← → para navegar · F11 pantalla completa</div>
