@@ -806,3 +806,67 @@ al insertarlo en el informe.
 - [ ] Completar la calibración con 10, 20 y 40 usuarios contra producción
 - [ ] Repetir el experimento de contención 5 veces por estrategia
       (`bash carga/repetir-contencion.sh 5 1500`, requiere la base local levantada)
+
+---
+
+## E-09 — Memoria y latencia del event loop bajo carga
+
+**Fecha:** 15 de noviembre de 2026
+**Contexto:** muestreo de 30 observaciones durante el experimento de contención, con el
+contenedor limitado a **1 CPU y 512 MB**.
+
+Se incorpora porque el enunciado pide utilización de **"CPU, memoria, I/O"** y hasta ahora el
+análisis solo cubría CPU.
+
+### Resultados
+
+| Métrica | Mínimo | Máximo | Variación |
+|---|---|---|---|
+| Memoria residente del proceso | 294,3 MB | 295,6 MB | **1,3 MB** |
+| Heap de V8 en uso | 60,9 MB | 114,5 MB | 53,6 MB |
+| Memoria externa | 4,2 MB | 5,0 MB | 0,9 MB |
+| **Latencia del event loop, p(99)** | **15,76 ms** | **22,32 ms** | 6,55 ms |
+
+### Lectura
+
+**La memoria no es un cuello de botella.** La residente se mantiene en ~295 MB sobre un
+límite de 512 MB: una **utilización del 58 %**, estable. La variación de 1,3 MB bajo carga
+descarta además una fuga de memoria, que era una de las degradaciones progresivas que el
+escenario de carga sostenida buscaba detectar.
+
+El heap de V8 oscila entre 61 y 114 MB. Esa oscilación **no indica un problema**: es el ciclo
+normal del recolector de basura, que deja crecer el heap y lo compacta periódicamente. Lo
+relevante es que la memoria residente no acompaña esa oscilación, señal de que el proceso
+devuelve la memoria correctamente.
+
+### El dato interesante: la latencia del event loop
+
+Un p(99) de **15 a 22 ms** significa que, en el 1 % peor de los casos, una tarea esperó más
+de 15 ms **solo para empezar a ejecutarse**, porque el event loop de Node estaba ocupado.
+
+Es una **tercera cola**, además de las dos ya identificadas:
+
+| Cola | Recurso en disputa |
+|---|---|
+| E4 — Bloqueo de stock | Una fila de `variante` |
+| E2 — Pool de conexiones | 10 conexiones |
+| **Event loop de Node** | **Un único hilo de ejecución** |
+
+Node.js procesa las peticiones en un solo hilo. Cuando llegan más rápido de lo que se
+despachan, se encolan en el event loop. Con 1 CPU asignada al contenedor, ese hilo **no puede
+escalar**: es, por construcción, un recurso serializado más.
+
+Esto refuerza el hallazgo central del trabajo desde otro ángulo. El sistema tiene **tres
+puntos de serialización encadenados**, y la saturación de cualquiera se propaga a los demás.
+
+### Sobre I/O de disco
+
+**No se midió.** El enunciado menciona "CPU, memoria, I/O", y esta parte queda fuera.
+
+La razón: el disco **no participa del camino crítico** de este sistema. Las consultas se
+resuelven desde la caché de PostgreSQL —el catálogo completo ocupa pocos megabytes y cabe
+holgadamente en los 512 MB del contenedor—, y la aplicación no lee ni escribe archivos
+durante una petición. La escritura de pedidos sí toca disco, pero su volumen es despreciable
+frente al tráfico de lectura.
+
+Se declara como limitación en vez de presentar una medición que no aportaría información.

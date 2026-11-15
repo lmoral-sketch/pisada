@@ -234,7 +234,29 @@ Valores bajos **en promedio**, lo que refuerza que el problema no es una cola
 permanentemente larga sino **episodios de saturación** que el promedio diluye. Es un buen
 argumento de por qué el enunciado insiste en percentiles.
 
-### 5.4 Costo de las consultas
+### 5.4 Memoria y latencia del event loop
+
+| Métrica | Mínimo | Máximo |
+|---|---|---|
+| Memoria residente | 294,3 MB | 295,6 MB |
+| Heap de V8 en uso | 60,9 MB | 114,5 MB |
+| Latencia del event loop, p(99) | 15,76 ms | 22,32 ms |
+
+**La memoria no es cuello de botella:** 295 MB sobre un límite de 512 MB, con una variación de
+1,3 MB bajo carga que descarta fugas.
+
+El dato relevante es la **latencia del event loop**: un p(99) de 15 a 22 ms significa que, en
+el 1 % peor, una tarea esperó ese tiempo solo para empezar a ejecutarse. Es una **tercera
+cola**, junto al bloqueo de stock y al pool de conexiones: Node procesa en un solo hilo, y con
+1 CPU asignada ese hilo no puede escalar.
+
+El sistema tiene entonces **tres puntos de serialización encadenados**, y la saturación de
+cualquiera se propaga a los demás.
+
+*I/O de disco no se midió: no participa del camino crítico, ya que el catálogo cabe en la
+caché de PostgreSQL. Se declara en §8.6.*
+
+### 5.5 Costo de las consultas
 
 | Consulta | Ejecuciones | Tiempo medio |
 |---|---|---|
@@ -246,7 +268,7 @@ argumento de por qué el enunciado insiste en percentiles.
 El `COUNT(*)` de la paginación cuesta **un 54 % de lo que cuesta el listado completo**, sin
 devolver una sola fila de datos.
 
-### 5.5 Ley de Amdahl sobre el checkout
+### 5.6 Ley de Amdahl sobre el checkout
 
 ![El techo de Amdahl cae con la contención](graficos/techo-amdahl.svg)
 
@@ -260,7 +282,7 @@ Por mucha CPU que se agregue, el checkout no puede mejorar más que ese techo. *
 contención el techo se desploma a menos de 5x.** Reducirlo exige cambio de diseño, no más
 hardware.
 
-### 5.6 Indicadores de experiencia de usuario
+### 5.7 Indicadores de experiencia de usuario
 
 *(pendiente — requiere el sitio desplegado y el protocolo de dos sesiones descrito en §7)*
 
@@ -386,7 +408,20 @@ orden entre estrategias se invirtió:
 es mejor.** La diferencia observada está dentro del ruido. Se requieren al menos cinco
 repeticiones reportando mediana y rango.
 
-### 8.5 Otras limitaciones
+### 8.5 No se integró un sandbox de medio de pago
+
+El enunciado pedía *"flujo de checkout simulado con sandbox de algún medio de pago disponible
+en Chile"*. Se implementó el flujo completo de checkout —validación de stock, descuento
+transaccional, creación del pedido y referencia de pago— **sin integrar un sandbox externo**.
+
+La razón es metodológica: una llamada a un servicio de terceros habría agregado al checkout un
+tiempo de respuesta que no controlamos ni podemos instrumentar, justo en el camino que este
+trabajo analiza. El propósito del requisito —simular el pago sin procesar dinero real— se
+cumple: no hay cobro, no se solicitan datos de tarjeta y la referencia es sintética.
+
+Se declara como incumplimiento parcial en lugar de omitirlo.
+
+### 8.6 Otras limitaciones
 
 - **Las llegadas no son de Poisson.** k6 lanza usuarios en escalones, más sincronizados que
   aleatorios. M/M/1 es una aproximación útil, no exacta.
