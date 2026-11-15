@@ -21,25 +21,46 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-10">
-      <section className="rounded-xl bg-neutral-900 px-8 py-12 text-white dark:bg-neutral-800">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Zapatillas que aguantan el día completo
-        </h1>
-        <p className="mt-3 max-w-xl text-neutral-300">
-          Calzado e indumentaria urbana para moverse por la ciudad, el cerro y lo que
-          venga.
-        </p>
-        <Link
-          href="/catalogo"
-          className="mt-6 inline-block rounded-md bg-white px-5 py-2.5 text-sm font-medium text-neutral-900 transition hover:bg-neutral-200"
-        >
-          Ver catálogo
-        </Link>
+      <section className="relative overflow-hidden rounded-3xl bg-neutral-900 px-8 py-16 text-white sm:px-14 sm:py-20">
+        {/* Halo de color, puro CSS: no agrega peticiones de red */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full blur-3xl"
+          style={{ background: 'radial-gradient(circle, #00B6ED55, transparent 70%)' }}
+        />
+        <div className="relative">
+          <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-medium tracking-wide text-white/90">
+            Nueva temporada
+          </span>
+          <h1 className="mt-5 max-w-2xl text-4xl font-bold leading-[1.1] tracking-tight sm:text-6xl">
+            Zapatillas que aguantan
+            <br />
+            el día completo
+          </h1>
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-neutral-300">
+            Calzado e indumentaria urbana para moverse por la ciudad, el cerro y lo que
+            venga.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/catalogo"
+              className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-neutral-200"
+            >
+              Ver catálogo
+            </Link>
+            <Link
+              href="/catalogo?categoria=zapatillas-running"
+              className="rounded-full border border-white/25 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+            >
+              Running
+            </Link>
+          </div>
+        </div>
       </section>
 
       <section>
         <div className="mb-4 flex items-baseline justify-between">
-          <h2 className="text-xl font-semibold">Destacados</h2>
+          <h2 className="text-2xl font-bold tracking-tight">Destacados</h2>
           <Link href="/catalogo" className="text-sm text-neutral-600 hover:underline dark:text-neutral-400">
             Ver todo
           </Link>

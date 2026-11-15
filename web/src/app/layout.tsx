@@ -9,6 +9,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Analytics } from '@/components/analytics';
+import { Logotipo } from '@/components/marca';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -23,10 +24,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="min-h-screen bg-neutral-50 text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
-        <header className="border-b border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+        <header className="sticky top-0 z-20 border-b border-neutral-200 bg-white/85 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/85">
           <nav className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4">
-            <Link href="/" className="text-lg font-bold tracking-tight">
-              Pisada
+            <Link href="/" aria-label="Pisada, inicio">
+              <Logotipo />
             </Link>
             <Link href="/catalogo" className="text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
               Catálogo
@@ -51,7 +52,7 @@ export default function RootLayout({
             </Link>
             <Link
               href="/carrito"
-              className="rounded-md border border-neutral-300 px-3 py-1.5 text-sm dark:border-neutral-700"
+              className="rounded-full bg-neutral-900 px-4 py-1.5 text-sm font-medium text-white transition hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-300"
             >
               Carrito
             </Link>

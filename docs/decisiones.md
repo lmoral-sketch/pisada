@@ -172,3 +172,37 @@ justo durante las pruebas de carga y no durante el desarrollo.
 - [ ] Estrategia de bloqueo para el descuento de stock (`SELECT ... FOR UPDATE` frente a
       actualización condicional optimista) — conviene **medir ambas** y comparar
 - [ ] Probabilidades de transición del CBMG para los perfiles de usuario sintético
+
+---
+
+## D-09 — Las imágenes de producto son SVG en línea, no fotos
+
+**Decisión.** Cada producto se ilustra con una silueta de zapatilla dibujada en **SVG dentro
+del HTML**, coloreada con el color de su variante. No hay archivos de imagen.
+
+**Justificación.** El trabajo mide el desempeño del sitio, y todas las cifras del informe se
+tomaron sin imágenes. Agregar una foto por producto significaría:
+
+- **24 peticiones de red adicionales** en la página de catálogo
+- Peso de transferencia que no controlamos
+- Degradación de los **Core Web Vitals** por carga de imágenes
+- Un camino de red hacia un servidor de archivos ajeno al sistema medido
+
+Cualquiera de esos cuatro **invalidaría los números ya publicados**, y lo haría a un día de
+la entrega.
+
+El SVG en línea viaja dentro del HTML que ya se está sirviendo: **cero peticiones
+adicionales, cero latencia de red**, y el peso queda bajo nuestro control y es medible.
+
+**Verificación tras el cambio:**
+
+| Página | Antes | Después |
+|---|---|---|
+| Home | 20 ms | 18 ms |
+| Catálogo | 44 ms | 47 ms |
+| JS del cliente | 106 kB | 106 kB |
+| Archivos de imagen | 0 | **0** |
+| Peticiones externas | solo GA4 | **solo GA4** |
+
+Las diferencias están dentro del ruido de medición. **Las conclusiones del informe siguen
+siendo válidas.**
