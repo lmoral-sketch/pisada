@@ -1067,3 +1067,23 @@ trabajo —descontar stock al pagar y no al agregar al carrito— hace posible.
 La interfaz muestra las tarjetas del ambiente de integración junto al botón de pago. No es un
 descuido: en un sandbox el usuario necesita saber qué tarjeta usar, y tenerlas visibles
 **evita que alguien intente con una tarjeta real**.
+
+### Nota: el costo de Transbank depende de dónde esté la aplicación
+
+Verificado el mismo flujo en producción, se observó una diferencia sistemática:
+
+| Origen de la llamada | Crear transacción |
+|---|---|
+| Local (Chile) | **160 ms** |
+| Render (Ohio) | **336-354 ms** |
+
+Transbank opera en Chile. Desde la aplicación local la llamada es prácticamente local; desde
+Render cruza el continente de ida y vuelta.
+
+Es la **ley general del tiempo de respuesta** otra vez, y con una consecuencia incómoda: la
+decisión de desplegar en Ohio —correcta para minimizar la latencia entre aplicación y base de
+datos— **duplica el costo de la llamada al medio de pago**.
+
+No hay una configuración óptima para ambos: la base conviene cerca de la aplicación, y el
+medio de pago conviene cerca del usuario. Un comercio real en Chile resolvería esto
+desplegando en una región sudamericana, aceptando a cambio otras restricciones de proveedor.
