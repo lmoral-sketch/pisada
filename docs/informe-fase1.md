@@ -496,18 +496,24 @@ orden entre estrategias se invirtió:
 es mejor.** La diferencia observada está dentro del ruido. Se requieren al menos cinco
 repeticiones reportando mediana y rango.
 
-### 8.5 No se integró un sandbox de medio de pago
+### 8.5 El sandbox de pago se integró como camino paralelo
 
-El enunciado pedía *"flujo de checkout simulado con sandbox de algún medio de pago disponible
-en Chile"*. Se implementó el flujo completo de checkout —validación de stock, descuento
-transaccional, creación del pedido y referencia de pago— **sin integrar un sandbox externo**.
+El enunciado pedía *"checkout simulado con sandbox de algún medio de pago disponible en
+Chile"*. Se integró **Transbank Webpay Plus** en su ambiente de integración, verificado de
+extremo a extremo: transacción creada, pago con tarjeta de prueba, autenticación bancaria,
+confirmación y creación del pedido.
 
-La razón es metodológica: una llamada a un servicio de terceros habría agregado al checkout un
-tiempo de respuesta que no controlamos ni podemos instrumentar, justo en el camino que este
-trabajo analiza. El propósito del requisito —simular el pago sin procesar dinero real— se
-cumple: no hay cobro, no se solicitan datos de tarjeta y la referencia es sintética.
+**Convive con el checkout propio en lugar de reemplazarlo**, y la razón está respaldada por
+medición: las llamadas a Transbank suman **537 ms** (160 ms crear + 377 ms confirmar) frente a
+los ~50 ms del checkout propio. Someter ese camino a carga significaría que el **91 % del
+tiempo medido sería ruido de un tercero**, enterrando por completo la contención sobre el
+stock —3,23 ms— que es el objeto de estudio.
 
-Se declara como incumplimiento parcial en lugar de omitirlo.
+Además, k6 no puede recorrer un flujo con redirección a un sitio externo y autenticación
+bancaria, de modo que el escenario de contención sería imposible de ejecutar.
+
+Ambos caminos **comparten la misma función de descuento de inventario**: cambia el medio de
+pago, no el tratamiento del recurso crítico. Detalle en `docs/hallazgos.md`, E-11.
 
 ### 8.6 Formato del registro de prompts
 

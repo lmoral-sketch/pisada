@@ -17,6 +17,7 @@ import {
 import { medirPagina } from '@/lib/instrumentar';
 import { precio } from '@/lib/formato';
 import { BotonPagar } from '@/components/boton-pagar';
+import { BotonWebpay } from '@/components/boton-webpay';
 
 export const dynamic = 'force-dynamic';
 
@@ -90,9 +91,21 @@ export default async function Carrito() {
 
       <BotonPagar items={items} totalClp={total} />
 
+      {/* Segundo medio de pago, en paralelo al propio.
+          El de arriba es el que las pruebas de carga ejercitan; este demuestra
+          la integración con un sandbox real, como pide el enunciado. */}
+      <div className="flex items-center gap-3 py-1">
+        <span className="h-px flex-1 bg-neutral-200 dark:bg-neutral-800" />
+        <span className="text-xs text-neutral-500">o paga con</span>
+        <span className="h-px flex-1 bg-neutral-200 dark:bg-neutral-800" />
+      </div>
+
+      <BotonWebpay items={items} totalClp={total} />
+
       <p className="text-xs text-neutral-500">
-        Compra simulada con fines académicos. No se procesa ningún pago real ni se
-        solicitan datos de tarjeta.
+        Compra simulada con fines académicos. No se procesa ningún pago real. El pago con
+        Webpay usa el <strong>ambiente de integración</strong> de Transbank, con tarjetas de
+        prueba.
       </p>
     </div>
   );

@@ -963,3 +963,107 @@ de modo que la comparación entre estrategias sigue abierta.
 
 Las 4 repeticiones obtenidas son suficientes para sostener la conclusión sobre la varianza,
 que es el hallazgo relevante.
+
+---
+
+## E-11 — Integración con Transbank Webpay Plus y el costo de un tercero
+
+**Fecha:** 15 de noviembre de 2026
+**Ambiente:** integración de Transbank (`webpay3gint.transbank.cl`), credenciales públicas.
+
+Cierra la brecha B-01 de la auditoría: el enunciado pedía *"checkout simulado con sandbox de
+algún medio de pago disponible en Chile"*.
+
+### Flujo verificado de extremo a extremo
+
+| Paso | Resultado |
+|---|---|
+| 1. Crear transacción | Token real emitido por Transbank |
+| 2. Redirección al formulario | Monto correcto, $44.990 |
+| 3. Tarjeta de prueba VISA | Aceptada |
+| 4. Autenticación en banco simulado | RUT `11.111.111-1` |
+| 5. Retorno y confirmación (`commit`) | **Aprobada** |
+| 6. Descuento de stock y creación del pedido | **Pedido N° 1 creado** |
+
+Datos de la transacción confirmada:
+
+```
+Orden de compra:        PSD-1794761434584-1445
+Código de autorización: 1213
+Tarjeta:                ···· 6623
+Monto:                  $44.990
+```
+
+### El dato que justifica la decisión de diseño
+
+Se instrumentó el tiempo de cada llamada a Transbank:
+
+| Operación | Tiempo |
+|---|---|
+| Crear la transacción | **160 ms** |
+| Confirmar el pago (`commit`) | **377 ms** |
+| **Total atribuible al tercero** | **537 ms** |
+
+Compárese con el checkout propio, medido en el mismo entorno:
+
+| Camino | Tiempo |
+|---|---|
+| Checkout propio (`/api/checkout`) | **~50 ms** |
+| Checkout con Webpay | **~590 ms** |
+
+**La integración con el tercero multiplica por 11 el tiempo del checkout**, y esos 537 ms
+ocurren **fuera de nuestro sistema**: no los controlamos, no los podemos instrumentar por
+dentro y varían según la carga de Transbank, no la nuestra.
+
+### Por qué Webpay es un camino paralelo y no un reemplazo
+
+Esta es la justificación, ahora **respaldada con datos**, de por qué el análisis de desempeño
+se hace sobre el checkout propio:
+
+1. **Dominaría la medición.** Con 537 ms de un tercero sobre ~50 ms propios, el 91 % del
+   tiempo del checkout sería ruido externo. La contención sobre el stock —3,23 ms de espera
+   en bloqueo— quedaría completamente enterrada.
+
+2. **Invalidaría la ley de Amdahl.** La fracción serializada que calculamos (7,2 %) se
+   mediría contra un total inflado por la red, dando un techo irreal.
+
+3. **k6 no puede recorrerlo.** Webpay opera por redirección a un sitio externo con formulario
+   y autenticación bancaria. Un cliente HTTP no completa ese flujo, de modo que el escenario
+   de contención —el núcleo del trabajo— sería imposible de ejecutar.
+
+4. **Introduciría una variable no controlada.** El tiempo de Transbank depende de su propia
+   carga. Dos corridas idénticas nuestras darían resultados distintos por causas ajenas.
+
+### Arquitectura resultante
+
+```
+/api/checkout          → checkout propio, instrumentado, sometido a carga  ← ANALIZADO
+/api/checkout/webpay   → inicia transacción en Transbank                   ← DEMOSTRACIÓN
+/webpay/retorno        → confirma el pago y crea el pedido
+```
+
+**Ambos caminos comparten la misma lógica de descuento de inventario.** El retorno de Webpay
+llama a `procesarCheckout()`, la misma función con el mismo control de concurrencia. Lo que
+cambia es el medio de pago, no el tratamiento del recurso crítico.
+
+### Detalle de implementación: el `commit` no es opcional
+
+Webpay exige que el comercio **confirme** la transacción tras el retorno. Si no lo hace,
+Transbank **revierte el cargo automáticamente**.
+
+Es, conceptualmente, un `COMMIT` de transacción distribuida: el pago no queda cerrado hasta
+que ambas partes lo acuerdan. Por eso el pedido se crea **después** de confirmar, nunca antes:
+crear el pedido sin confirmar dejaría inventario descontado contra un cargo que se revertiría.
+
+### Caso límite manejado
+
+Si Transbank aprueba el pago pero el stock se agotó mientras el usuario pagaba, la página de
+retorno lo informa de forma explícita y señala que en un comercio real correspondería
+**revertir la transacción**. Es una situación real del comercio electrónico que el diseño del
+trabajo —descontar stock al pagar y no al agregar al carrito— hace posible.
+
+### Las tarjetas de prueba están a la vista
+
+La interfaz muestra las tarjetas del ambiente de integración junto al botón de pago. No es un
+descuido: en un sandbox el usuario necesita saber qué tarjeta usar, y tenerlas visibles
+**evita que alguien intente con una tarjeta real**.

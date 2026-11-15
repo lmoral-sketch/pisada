@@ -20,8 +20,8 @@ proyecto.
 | Entregables | **4 de 7** |
 | Requisitos del agente de IA | **7 de 8** |
 
-**Brechas que impiden entregar:** 2 (video, identidad visual) — *integrantes resuelto*
-**Brechas que bajan la nota:** 1 (sandbox de pago) — *GA4 y formulario resueltos*
+**Brechas que impiden entregar:** 2 (video, identidad visual)
+**Brechas que bajan la nota:** 0 — *todas resueltas*
 
 ---
 
@@ -31,7 +31,7 @@ proyecto.
 |---|---|---|
 | Catálogo con filtros/búsqueda | ✅ | 240 productos, filtros por categoría, marca, género, talla, color y búsqueda por nombre |
 | Carrito de compras | ✅ | `web/src/lib/carrito.ts`, opera sobre variantes |
-| Flujo de checkout | ⚠️ | **Ver brecha B-01** |
+| Flujo de checkout | ✅ | Propio + **Transbank Webpay Plus** (ambiente de integración), verificado |
 | Registro/login de usuario | ✅ | `scrypt`, tabla `sesion`, verificado de extremo a extremo |
 | 2-3 páginas con distinta carga | ✅ | home 20 ms, detalle 20 ms, catálogo 44 ms |
 | GA4 vía `gtag.js` | ✅ | `G-P8EWE6D7G3`, verificado en producción |
@@ -39,7 +39,7 @@ proyecto.
 | Métricas de engagement | ⚠️ | Medición mejorada activada; **faltan los datos recolectados** (B-03) |
 | Acceso a `j.aranda@utem.cl` | ✅ | Rol Analista otorgado |
 
-### 🔴 B-01 — El checkout no usa un sandbox de medio de pago
+### ✅ B-01 — Sandbox de medio de pago — RESUELTO
 
 **Lo que pide el enunciado, textual:**
 
