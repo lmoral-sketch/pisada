@@ -16,10 +16,6 @@ Segundo semestre 2026 · Profesor Javier Aranda
 | 4 | Lucas Ángel Mora Loiza |
 | 5 | Matías Torres Estay |
 
-> **Estado del borrador.** Las secciones marcadas con *(pendiente)* esperan el despliegue y
-> los datos de GA4. Todo lo demás está respaldado por mediciones ya realizadas, documentadas
-> en `docs/hallazgos.md`.
-
 ---
 
 ## 1. Resumen ejecutivo

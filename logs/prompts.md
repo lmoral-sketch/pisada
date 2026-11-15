@@ -397,3 +397,119 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   aún no se verifican en DebugView contra el sitio desplegado, que todavía no existe.
 - **Pendiente:** GitHub, Neon, Render, el protocolo de dos sesiones para GA4, repeticiones
   del experimento de contención y el informe técnico.
+
+## 2026-11-11 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "dime el pasos a paso detallado de cada punto, para hacerlo. y poder continuar",
+  seguido de "Sí, lo creo" (repositorio en GitHub) y la entrega de la URL
+  `https://github.com/lmoral-sketch/pisada`.
+- **Cambios:**
+  - `docs/plan-entrega.md`: los seis puntos pendientes con paso a paso, responsable,
+    calendario día por día y riesgos conocidos.
+  - **Auditoría de seguridad previa a publicar:** se verificó que ningún `.env` estuviera
+    rastreado y que no hubiera credenciales en los 15 commits del historial completo.
+  - `README.md` reescrito como punto de entrada para quien revisa, con índice de lectura.
+  - Configurado el remoto y publicados los commits. Repositorio público.
+- **Pendiente al cierre:** despliegue en Render.
+
+## 2026-11-11 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "Voy a Render" y posterior envío del error del primer despliegue, luego la URL
+  del sitio ya desplegado.
+- **Cambios:**
+  - Diagnóstico del fallo: `failed to read dockerfile`. **Render solo lee `render.yaml` si el
+    servicio se crea como Blueprint**; creado desde *New → Web Service* lo ignora. Se resolvió
+    fijando *Root Directory* en `web`.
+  - Sitio en producción: https://pisada.onrender.com
+  - **Descomposición del tiempo de respuesta real:** de 348 ms de TTFB en el catálogo, 41 son
+    servidor y 307 son red. La red explica el 88 %.
+  - `docs/hallazgos.md`: experimento **E-07**.
+
+## 2026-11-14 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "que falta para terminar este trabajo", seguido de la autorización para correr
+  las mediciones pendientes.
+- **Cambios:**
+  - `carga/graficar.py`: generador de los cinco gráficos del informe como SVG sin librerías.
+  - `carga/repetir-contencion.sh`: repite el experimento varias veces por estrategia y reporta
+    mediana y rango.
+  - **Primera carga contra producción:** con solo 5 usuarios virtuales el p(95) llega a
+    1,53 s, frente a 37,65 ms en local. Arranque en frío confirmado en 15,08 s.
+  - `docs/hallazgos.md`: experimento **E-08**.
+- **Defectos conocidos al cierre:** las repeticiones de contención quedaron interrumpidas al
+  detener el entorno.
+
+## 2026-11-15 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "haz lo que falte, ademas dame un md de todo el proyecto y haz una auditoria
+  completa para tener al 100 el proyecto, que cumpla lo que pidio el profesor. ademas de un
+  guion para el compañero que grabara el video."
+- **Cambios:**
+  - `docs/auditoria.md`: revisión punto por punto del enunciado. **Siete brechas detectadas**,
+    cada una con impacto y plan.
+  - `PROYECTO.md`: documento maestro con todo el trabajo.
+  - `docs/guion-video.md`: guion operativo bloque por bloque.
+  - **Medición de memoria y event loop** (brecha B-02): memoria estable en 295 MB sobre 512,
+    sin fuga. Hallazgo nuevo: el p(99) de latencia del event loop llega a 22 ms, lo que revela
+    una **tercera cola** —Node procesa en un solo hilo— encadenada a las otras dos.
+  - `docs/hallazgos.md`: experimento **E-09**.
+- **Corrección registrada:** la propia auditoría afirmaba que los datos de memoria estaban en
+  la serie del 3 de noviembre. Era falso: el filtro del muestreo los excluía. Hubo que medir
+  de nuevo.
+
+## 2026-11-15 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "si te los paso" (nombres de los integrantes) y "solo catalina hará el video,
+  dame las indicaciones claras para ella".
+- **Cambios:**
+  - Registrados los cinco integrantes en `README.md`, `docs/informe-fase1.md` y `PROYECTO.md`.
+  - `docs/guion-video.md` reescrito para **una sola presentadora**, con una solución para
+    cumplir el requisito de que participen todos: quince segundos grabados por cada integrante.
+  - **Protocolo de dos sesiones para GA4 ejecutado** con un navegador real que sí ejecuta
+    JavaScript. Resultado: bajo la misma carga el catálogo se degrada **2,51x** mientras el
+    home apenas 1,05x. Confirma empíricamente la decisión D-02.
+  - Declarado el formato del registro de prompts (brecha B-05): el formulario que el enunciado
+    menciona nunca estuvo entre los archivos, así que se usa el del repositorio de ejemplo del
+    profesor.
+  - `docs/hallazgos.md`: experimentos **E-10** y **E-11**.
+
+## 2026-11-15 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "por que ? cuanto demora esto" (cuestionando la recomendación de no integrar el
+  sandbox de pago), seguido de "Sí, intégralo".
+- **Cambios:**
+  - **Transbank Webpay Plus integrado** como camino paralelo, verificado de extremo a extremo:
+    token real, tarjeta de prueba, autenticación bancaria, confirmación y pedido creado.
+  - `web/src/lib/webpay.ts`, `web/src/app/api/checkout/webpay/route.ts`,
+    `web/src/app/webpay/retorno/page.tsx`, `web/src/components/boton-webpay.tsx`.
+  - **Medición que justifica la decisión:** las llamadas a Transbank suman 537 ms frente a los
+    ~50 ms del checkout propio. Someterlo a carga haría que el 91 % del tiempo medido fuera
+    ruido de un tercero.
+  - Cierra la brecha **B-01**.
+- **Nota:** el agente había recomendado no integrarlo por riesgo. Al ser cuestionado, revisó
+  el argumento y **corrigió su recomendación**: el riesgo real era romper los scripts de k6, y
+  eso se evita con un camino paralelo. Queda registrado porque la decisión cambió.
+
+## 2026-11-15 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "a que te refieres con la identidad visual utem", seguido del envío de los
+  manuales y los logos institucionales.
+- **Cambios:**
+  - Extraídas del **Manual de Identidad Visual UTEM 2026** la paleta y las tipografías.
+    Hallazgo: el manual asigna **un color por facultad** y exige usarlo de forma predominante;
+    para la Facultad de Ingeniería es el celeste `#00B6ED`.
+  - Los cinco gráficos regenerados con la paleta institucional y tipografía Aptos.
+  - `docs/portada-informe.html` y `docs/presentacion.html` (once láminas).
+  - `docs/identidad-utem.md` con el extracto operativo.
+  - Incorporados los dos logos: identificador completo en portadas, escudo en láminas
+    interiores.
+- **Defecto corregido:** el fondo del `body` de la presentación era negro y quedaba a la vista
+  durante el fundido entre láminas, produciendo un parpadeo oscuro que en la grabación se
+  habría notado mucho.
+
+## 2026-11-15 | agente: Claude Code (claude-opus-5)
+- **Prompt:** "sera necesario mejorar la parte estética de la pagina? [...] creale un logo con
+  un diseño de zapatilla [...] sera necesario que los productos tengan imagen?"
+- **Cambios:**
+  - `web/src/components/marca.tsx`: logotipo con huella de zapatilla e ilustración por producto
+    derivada de su color, **todo SVG en línea**.
+  - Portada del home con más presencia, encabezado adherente, tarjetas con elevación.
+  - `docs/decisiones.md`: decisión **D-09**.
+- **Decisión argumentada con datos:** se descartaron las fotos reales. Las cifras del informe
+  se tomaron sin imágenes, y agregar una por producto sumaría 24 peticiones de red en el
+  catálogo, peso fuera de nuestro control y degradación de los Core Web Vitals, invalidando
+  los números publicados. Verificado tras el cambio: home de 20 a 18 ms, catálogo de 44 a 47,
+  bundle idéntico en 106 kB, cero archivos de imagen.
