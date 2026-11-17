@@ -1,0 +1,160 @@
+--- 12:46:45 ---
+pisada_process_cpu_seconds_total 0.36
+pisada_pool_conexiones{estado="total"} 1
+pisada_pool_conexiones{estado="ocioso"} 1
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:47 ---
+pisada_process_cpu_seconds_total 0.36
+pisada_pool_conexiones{estado="total"} 1
+pisada_pool_conexiones{estado="ocioso"} 1
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:48 ---
+pisada_process_cpu_seconds_total 0.36
+pisada_pool_conexiones{estado="total"} 1
+pisada_pool_conexiones{estado="ocioso"} 1
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:49 ---
+pisada_process_cpu_seconds_total 0.423
+pisada_pool_conexiones{estado="total"} 1
+pisada_pool_conexiones{estado="ocioso"} 1
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:50 ---
+pisada_process_cpu_seconds_total 0.438
+pisada_pool_conexiones{estado="total"} 1
+pisada_pool_conexiones{estado="ocioso"} 1
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:51 ---
+pisada_process_cpu_seconds_total 0.547
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:52 ---
+pisada_process_cpu_seconds_total 0.6880000000000001
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:53 ---
+pisada_process_cpu_seconds_total 0.7350000000000001
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:54 ---
+pisada_process_cpu_seconds_total 0.7670000000000001
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:55 ---
+pisada_process_cpu_seconds_total 1.032
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:56 ---
+pisada_process_cpu_seconds_total 1.094
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:58 ---
+pisada_process_cpu_seconds_total 1.173
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:46:59 ---
+pisada_process_cpu_seconds_total 1.329
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:00 ---
+pisada_process_cpu_seconds_total 1.407
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:01 ---
+pisada_process_cpu_seconds_total 1.594
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:02 ---
+pisada_process_cpu_seconds_total 1.7510000000000001
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:03 ---
+pisada_process_cpu_seconds_total 1.844
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:04 ---
+pisada_process_cpu_seconds_total 1.907
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:05 ---
+pisada_process_cpu_seconds_total 1.922
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:06 ---
+pisada_process_cpu_seconds_total 1.984
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:08 ---
+pisada_process_cpu_seconds_total 2.219
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:09 ---
+pisada_process_cpu_seconds_total 2.36
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:10 ---
+pisada_process_cpu_seconds_total 2.4699999999999998
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:11 ---
+pisada_process_cpu_seconds_total 2.6569999999999996
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:12 ---
+pisada_process_cpu_seconds_total 2.7669999999999995
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:13 ---
+pisada_process_cpu_seconds_total 2.9069999999999996
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:14 ---
+pisada_process_cpu_seconds_total 2.9999999999999996
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:15 ---
+pisada_process_cpu_seconds_total 3.1879999999999997
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:16 ---
+pisada_process_cpu_seconds_total 3.2819999999999996
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:17 ---
+pisada_process_cpu_seconds_total 3.4539999999999997
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:19 ---
+pisada_process_cpu_seconds_total 3.61
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 12:47:20 ---
+pisada_process_cpu_seconds_total 3.766
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0

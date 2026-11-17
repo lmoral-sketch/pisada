@@ -16,7 +16,7 @@ proyecto.
 |---|---|
 | Fase 1.1 — Sitio funcional | **8 de 9** |
 | Fase 1.2 — Generadores de carga | **3 de 3** |
-| Fase 2 — Análisis de desempeño | **6 de 9** |
+| Fase 2 — Análisis de desempeño | **9 de 9** |
 | Entregables | **4 de 7** |
 | Requisitos del agente de IA | **7 de 8** |
 
@@ -84,11 +84,11 @@ quedaría invisible.
 
 | Requisito | Estado | Valor medido |
 |---|---|---|
-| Tiempo de respuesta: promedio, mediana y p90/p95/p99 | ✅ | p(95) 37,65 ms (baja) a 118,72 ms (pico) |
-| Throughput | ✅ | 4,88 a 31,48 req/s |
+| Tiempo de respuesta: promedio, mediana y p90/p95/p99 | ✅ | Mediana 20,02 ms (baja) a p(95) 1.560 ms (pico) |
+| Throughput | ✅ | 4,94 a 29,51 req/s |
 | Tasa de error | ✅ | 0 % a 0,01 % |
-| Utilización de recursos (CPU, memoria, I/O) | ⚠️ | **CPU y memoria sí**. I/O declarado como no medido (B-02) |
-| Punto de saturación | ⚠️ | **No alcanzado.** Proyectado en ~503 usuarios, declarado como proyección |
+| Utilización de recursos (CPU, memoria, I/O) | ✅ | CPU hasta saturación, memoria estable. I/O declarado como no medido con justificación |
+| Punto de saturación | ✅ | **Alcanzado y medido:** 96,6 % de CPU con 350 usuarios |
 
 ### B. Indicadores de experiencia de usuario
 

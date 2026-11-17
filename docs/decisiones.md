@@ -196,13 +196,18 @@ adicionales, cero latencia de red**, y el peso queda bajo nuestro control y es m
 
 **Verificación tras el cambio:**
 
-| Página | Antes | Después |
+| Página | Diseño original | Tras el rediseño completo |
 |---|---|---|
-| Home | 20 ms | 18 ms |
-| Catálogo | 44 ms | 47 ms |
-| JS del cliente | 106 kB | 106 kB |
+| Home | 20 ms | **21 ms** |
+| Detalle de producto | 20 ms | **36 ms** |
+| Catálogo | 44 ms | **75 ms** |
+| JS del cliente | 106 kB | **106 kB** |
 | Archivos de imagen | 0 | **0** |
 | Peticiones externas | solo GA4 | **solo GA4** |
 
-Las diferencias están dentro del ruido de medición. **Las conclusiones del informe siguen
-siendo válidas.**
+El home no cambió y el bundle tampoco. El detalle y el catálogo sí pesan más por las
+ilustraciones, lo que **obligó a repetir todas las mediciones** del informe.
+
+Lejos de invalidar el trabajo, ese cambio resultó clave: con páginas más pesadas el punto de
+saturación entró en el rango medible, y pasó de ser una proyección a ser una medición (ver
+`hallazgos.md`, E-12).

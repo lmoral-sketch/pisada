@@ -23,7 +23,8 @@ Segundo semestre 2026 · Profesor Javier Aranda
 Se construyó una tienda de comercio electrónico instrumentada y se evaluó su desempeño bajo
 cuatro escenarios de carga sintética. Los resultados principales:
 
-- **Línea base:** p(95) de 37,65 ms con 5 usuarios concurrentes, sin errores.
+- **Línea base:** mediana de 20,02 ms con 5 usuarios concurrentes, sin errores. (Se usa la
+  mediana y no el p(95): con 235 peticiones el percentil no es estable, ver §5.1.)
 - **El punto de saturación se alcanzó y se midió:** 96,6 % de CPU con 350 usuarios
   concurrentes. Con 25 usuarios el tiempo de respuesta es indistinguible de la línea base.
 - **La utilización de CPU crece linealmente** (10,4 % a 25 usuarios, 96,6 % a 350), pero la

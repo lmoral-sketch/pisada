@@ -184,7 +184,10 @@ optimista:  22,58 compras/s × 35,2 ms = 0,79 transacciones en cola
 
 | | Local (1 CPU) | Producción (0,1 CPU) |
 |---|---|---|
-| p(95) con 5 usuarios | 37,65 ms | **1,53 s** |
+| Mediana con 5 usuarios | 20,02 ms | **333,93 ms** |
+| p(95) con 5 usuarios | 54,03 ms* | **1,53 s** |
+
+\* Con 235 peticiones el p(95) no es estable; la referencia válida es la mediana.
 
 Descontados los ~307 ms de red, el servidor aporta 1,2 s con carga mínima. **Se degrada 30
 veces.** Es un análisis de sensibilidad involuntario: el mismo sistema, dos configuraciones de
@@ -282,8 +285,8 @@ estrategias se invirtió:
 - **El equilibrio de flujo no se cumple en las rampas.** Los cálculos operacionales valen
   sobre las mesetas.
 - **k6 no ejecuta JavaScript**, de modo que su tráfico no genera eventos en GA4.
-- **El punto de saturación no se alcanzó.** Se proyecta en ~503 usuarios, y la proyección es
-  optimista porque cerca de `ρ = 1` la degradación deja de ser lineal.
+- **El punto de saturación se alcanzó y se midió:** 96,6 % de CPU con 350 usuarios. Con una
+  versión más liviana de las páginas no se alcanzaba y hubo que proyectarlo.
 - **No se integró un sandbox de pago**, que el enunciado pedía. Ver `docs/auditoria.md` B-01.
 
 ---
