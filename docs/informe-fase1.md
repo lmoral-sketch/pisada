@@ -24,12 +24,12 @@ Se construyó una tienda de comercio electrónico instrumentada y se evaluó su 
 cuatro escenarios de carga sintética. Los resultados principales:
 
 - **Línea base:** p(95) de 37,65 ms con 5 usuarios concurrentes, sin errores.
-- **El sistema no se satura hasta cerca de 350 usuarios concurrentes.** Con 25 usuarios el
-  tiempo de respuesta es indistinguible de la línea base.
-- **La utilización de CPU crece linealmente** (9,2 % a 25 usuarios, 76,1 % a 350), pero la
+- **El punto de saturación se alcanzó y se midió:** 96,6 % de CPU con 350 usuarios
+  concurrentes. Con 25 usuarios el tiempo de respuesta es indistinguible de la línea base.
+- **La utilización de CPU crece linealmente** (10,4 % a 25 usuarios, 96,6 % a 350), pero la
   CPU *por usuario* decrece, lo que delata encolamiento antes de que la latencia se dispare.
 - **El cuello de botella no es la CPU sino el pool de conexiones.** A 350 usuarios se
-  observaron 26 peticiones esperando conexión.
+  midieron **222 peticiones esperando** una de las 10 conexiones disponibles.
 - **El techo de mejora del checkout es de 13,9x en carga normal y cae bajo 5x bajo
   contención**, calculado con la ley de Amdahl sobre mediciones propias.
 - El trabajo documenta además **cuatro errores metodológicos propios**, detectados y
@@ -76,12 +76,13 @@ Requisito explícito del enunciado, implementado de forma deliberada:
 
 | Página | Consultas | Línea base |
 |---|---|---|
-| `/` | 1 (destacados) | 20 ms |
-| `/producto/[slug]` | 3 (producto, variantes, relacionados) | 20 ms |
-| `/catalogo` | 3 + facetas, con agregación sobre variantes | **44 ms** |
+| `/` | 1 (destacados) | 21 ms |
+| `/producto/[slug]` | 3 (producto, variantes, relacionados) | 36 ms |
+| `/catalogo` | 3 + facetas, con agregación sobre variantes | **75 ms** |
 
-El catálogo cuesta **2,2 veces** el home sin carga. Esa diferencia es material experimental:
-permite observar cómo se degradan de manera distinta bajo la misma carga.
+El catálogo cuesta **3,6 veces** el home sin carga. Esa diferencia es material experimental:
+permite observar cómo se degradan de manera distinta bajo la misma carga, y resultó
+determinar el punto de saturación del sistema completo (§6.1).
 
 ### 2.4 Despliegue
 
@@ -179,15 +180,21 @@ agotando inventario, que es lo esperable.
 
 ![Percentiles por escenario](graficos/percentiles-escenarios.svg)
 
-| Escenario | VU | p(95) | p(99) | Throughput | Error |
-|---|---|---|---|---|---|
-| Baja | 5 | 37,65 ms | 46,72 ms | — | 0,00 % |
-| Normal | 25 | 36,12 ms | 45,90 ms | 4,88 req/s | 0,00 % |
-| Pico | 350 | 118,72 ms | 199,01 ms | 31,48 req/s | 0,01 % |
+| Escenario | VU | Mediana | p(95) | p(99) | Throughput | Error |
+|---|---|---|---|---|---|---|
+| Baja | 5 | 20,02 ms | 54,03 ms* | 118,61 ms* | — | 0,00 % |
+| Normal | 25 | 18,44 ms | **35,30 ms** | 48,34 ms | 4,94 req/s | 0,00 % |
+| Pico | 350 | 66,54 ms | **1.560 ms** | 2.330 ms | 29,51 req/s | 0,01 % |
 
-De 5 a 25 usuarios el tiempo de respuesta **no se movió**. Recién en el pico aparece la
-degradación, con el p(95) multiplicándose por 3,3. El sistema **nunca colapsó**: 3 fallas en
-26.447 peticiones.
+\* **El p(95) de la carga baja no es confiable.** Ese escenario genera solo 235 peticiones,
+de modo que el percentil se calcula sobre unas 12 muestras en la cola y un par de peticiones
+lentas lo desplazan por completo. Para la línea base debe usarse la **mediana** (20,02 ms),
+que sí es estable y coincide con los 21 ms medidos directamente. Se declara en lugar de
+reportar un percentil que la cantidad de muestras no sostiene.
+
+De 5 a 25 usuarios el tiempo de respuesta **no se movió**. En el pico el p(95) se multiplica
+por **44** respecto de la carga sostenida. El sistema **no colapsó**: 4 fallas en 24.792
+peticiones, un 0,01 %.
 
 ### 5.2 Curva de utilización
 
@@ -197,11 +204,11 @@ degradación, con el p(95) multiplicándose por 3,3. El sistema **nunca colapsó
 
 | Usuarios | CPU | Pool en espera (máx) | CPU por usuario |
 |---|---|---|---|
-| 25 | 9,2 % | 0 | 0,368 % |
-| 50 | 16,3 % | 0 | 0,326 % |
-| 100 | 28,2 % | 0 | 0,282 % |
-| 200 | 52,6 % | 4 | 0,263 % |
-| **350** | **76,1 %** | **26** | **0,217 %** |
+| 25 | 10,4 % | 4 | 0,416 % |
+| 50 | 17,8 % | 4 | 0,356 % |
+| 100 | 31,8 % | 4 | 0,318 % |
+| 200 | 61,3 % | **40** | 0,307 % |
+| **350** | **96,6 %** | **222** | **0,276 %** |
 
 Dos lecturas:
 
@@ -374,14 +381,24 @@ Se declara como limitación en lugar de presentar cifras de GA4 con respaldo ins
 
 ## 6. Análisis de cuellos de botella
 
-### 6.1 El punto de saturación no se alcanzó
+### 6.1 El punto de saturación, medido
 
-Extrapolando la pendiente del último tramo (0,157 % de CPU por usuario entre 200 y 350), la
-utilización llegaría al 100 % cerca de los **503 usuarios virtuales**.
+**Con 350 usuarios virtuales la utilización de CPU llega al 96,6 %.** El sistema alcanza su
+punto de saturación dentro del rango de carga ensayado.
 
-> Es una **proyección, no una medición**, y es optimista: cerca de `ρ = 1` el comportamiento
-> deja de ser lineal y `W = 1/(μ(1−ρ))` crece de forma hiperbólica. El punto real estará
-> antes.
+No siempre fue así. Con una versión más liviana de las páginas, la utilización máxima
+observada fue de 76,1 % y hubo que **proyectar** la saturación hacia ~503 usuarios,
+declarándola como estimación. Al aumentar el peso de las páginas —sin agregar ni una consulta
+ni una petición de red— **la saturación entró en el rango medible**.
+
+> **El peso de las páginas determina el punto de saturación.** Mismo hardware, mismo
+> generador, mismos escenarios: lo único que cambió fue cuánto cuesta renderizar cada página,
+> y con eso el punto de saturación se movió de más de 500 usuarios a 350.
+
+Esto convierte el aligeramiento de páginas en una **estrategia de capacidad**, no solo en una
+mejora de experiencia. Y es un análisis de sensibilidad en el sentido estricto de la Cátedra
+1.1: se varió un parámetro y se observó el desplazamiento del punto de operación. Detalle en
+`docs/hallazgos.md`, E-12.
 
 ### 6.2 El cuello de botella real: propagación de la contención al pool
 
@@ -407,7 +424,19 @@ pool es un recurso compartido, y la cola del bloqueo lo acapara.
 Esto explica que la mediana se mantenga sana (~13 ms) mientras el p(95) se va a segundos: la
 mayoría de las peticiones pasa bien y una cola larga queda atrapada.
 
-Se agregó la métrica `espera_conexion_segundos` para confirmarlo en la próxima ronda.
+**Confirmado el 17 de noviembre.** La cola sobre el pool se midió directamente:
+
+| Usuarios | Peticiones esperando conexión |
+|---|---|
+| 100 | 4 |
+| 200 | **40** |
+| 350 | **222** |
+
+Con 350 usuarios hay **222 peticiones encoladas esperando una de las 10 conexiones**: una cola
+22 veces más larga que el pool completo. El crecimiento es explosivo —4, 40, 222— y acompaña
+a la CPU acercándose a su límite.
+
+El pool no es un detalle de configuración: **es el recurso que primero se agota**.
 
 ---
 

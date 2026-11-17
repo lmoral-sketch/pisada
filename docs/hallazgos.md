@@ -1087,3 +1087,112 @@ datos— **duplica el costo de la llamada al medio de pago**.
 No hay una configuración óptima para ambos: la base conviene cerca de la aplicación, y el
 medio de pago conviene cerca del usuario. Un comercio real en Chile resolvería esto
 desplegando en una región sudamericana, aceptando a cambio otras restricciones de proveedor.
+
+---
+
+## E-12 — El punto de saturación, alcanzado: el peso de las páginas lo determina
+
+**Fecha:** 17 de noviembre de 2026
+**Motivo:** un rediseño de la interfaz aumentó el peso de las páginas, y hubo que repetir
+todas las mediciones. El resultado fue mejor que el objetivo.
+
+### Lo que cambió en el sistema
+
+El rediseño agregó ilustraciones SVG por categoría y más estructura al home. **Sin agregar
+ninguna petición de red ni consulta a la base**: todo es marcado dentro del HTML que ya se
+servía. Lo único que creció es el trabajo de renderizado y el tamaño de la respuesta.
+
+| Página | Diseño anterior | Diseño actual |
+|---|---|---|
+| Home | 20 ms | **21 ms** |
+| Detalle de producto | 20 ms | **36 ms** |
+| Catálogo | 44 ms | **75 ms** |
+
+La jerarquía que el trabajo necesita no solo se conserva: **se acentúa**. El catálogo pasó de
+costar 2,2 veces el home a costar **3,6 veces**.
+
+### El resultado: saturación alcanzada
+
+| Usuarios | CPU (anterior) | **CPU (actual)** | Pool en espera, máximo |
+|---|---|---|---|
+| 25 | 9,2 % | 10,4 % | 4 |
+| 50 | 16,3 % | 17,8 % | 4 |
+| 100 | 28,2 % | 31,8 % | 4 |
+| 200 | 52,6 % | 61,3 % | **40** |
+| **350** | 76,1 % | **96,6 %** | **222** |
+
+**Con el diseño anterior el punto de saturación no se alcanzaba** y hubo que proyectarlo en
+~503 usuarios, declarándolo explícitamente como estimación. Con las páginas más pesadas, la
+saturación llega **dentro del rango medible**: 96,6 % de utilización a 350 usuarios.
+
+> **El punto de saturación ya no es una proyección. Es una medición.**
+
+### Efecto sobre el tiempo de respuesta
+
+| Escenario | p(95) anterior | **p(95) actual** | Error |
+|---|---|---|---|
+| Baja, 5 VU | 37,65 ms | 54,03 ms | 0,00 % |
+| Normal, 25 VU | 36,12 ms | **35,30 ms** | 0,00 % |
+| **Pico, 350 VU** | 118,72 ms | **1.560 ms** | 0,01 % |
+
+Con 25 usuarios el sistema **no acusa el cambio**: 35,30 ms frente a 36,12 ms. Con 350, el
+p(95) se multiplica por **13**.
+
+Es la firma de un sistema que cruza su punto de saturación: hasta cierto nivel de carga el
+trabajo extra se absorbe sin consecuencias, y pasado ese punto la degradación es abrupta.
+Coincide con lo que predice la teoría de colas: `W = 1/(μ(1−ρ))` crece de forma hiperbólica
+cuando `ρ → 1`.
+
+**El throughput confirma la saturación:** 29,51 req/s frente a 31,48 del diseño anterior. Con
+páginas más caras el sistema atiende **menos** peticiones por segundo, aunque haya más
+usuarios pidiendo. El servidor dejó de poder seguir el ritmo.
+
+### La hipótesis del pool, CONFIRMADA
+
+El experimento E-04 planteó que la saturación se propaga al pool de conexiones, pero solo
+pudo inferirlo de que el p(99) se parecía al doble del tiempo límite. Ahora se mide directo:
+
+| Usuarios | Peticiones esperando conexión |
+|---|---|
+| 100 | 4 |
+| 200 | **40** |
+| 350 | **222** |
+
+Con 350 usuarios hay **222 peticiones encoladas esperando una de las 10 conexiones del pool**.
+La cola es 22 veces más larga que el pool completo.
+
+**Esto confirma el hallazgo central del trabajo.** El pool no es un detalle de configuración:
+es el recurso que primero se agota, y su cola crece de forma explosiva —de 4 a 40 a 222— en
+cuanto la CPU se acerca a su límite.
+
+### La conclusión que esto habilita
+
+> **El peso de las páginas determina el punto de saturación.**
+
+Es el mismo sistema, el mismo hardware, el mismo generador de carga y los mismos escenarios.
+Lo único que cambió fue cuánto trabajo cuesta renderizar cada página. Y con eso, el punto en
+que el sistema se satura se movió desde **más allá de 500 usuarios hasta 350**.
+
+Dicho de otro modo: **aligerar las páginas es una estrategia de capacidad**, no solo una
+mejora de experiencia. Una página un 70 % más pesada no cuesta un 70 % más de usuarios
+soportados: cuesta mucho más, porque la degradación cerca de la saturación no es lineal.
+
+Es, además, un **análisis de sensibilidad** en el sentido estricto de la Cátedra 1.1: se
+varió un parámetro del sistema y se observó el desplazamiento del punto de operación.
+
+### Un problema de método detectado
+
+El escenario de carga baja arrojó un p(95) de **54,03 ms**, peor que los 35,30 ms de la carga
+sostenida, que tiene **cinco veces más usuarios**. Eso no tiene sentido físico.
+
+La causa es estadística: `baja.js` genera solo **235 peticiones**, de modo que el p(95) se
+calcula sobre unas 12 muestras en la cola. Un par de peticiones lentas —el primer acceso al
+pool, la primera compilación de una consulta en PostgreSQL— mueven el percentil completo.
+`normal.js` genera **3.112** peticiones, y ahí el percentil es estable.
+
+**Consecuencia:** para la línea base debe usarse la **mediana** (20,02 ms, consistente con los
+21 ms medidos directamente), no el p(95). Se declara en lugar de reportar un percentil que la
+cantidad de muestras no sostiene.
+
+Es el mismo error de fondo que el experimento E-04: **conclusiones sacadas de pocas muestras**.
+Esta vez se detectó antes de escribirlo en el informe.

@@ -120,7 +120,7 @@ def guardar(nombre, lineas):
 
 def grafico_utilizacion():
     vu = [25, 50, 100, 200, 350]
-    cpu = [9.2, 16.3, 28.2, 52.6, 76.1]
+    cpu = [10.4, 17.8, 31.8, 61.3, 96.6]
 
     s = lienzo(680, 380,
                'Utilizacion de CPU frente a usuarios concurrentes',
@@ -133,7 +133,7 @@ def grafico_utilizacion():
     s.append(f'<line x1="{x0}" y1="{y0}" x2="{x0+an}" y2="{y0}" stroke="{SERIE_B}" '
              f'stroke-width="1.5" stroke-dasharray="5 4"/>')
     s.append(f'<text x="{x0+an-4}" y="{y0-6}" font-size="10" fill="{SERIE_B}" '
-             f'text-anchor="end">saturacion (100%), proyectada hacia ~503 VU</text>')
+             f'text-anchor="end">saturacion (100%) — ALCANZADA a 350 VU</text>')
 
     s.append(f'<text x="{x0+an/2:.0f}" y="{y0+al+40:.0f}" font-size="10" fill="{SUAVE}" '
              f'text-anchor="middle">usuarios virtuales concurrentes</text>')
@@ -146,7 +146,7 @@ def grafico_utilizacion():
 
 def grafico_cpu_por_usuario():
     vu = [25, 50, 100, 200, 350]
-    por_usuario = [0.368, 0.326, 0.282, 0.263, 0.217]
+    por_usuario = [0.416, 0.356, 0.318, 0.307, 0.276]
 
     s = lienzo(680, 380,
                'CPU consumida POR usuario frente a usuarios concurrentes',
@@ -168,14 +168,14 @@ def grafico_cpu_por_usuario():
 
 def grafico_percentiles():
     escenarios = ['Baja\n5 VU', 'Normal\n25 VU', 'Pico\n350 VU']
-    p95 = [37.65, 36.12, 118.72]
-    p99 = [46.72, 45.90, 199.01]
+    p95 = [54.03, 35.30, 1560.0]
+    p99 = [118.61, 48.34, 2330.0]
 
     s = lienzo(680, 380,
                'Percentiles de tiempo de respuesta por escenario',
-               'El sistema no se degrada hasta los 25 usuarios; recien en el pico el p(95) se triplica.')
+               'Escala logaritmica no usada: el pico supera al resto en mas de un orden de magnitud.')
     x0, y0, an, al = 70, 78, 560, 240
-    ymax = 220
+    ymax = 2500
     ejes(s, x0, y0, an, al, ymax, ['Baja (5)', 'Normal (25)', 'Pico (350)'],
          'Tiempo de respuesta (ms)')
 

@@ -1,35 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" width="680" height="380" font-family="Aptos, Montserrat, Arial, Helvetica, sans-serif">
 <rect width="680" height="380" fill="#ffffff"/>
 <text x="24" y="30" font-size="16" font-weight="600" fill="#1a1a1a">Percentiles de tiempo de respuesta por escenario</text>
-<text x="24" y="50" font-size="11" fill="#8a8a8a">El sistema no se degrada hasta los 25 usuarios; recien en el pico el p(95) se triplica.</text>
+<text x="24" y="50" font-size="11" fill="#8a8a8a">Escala logaritmica no usada: el pico supera al resto en mas de un orden de magnitud.</text>
 <line x1="70" y1="318.0" x2="630" y2="318.0" stroke="#e0e0e0" stroke-width="1"/>
 <text x="62" y="322.0" font-size="10" fill="#8a8a8a" text-anchor="end">0</text>
 <line x1="70" y1="270.0" x2="630" y2="270.0" stroke="#e0e0e0" stroke-width="1"/>
-<text x="62" y="274.0" font-size="10" fill="#8a8a8a" text-anchor="end">44</text>
+<text x="62" y="274.0" font-size="10" fill="#8a8a8a" text-anchor="end">500</text>
 <line x1="70" y1="222.0" x2="630" y2="222.0" stroke="#e0e0e0" stroke-width="1"/>
-<text x="62" y="226.0" font-size="10" fill="#8a8a8a" text-anchor="end">88</text>
+<text x="62" y="226.0" font-size="10" fill="#8a8a8a" text-anchor="end">1000</text>
 <line x1="70" y1="174.0" x2="630" y2="174.0" stroke="#e0e0e0" stroke-width="1"/>
-<text x="62" y="178.0" font-size="10" fill="#8a8a8a" text-anchor="end">132</text>
+<text x="62" y="178.0" font-size="10" fill="#8a8a8a" text-anchor="end">1500</text>
 <line x1="70" y1="126.0" x2="630" y2="126.0" stroke="#e0e0e0" stroke-width="1"/>
-<text x="62" y="130.0" font-size="10" fill="#8a8a8a" text-anchor="end">176</text>
+<text x="62" y="130.0" font-size="10" fill="#8a8a8a" text-anchor="end">2000</text>
 <line x1="70" y1="78.0" x2="630" y2="78.0" stroke="#e0e0e0" stroke-width="1"/>
-<text x="62" y="82.0" font-size="10" fill="#8a8a8a" text-anchor="end">220</text>
+<text x="62" y="82.0" font-size="10" fill="#8a8a8a" text-anchor="end">2500</text>
 <text x="26" y="198" font-size="10" fill="#8a8a8a" text-anchor="middle" transform="rotate(-90 26 198)">Tiempo de respuesta (ms)</text>
 <text x="70.0" y="336" font-size="10" fill="#8a8a8a" text-anchor="middle">Baja (5)</text>
 <text x="350.0" y="336" font-size="10" fill="#8a8a8a" text-anchor="middle">Normal (25)</text>
 <text x="630.0" y="336" font-size="10" fill="#8a8a8a" text-anchor="middle">Pico (350)</text>
-<rect x="117.3" y="276.9" width="46" height="41.1" fill="#004EAA" rx="2"/>
-<text x="140.3" y="270.9" font-size="10" font-weight="600" fill="#004EAA" text-anchor="middle">38</text>
-<rect x="167.3" y="267.0" width="46" height="51.0" fill="#00B6ED" rx="2"/>
-<text x="190.3" y="261.0" font-size="10" font-weight="600" fill="#00B6ED" text-anchor="middle">47</text>
-<rect x="304.0" y="278.6" width="46" height="39.4" fill="#004EAA" rx="2"/>
-<text x="327.0" y="272.6" font-size="10" font-weight="600" fill="#004EAA" text-anchor="middle">36</text>
-<rect x="354.0" y="267.9" width="46" height="50.1" fill="#00B6ED" rx="2"/>
-<text x="377.0" y="261.9" font-size="10" font-weight="600" fill="#00B6ED" text-anchor="middle">46</text>
-<rect x="490.7" y="188.5" width="46" height="129.5" fill="#004EAA" rx="2"/>
-<text x="513.7" y="182.5" font-size="10" font-weight="600" fill="#004EAA" text-anchor="middle">119</text>
-<rect x="540.7" y="100.9" width="46" height="217.1" fill="#00B6ED" rx="2"/>
-<text x="563.7" y="94.9" font-size="10" font-weight="600" fill="#00B6ED" text-anchor="middle">199</text>
+<rect x="117.3" y="312.8" width="46" height="5.2" fill="#004EAA" rx="2"/>
+<text x="140.3" y="306.8" font-size="10" font-weight="600" fill="#004EAA" text-anchor="middle">54</text>
+<rect x="167.3" y="306.6" width="46" height="11.4" fill="#00B6ED" rx="2"/>
+<text x="190.3" y="300.6" font-size="10" font-weight="600" fill="#00B6ED" text-anchor="middle">119</text>
+<rect x="304.0" y="314.6" width="46" height="3.4" fill="#004EAA" rx="2"/>
+<text x="327.0" y="308.6" font-size="10" font-weight="600" fill="#004EAA" text-anchor="middle">35</text>
+<rect x="354.0" y="313.4" width="46" height="4.6" fill="#00B6ED" rx="2"/>
+<text x="377.0" y="307.4" font-size="10" font-weight="600" fill="#00B6ED" text-anchor="middle">48</text>
+<rect x="490.7" y="168.2" width="46" height="149.8" fill="#004EAA" rx="2"/>
+<text x="513.7" y="162.2" font-size="10" font-weight="600" fill="#004EAA" text-anchor="middle">1560</text>
+<rect x="540.7" y="94.3" width="46" height="223.7" fill="#00B6ED" rx="2"/>
+<text x="563.7" y="88.3" font-size="10" font-weight="600" fill="#00B6ED" text-anchor="middle">2330</text>
 <rect x="70" y="353" width="14" height="3" fill="#004EAA"/>
 <text x="90" y="362" font-size="11" fill="#1a1a1a">p(95)</text>
 <rect x="127.0" y="353" width="14" height="3" fill="#00B6ED"/>

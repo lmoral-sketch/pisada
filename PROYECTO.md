@@ -129,19 +129,21 @@ inventario.
 
 | Escenario | VU | p(95) | p(99) | Throughput | Error |
 |---|---|---|---|---|---|
-| Baja | 5 | 37,65 ms | 46,72 ms | — | 0,00 % |
-| Normal | 25 | 36,12 ms | 45,90 ms | 4,88 req/s | 0,00 % |
-| Pico | 350 | 118,72 ms | 199,01 ms | 31,48 req/s | 0,01 % |
+| Baja | 5 | 54,03 ms* | 118,61 ms* | — | 0,00 % |
+| Normal | 25 | 35,30 ms | 48,34 ms | 4,94 req/s | 0,00 % |
+| Pico | 350 | **1.560 ms** | 2.330 ms | 29,51 req/s | 0,01 % |
+
+\* Solo 235 peticiones: el percentil no es confiable. Usar la mediana, 20,02 ms.
 
 ### Curva de utilización
 
 | VU | CPU | Pool en espera (máx) | CPU por usuario |
 |---|---|---|---|
-| 25 | 9,2 % | 0 | 0,368 % |
-| 50 | 16,3 % | 0 | 0,326 % |
-| 100 | 28,2 % | 0 | 0,282 % |
-| 200 | 52,6 % | 4 | 0,263 % |
-| 350 | 76,1 % | **26** | **0,217 %** |
+| 25 | 10,4 % | 4 | 0,416 % |
+| 50 | 17,8 % | 4 | 0,356 % |
+| 100 | 31,8 % | 4 | 0,318 % |
+| 200 | 61,3 % | **40** | 0,307 % |
+| 350 | **96,6 %** | **222** | **0,276 %** |
 
 **La CPU por usuario decrece**: cada usuario pasa proporcionalmente más tiempo esperando que
 siendo atendido. Es la firma del encolamiento, y aparece **antes** de que la latencia se
