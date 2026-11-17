@@ -529,3 +529,14 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   - La repetición 3 de pool 20 se descartó porque Docker se había detenido y la aplicación devolvió HTTP 500 al 100 % de las peticiones; pool 20 queda con n=2. La fila se comentó en el TSV en lugar de borrarla.
   - No se explica por qué la misma configuración dio 916 ms el 16 de noviembre y ~150 ms el 17. Se declara como pregunta abierta con tres hipótesis sin discriminar.
 - **Propuestas no aprobadas:** ninguna.
+
+## 2026-11-17 | agente: Claude Code (claude-opus-5)
+
+- **Prompt:** «revisa el guion e indica detalladamente que muestra cada uno al final presentaremos todos los integrantes, ojala que sea equitativo»
+- **Cambios:**
+  - `docs/guion-video.md` reescrito completo. Reparto nuevo: cinco bloques de 2:00 (uno por integrante) más un cierre coral de 2:00 en el que los cinco intervienen, uno por cada error metodológico. Antes el reparto iba de 2 a 3,5 minutos por persona; ahora son ≈2:24 para todos.
+  - Cada bloque incluye una tabla «qué tienes en pantalla, en orden» con marcas de tiempo, el archivo o pestaña exacta y qué señalar con el cursor.
+  - **Tres correcciones de contenido que habrían costado puntos:** (1) el guion decía que NO se integró un sandbox de pago, cuando Transbank Webpay Plus está integrado y verificado de extremo a extremo (§8.5); (2) presentaba el pool de conexiones como cuello de botella confirmado, refutado en E-16; (3) presentaba la estimación del COUNT de la paginación como propuesta pendiente, refutada en E-14.
+  - `docs/presentacion.html`: lámina 8 pasa de «No era el recurso obvio» a «Tres colas encadenadas» sin afirmar causalidad; lámina 9 marca las dos propuestas refutadas con tachado; lámina 10 pasa de cuatro a cinco errores; lámina 11 cambia la cita de cierre.
+- **Defectos conocidos:** las marcas de tiempo por segmento dentro de cada bloque son estimaciones de lectura, no medidas; el guion recomienda que cada integrante cronometre una pasada en seco.
+- **Propuestas no aprobadas:** ninguna.

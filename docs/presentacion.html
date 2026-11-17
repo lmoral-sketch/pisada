@@ -264,15 +264,16 @@
 
 <!-- 8 ───────────────────────────────── CUELLO DE BOTELLA -->
 <section class="lamina">
-  <div class="etiqueta">Bloque 7 · Cuellos de botella</div>
-  <h2>No era el recurso obvio</h2>
+  <div class="etiqueta">Bloque 2 · Cuellos de botella</div>
+  <h2>Tres colas encadenadas</h2>
   <ul>
-    <li>Las transacciones que esperan el bloqueo <strong>retienen su conexión</strong></li>
-    <li>El pool de 10 conexiones <strong>se agota</strong></li>
-    <li>Todo el sitio se degrada, <strong>incluso páginas sin relación</strong></li>
+    <li><strong>El bloqueo de stock:</strong> una fila, atendida de a una</li>
+    <li><strong>El pool de conexiones:</strong> 222 peticiones esperando con 350 usuarios</li>
+    <li><strong>El event loop de Node:</strong> un solo hilo, una sola CPU</li>
   </ul>
   <p class="cita" style="margin-top:4vh">
-    Un recurso serializado contagia su saturación a un recurso compartido.
+    La cola del pool está medida. Que agrandarlo ayude, lo medimos, lo publicamos
+    y al repetirlo se cayó.
   </p>
   <div class="numero">08</div><div class="marca">Pisada · INFB8091</div>
   <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
@@ -280,12 +281,14 @@
 
 <!-- 9 ───────────────────────────────── MEJORAS -->
 <section class="lamina">
-  <div class="etiqueta">Bloque 7 · Propuestas</div>
-  <h2>Cada una con su evidencia</h2>
+  <div class="etiqueta">Bloque 5 · Propuestas</div>
+  <h2>Dos refutadas, tres en pie</h2>
   <ul>
-    <li><strong>Eliminar el COUNT de la paginación.</strong> Cuesta 4,55 ms, el 54 % del listado, sin devolver una fila.</li>
+    <li><s>Estimar el COUNT de la paginación.</s> <strong>Refutada:</strong> los 4,55 ms son costo fijo, no cómputo.</li>
+    <li><s>Agrandar el pool de 10 a 20.</s> <strong>Refutada:</strong> no se reprodujo al repetir.</li>
     <li><strong>No retener la conexión</strong> mientras se espera el bloqueo.</li>
     <li><strong>Repartir el inventario</strong> de los productos populares en varias filas.</li>
+    <li><strong>Índice de texto</strong> para la búsqueda por nombre.</li>
   </ul>
   <div class="numero">09</div><div class="marca">Pisada · INFB8091</div>
   <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
@@ -293,13 +296,14 @@
 
 <!-- 10 ──────────────────────────────── HONESTIDAD -->
 <section class="lamina">
-  <div class="etiqueta">Bloque 8 · Lo que normalmente no se muestra</div>
-  <h2>Cuatro errores propios</h2>
+  <div class="etiqueta">Bloque 6 · Lo que normalmente no se muestra</div>
+  <h2>Cinco errores propios</h2>
   <ul>
     <li>El generador <strong>no ejercitaba el checkout</strong> y reportaba tiempos excelentes</li>
     <li>El inventario <strong>se agotó</strong> a mitad de un experimento</li>
     <li>El instrumento <strong>medía distinto</strong> en cada estrategia</li>
     <li>Los resultados de contención <strong>no son reproducibles</strong></li>
+    <li>Publicamos como confirmado un hallazgo que <strong>no resistió la repetición</strong></li>
   </ul>
   <div class="numero">10</div><div class="marca">Pisada · INFB8091</div>
   <img class="escudo" src="assets/logo-utem-escudo.png" alt="UTEM">
@@ -308,9 +312,9 @@
 <!-- 11 ──────────────────────────────── CIERRE -->
 <section class="lamina" style="justify-content:center">
   <p class="cita" style="font-size:2.6vw">
-    Con la evidencia disponible no podemos afirmar cuál estrategia de concurrencia es mejor.
+    Una diferencia grande no es una diferencia robusta.
     <br><br>
-    Preferimos decirlo antes que elegir la corrida que nos convenía.
+    Lo aprendimos refutando una conclusión nuestra que ya estaba escrita.
   </p>
   <p class="grande" style="margin-top:5vh;font-size:1.5vw">Gracias.</p>
   <div class="numero">11</div><div class="marca">Pisada · INFB8091</div>
