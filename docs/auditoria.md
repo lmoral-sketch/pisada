@@ -4,7 +4,13 @@ Revisión punto por punto del enunciado *Trabajo Semestre 2 - 2026* contra el es
 proyecto.
 
 **Fecha de la auditoría:** 15 de noviembre de 2026
-**Entrega:** lunes 16 de noviembre
+**Entrega:** miércoles 19 de noviembre (plazo extendido)
+
+> ⚠️ **Este documento es un registro con fecha, no el estado actual.** Varias brechas que
+> aquí aparecen abiertas se cerraron después del 15 de noviembre. El estado vigente está en
+> la sección **«Estado al 17 de noviembre»**, al final. En particular: **B-01 se cerró**
+> —Transbank Webpay Plus está integrado y verificado— y **B-07 también** —la identidad visual
+> de UTEM está aplicada—, aunque sus textos de más abajo digan lo contrario.
 
 **Leyenda:** ✅ cumplido · ⚠️ parcial · ❌ falta · 👤 depende del equipo
 
@@ -233,3 +239,61 @@ Cosas que están **por encima** de lo pedido y que vale la pena mencionar:
 5. **Reconocer que un resultado no es concluyente** en vez de elegir la corrida conveniente.
 6. **Análisis de sensibilidad involuntario**: el mismo sistema en local y en Render free, con
    puntos de saturación que difieren en un orden de magnitud.
+
+---
+
+# Estado al 17 de noviembre de 2026
+
+Revisión del cumplimiento dos días antes del plazo extendido. Esta es la sección vigente;
+lo anterior quedó como registro fechado.
+
+## Lo que se cerró después del 15 de noviembre
+
+| Brecha | Cómo se cerró |
+|---|---|
+| **B-01** Sandbox de medio de pago | **Transbank Webpay Plus** integrado en ambiente de integración y verificado de extremo a extremo: transacción creada, pago con tarjeta de prueba, autenticación bancaria, confirmación y pedido creado. Convive con el checkout propio, que es el que se somete a carga, por la razón medida de §8.5. El texto de B-01 más arriba quedó obsoleto el mismo día que se escribió. |
+| **B-07** Identidad visual UTEM | Aplicada al informe (portada), a la presentación del video y al sitio: paleta institucional con predominio del celeste de la Facultad de Ingeniería (`#00B6ED`), escudo y logotipo horizontal en `docs/assets/`. Documentado en `docs/identidad-utem.md`. |
+| **B-02** Memoria e I/O | Memoria medida y analizada (§5.4): residente estable en ~295 MB sobre 512 MB, sin fuga, más latencia del event loop. I/O de disco queda declarado como no medido con justificación. |
+| **B-03** Datos de experiencia de usuario | Recolectados con el protocolo de dos sesiones (§5.7). |
+| **B-06** Nombres de los integrantes | Registrados en los tres documentos. |
+
+## Lo que sigue abierto
+
+| # | Brecha | Gravedad | Quién puede cerrarla |
+|---|---|---|---|
+| **1** | **El video no está grabado** | 🔴 **Impide entregar** | El equipo. Guion listo en `docs/guion-video.md`, reparto de 2:00 por integrante más cierre coral |
+| **2** | **Faltan las capturas del panel de GA4** | 🟡 Entregable explícito | Solo quien tenga la sesión de Google de la propiedad. ~15 minutos: vista de eventos, el evento propio `compra_sin_stock`, y la pantalla de permisos mostrando el acceso de `j.aranda@utem.cl` |
+| **3** | El formulario de registro de prompts del profesor | 🟡 Declarado en §8.6 | Revisar Canvas. Si apareció, trasladar las 24 entradas de `logs/prompts.md` a ese formato |
+| **4** | No hay pruebas automatizadas | 🟢 Declarado | La verificación fue manual y sistemática (regla 15 de `AGENTS.md`). Queda declarado, no disimulado |
+| **5** | I/O de disco no medido | 🟢 Declarado | Decisión consciente: la base corre en contenedor con límites de CPU y memoria, no de I/O, y el cuello observado no era de disco |
+
+## Diferencia importante entre las dos listas
+
+Las brechas 4 y 5 **no son incumplimientos**: son limitaciones declaradas en el informe con su
+justificación. El enunciado pide analizar CPU, memoria e I/O, y el informe dice explícitamente
+qué se midió y qué no, en lugar de dejar un hueco.
+
+La brecha 2 **sí es un entregable textual** del enunciado («configuración de GA4 documentada
+con capturas»): la configuración está documentada en `docs/despliegue.md`, pero sin imágenes.
+
+La brecha 1 es la única que impide entregar.
+
+## Cumplimiento por bloque, al 17 de noviembre
+
+| Bloque | Cumplimiento |
+|---|---|
+| Fase 1.1 — Sitio funcional | **9 de 9** |
+| Fase 1.2 — Generadores de carga | **3 de 3** (más un escenario no exigido) |
+| Fase 2 — Análisis de desempeño | **9 de 9** |
+| Entregables | **8 de 9** — falta el video |
+| Requisitos del agente de IA | **12 de 13** — sin pruebas automatizadas |
+
+## Lo que se agregó por auditoría propia, no por el enunciado
+
+Entre el 15 y el 17 de noviembre, una auditoría de **calidad** (no de cumplimiento) detectó
+que el hallazgo presentado como principal del trabajo —el tamaño del pool de conexiones— se
+sostenía en una sola corrida por configuración. Se repitió el experimento y **el hallazgo
+resultó falso** (E-16). Todo se revirtió y el caso quedó escrito como el quinto error
+metodológico del informe.
+
+Eso no lo pedía el enunciado. Está en `docs/auditoria-final.md`.
