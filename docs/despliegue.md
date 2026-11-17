@@ -147,8 +147,19 @@ En **Environment**, agregar:
 |---|---|
 | `DATABASE_URL` | La cadena de Neon |
 | `NEXT_PUBLIC_GA_ID` | El `G-XXXXXXXXXX` de GA4 |
-| `PG_POOL_MAX` | `5` |
+| `PG_POOL_MAX` | `10` |
 | `ESTRATEGIA_STOCK` | `pesimista` |
+
+> ⚠️ **El valor que manda es el del panel de Render, no el de `render.yaml`.** Render solo lee
+> `render.yaml` cuando el servicio se crea como *Blueprint*; este se creó como *Web Service*,
+> así que las variables salen de la pestaña **Environment**. Si el panel y el repositorio no
+> coinciden, **gana el panel**.
+>
+> Esto importa para el informe: `PG_POOL_MAX` es un parámetro de capacidad, y §7.5 documenta
+> que una medición sobre este parámetro resultó no reproducible. El valor vigente en el
+> proyecto es **10**. Conviene confirmar en el panel de Render que dice 10 antes de entregar,
+> porque durante el desarrollo estuvo puesto en 20 a raíz del hallazgo que después se
+> refutó.
 
 > `NEXT_PUBLIC_GA_ID` se incrusta en el bundle del cliente **durante la compilación**, no en
 > ejecución. Si se agrega después de desplegar, hay que forzar un nuevo despliegue para que
