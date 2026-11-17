@@ -25,15 +25,16 @@ completa, que queda en `Imágenes/Capturas de pantalla`.
 
 ## Enlaces directos
 
-Pegalos en Chrome con tu cuenta **lmoral@utem.cl** activa (ojo: tu Chrome estaba abierto con
-`lucasangelmora@gmail.com`, que no tiene Analytics; el `authuser=1` de estos enlaces ya elige
-la de UTEM):
+Pegalos en Chrome con tu cuenta **lmoral@utem.cl** activa (el `authuser=1` ya la elige):
 
 | Captura | Enlace |
 |---|---|
-| 1 y 2 | `https://analytics.google.com/analytics/web/?authuser=1#/a415179584p562888744/admin/streams/table/16283906970` |
-| 3 | `https://analytics.google.com/analytics/web/?authuser=1#/a415179584p562888744/admin/suiteusermanagement/property` |
-| 4 y 5 | `https://analytics.google.com/analytics/web/?authuser=1#/a415179584p562888744/reports/intelligenthome` → *Informes → Participación → Eventos* |
+| **1** — flujo de datos | `https://analytics.google.com/analytics/web/?authuser=1#/a415179584p562888744/admin/streams/table/16283906970` |
+| **2** — acceso del profesor | `https://analytics.google.com/analytics/web/?authuser=1#/a415179584p562888744/admin/suiteusermanagement/property` |
+| **3 y 4** — eventos | `https://analytics.google.com/analytics/web/?authuser=1#/a415179584p562888744/reports/intelligenthome` y después seguir los pasos de abajo |
+
+> ✅ **Las capturas 1 y 2 ya están hechas** (17 de noviembre). Faltan la 3 y la 4, que salen
+> las dos de la misma pantalla.
 
 ---
 
@@ -71,10 +72,35 @@ que se hizo. Si solo sacaras una captura, saca esta.
 
 ## 3. `03-eventos-del-embudo.png` — los eventos registrados
 
-**Dónde:** **Informes** → **Participación** → **Eventos**.
+**Esta es la que no encontraste. El problema es que está en Informes, no en Administrar.**
 
-**Qué tiene que salir:** la tabla de eventos con sus conteos, donde se vean los cuatro del
-embudo:
+### Cómo llegar, click por click
+
+1. Abre `https://analytics.google.com/analytics/web/?authuser=1#/a415179584p562888744/reports/intelligenthome`
+2. Si te quedó abierto el panel blanco de Administrar, **ciérralo con la X** de arriba a la
+   izquierda (la misma X que se ve en tus dos capturas anteriores).
+3. Mira la **barra de iconos estrecha del borde izquierdo**, la que tiene el logo de Analytics
+   arriba. De arriba hacia abajo hay cuatro iconos:
+
+   | Icono | Qué es |
+   |---|---|
+   | 🏠 casa | Página principal |
+   | 📊 barras | **Informes** ← este |
+   | ◔ burbujas | Explorar |
+   | ⊚ diana | Publicidad |
+
+4. Click en el **segundo icono, el de barras (Informes)**.
+5. Se abre un menú a la izquierda. Busca **«Ciclo de vida»** y dentro **«Interacción»**
+   (en algunas cuentas aparece como **«Participación»**).
+6. Click en **«Eventos»**.
+
+> **Atajo si te pierdes:** arriba hay una barra de búsqueda que dice *"Prueba a buscar..."*.
+> Escribe **`eventos`** y en los resultados elige el informe «Eventos». Llegas igual.
+
+### Qué tiene que salir en la imagen
+
+Una tabla con la columna **«Nombre del evento»** y al lado el **recuento de eventos**. Tienen
+que verse estos cuatro:
 
 | Evento | Cuándo se dispara |
 |---|---|
@@ -83,42 +109,38 @@ embudo:
 | `begin_checkout` | Al pulsar pagar |
 | `purchase` | Al confirmarse el pedido |
 
-**Si la tabla sale con pocos eventos o vacía:** usa **Informes → Tiempo real** y navega el
-sitio en otra pestaña mientras capturas. Los eventos aparecen en segundos. Es mejor una captura
-de Tiempo real con datos que una de Eventos vacía.
+Van a aparecer también otros que GA4 agrega solo (`page_view`, `session_start`,
+`first_visit`, `scroll`, `user_engagement`). **Eso está bien, no los escondas**: muestran que
+la medición mejorada está activa.
+
+> Tu propiedad ya tiene **114 eventos y 6 compras** registrados, así que la tabla va a salir
+> con datos. No necesitas Tiempo real.
 
 ---
 
 ## 4. `04-evento-propio.png` — `compra_sin_stock`
 
-**Dónde:** misma pantalla de **Eventos**, pero con el evento `compra_sin_stock` visible en la
-lista. Puedes usar el buscador de la tabla para filtrarlo y que quede destacado.
+**Sale de la misma pantalla que la 3.** No tienes que ir a ningún otro lado.
 
-**Por qué esta:** `compra_sin_stock` **no es un evento estándar de GA4**, lo definimos
-nosotros. Es lo que explica por qué la conversión cae bajo carga —el inventario se agota— en
-vez de dejar una caída sin causa aparente en el informe.
+### Cómo
 
-Para generarlo si no existe todavía: en el sitio, entra a un producto, elige una talla
-**agotada**... si la interfaz no te deja, agrega una talla al carrito, espera a que otra
-compra la agote, o simplemente captura la lista de eventos tal como esté y menciónalo en el
-video.
+1. Quédate en el informe **Eventos** de la captura anterior.
+2. Sobre la tabla hay un **buscador pequeño** (una lupa con el texto *"Buscar..."*).
+3. Escribe **`compra_sin_stock`**.
+4. La tabla queda con esa sola fila. **Esa es la captura.**
 
----
+### Si no aparece
 
-## Si GA4 no muestra datos
+Significa que todavía ningún usuario intentó comprar algo agotado. Para generarlo:
 
-GA4 demora hasta 24–48 horas en consolidar los informes estándar. **Tiempo real** funciona al
-instante.
+1. Abre `https://pisada.onrender.com/catalogo` en otra pestaña
+2. Entra a varios productos hasta encontrar uno con **tallas tachadas**
+3. Intenta agregar esa talla al carrito
+4. Vuelve a GA4 → **Informes → Tiempo real** y espera unos segundos: ahí aparece al instante
 
-Para las capturas 3 y 4, si los informes estándar están vacíos:
-
-1. Abre el sitio en una pestaña y GA4 → **Tiempo real** en otra
-2. Navega: home → catálogo → ficha → agregar al carrito → pagar
-3. Los eventos van apareciendo en Tiempo real
-4. Captura esa pantalla
-
-En el video, Bianca ya tiene la frase prevista para este caso: *"demora en consolidar"* y
-muestra Tiempo real.
+Si aun así no lo logras, **captura la tabla de eventos completa sin filtrar** y avísame: lo
+declaramos en el informe. Es preferible decir que el evento está implementado y no alcanzó a
+dispararse, a dejar un hueco.
 
 ---
 
