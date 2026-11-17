@@ -9,7 +9,7 @@
 import Link from 'next/link';
 import type { ProductoListado } from '@/lib/catalogo';
 import { precio } from '@/lib/formato';
-import { IlustracionProducto } from './marca';
+import { IlustracionProducto } from './ilustraciones';
 
 export function TarjetaProducto({ producto }: { producto: ProductoListado }) {
   const agotado = producto.stock_total === 0;
@@ -26,9 +26,10 @@ export function TarjetaProducto({ producto }: { producto: ProductoListado }) {
         style={{ backgroundColor: `${principal}14` }}
       >
         <IlustracionProducto
+          categoria={producto.categoria_slug}
           hex={principal}
           semilla={producto.id}
-          className="h-32 w-auto transition-transform duration-300 group-hover:scale-105"
+          className="h-36 w-auto transition-transform duration-300 group-hover:scale-105"
         />
 
         {agotado && (

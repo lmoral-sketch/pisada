@@ -18,6 +18,8 @@ export type ProductoListado = {
   nombre: string;
   marca: string;
   categoria: string;
+  /** Slug de la categoría. Define qué prenda se ilustra en la tarjeta. */
+  categoria_slug: string;
   genero: string;
   precio_clp: number;
   /** Suma de stock de todas sus variantes. Cero significa agotado. */
@@ -83,7 +85,7 @@ export type Facetas = {
 export async function obtenerDestacados(limite = 8): Promise<ProductoListado[]> {
   return consultar<ProductoListado>(
     'destacados',
-    `SELECT p.id, p.slug, p.nombre, m.nombre AS marca, c.nombre AS categoria,
+    `SELECT p.id, p.slug, p.nombre, m.nombre AS marca, c.nombre AS categoria, c.slug AS categoria_slug,
             p.genero, p.precio_clp,
             COALESCE(SUM(v.stock), 0)::int           AS stock_total,
             ARRAY_AGG(DISTINCT co.codigo_hex)        AS colores
@@ -93,7 +95,7 @@ export async function obtenerDestacados(limite = 8): Promise<ProductoListado[]> 
        LEFT JOIN variante v ON v.producto_id = p.id
        LEFT JOIN color    co ON co.id = v.color_id
       WHERE p.destacado
-      GROUP BY p.id, m.nombre, c.nombre
+      GROUP BY p.id, m.nombre, c.nombre, c.slug
       ORDER BY p.creado_en DESC
       LIMIT $1`,
     [limite],
@@ -157,7 +159,7 @@ export async function buscarProductos(
 
   const productos = await consultar<ProductoListado>(
     'catalogo_listado',
-    `SELECT p.id, p.slug, p.nombre, m.nombre AS marca, c.nombre AS categoria,
+    `SELECT p.id, p.slug, p.nombre, m.nombre AS marca, c.nombre AS categoria, c.slug AS categoria_slug,
             p.genero, p.precio_clp,
             COALESCE(SUM(v.stock), 0)::int    AS stock_total,
             ARRAY_AGG(DISTINCT co.codigo_hex) AS colores
@@ -167,7 +169,7 @@ export async function buscarProductos(
        LEFT JOIN variante v  ON v.producto_id = p.id
        LEFT JOIN color    co ON co.id = v.color_id
        ${donde}
-      GROUP BY p.id, m.nombre, c.nombre
+      GROUP BY p.id, m.nombre, c.nombre, c.slug
       ORDER BY p.id
       LIMIT $${valores.length + 1} OFFSET $${valores.length + 2}`,
     [...valores, porPagina, desplazamiento],
@@ -269,7 +271,7 @@ export async function obtenerRelacionados(
 ): Promise<ProductoListado[]> {
   return consultar<ProductoListado>(
     'producto_relacionados',
-    `SELECT p.id, p.slug, p.nombre, m.nombre AS marca, c.nombre AS categoria,
+    `SELECT p.id, p.slug, p.nombre, m.nombre AS marca, c.nombre AS categoria, c.slug AS categoria_slug,
             p.genero, p.precio_clp,
             COALESCE(SUM(v.stock), 0)::int    AS stock_total,
             ARRAY_AGG(DISTINCT co.codigo_hex) AS colores
@@ -279,7 +281,7 @@ export async function obtenerRelacionados(
        LEFT JOIN variante v  ON v.producto_id = p.id
        LEFT JOIN color    co ON co.id = v.color_id
       WHERE c.slug = $1 AND p.id <> $2
-      GROUP BY p.id, m.nombre, c.nombre
+      GROUP BY p.id, m.nombre, c.nombre, c.slug
       ORDER BY p.id
       LIMIT $3`,
     [categoriaSlug, excluirId, limite],

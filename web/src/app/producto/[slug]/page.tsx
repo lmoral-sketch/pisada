@@ -21,7 +21,7 @@ import { medirPagina } from '@/lib/instrumentar';
 import { precio, etiquetaCampo, valorCampo } from '@/lib/formato';
 import { TarjetaProducto } from '@/components/tarjeta-producto';
 import { SelectorVariante } from '@/components/selector-variante';
-import { IlustracionProducto } from '@/components/marca';
+import { IlustracionProducto } from '@/components/ilustraciones';
 
 export const dynamic = 'force-dynamic';
 
@@ -76,9 +76,10 @@ export default async function DetalleProducto({
             style={{ backgroundColor: `${[...porColor.values()][0]?.hex ?? '#d4d4d4'}14` }}
           >
             <IlustracionProducto
+              categoria={producto.categoria_slug}
               hex={[...porColor.values()][0]?.hex ?? '#d4d4d4'}
               semilla={producto.id}
-              className="h-56 w-auto"
+              className="h-64 w-auto"
             />
           </div>
           <div className="flex gap-3">
@@ -89,7 +90,12 @@ export default async function DetalleProducto({
                 className="flex h-20 w-20 items-center justify-center rounded-xl border border-neutral-200 dark:border-neutral-800"
                 style={{ backgroundColor: `${hex}1f` }}
               >
-                <IlustracionProducto hex={hex} semilla={producto.id} className="h-12 w-auto" />
+                <IlustracionProducto
+                  categoria={producto.categoria_slug}
+                  hex={hex}
+                  semilla={producto.id}
+                  className="h-14 w-auto"
+                />
               </div>
             ))}
           </div>
