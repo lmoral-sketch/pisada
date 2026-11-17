@@ -262,7 +262,7 @@ lo anterior quedó como registro fechado.
 | # | Brecha | Gravedad | Quién puede cerrarla |
 |---|---|---|---|
 | **1** | **El video no está grabado** | 🔴 **Impide entregar** | El equipo. Guion listo en `docs/guion-video.md`, reparto de 2:00 por integrante más cierre coral |
-| **2** | **Faltan las capturas del panel de GA4** | 🟡 Entregable explícito | Solo quien tenga la sesión de Google de la propiedad. ~15 minutos: vista de eventos, el evento propio `compra_sin_stock`, y la pantalla de permisos mostrando el acceso de `j.aranda@utem.cl` |
+| ~~2~~ | ~~Capturas del panel de GA4~~ | ✅ **Cerrada el 17 de noviembre** | Las cuatro están en `docs/assets/ga4/` y el informe las muestra en §3.1 |
 | **3** | El formulario de registro de prompts del profesor | 🟡 Declarado en §8.6 | Revisar Canvas. Si apareció, trasladar las 24 entradas de `logs/prompts.md` a ese formato |
 | **4** | No hay pruebas automatizadas | 🟢 Declarado | La verificación fue manual y sistemática (regla 15 de `AGENTS.md`). Queda declarado, no disimulado |
 | **5** | I/O de disco no medido | 🟢 Declarado | Decisión consciente: la base corre en contenedor con límites de CPU y memoria, no de I/O, y el cuello observado no era de disco |
@@ -286,6 +286,10 @@ La brecha 1 es la única que impide entregar.
 | Fase 1.2 — Generadores de carga | **3 de 3** (más un escenario no exigido) |
 | Fase 2 — Análisis de desempeño | **9 de 9** |
 | Entregables | **8 de 9** — falta el video |
+
+> Actualización del 17 de noviembre por la noche: las capturas de GA4 quedaron incorporadas,
+> incluido el evento propio `compra_sin_stock`, que hubo que **forzar** porque nunca se había
+> dado la condición que lo dispara. El procedimiento y lo que reveló están en §3.1 del informe.
 | Requisitos del agente de IA | **12 de 13** — sin pruebas automatizadas |
 
 ## Lo que se agregó por auditoría propia, no por el enunciado

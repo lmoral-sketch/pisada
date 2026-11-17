@@ -128,13 +128,33 @@ en `docs/despliegue.md`.
 | ![Flujo de datos de GA4](assets/ga4/01-flujo-de-datos.png) | El flujo apunta al sitio desplegado, con el ID de medición `G-P8EWE6D7G3` |
 | ![Acceso del profesor](assets/ga4/02-acceso-del-profesor.png) | Rol de Analista otorgado a `j.aranda@utem.cl` |
 | ![Eventos del embudo](assets/ga4/03-eventos-del-embudo.png) | Los cuatro eventos exigidos: `view_item`, `add_to_cart`, `begin_checkout`, `purchase` |
-| ![Evento propio](assets/ga4/04-evento-propio.png) | `compra_sin_stock`, evento no estándar definido para este trabajo |
+| ![Evento propio](assets/ga4/04-evento-propio.png) | `compra_sin_stock`, evento no estándar definido para este trabajo, verificado en Tiempo real |
 
 El cuarto evento merece una nota: `compra_sin_stock` no pertenece al esquema de comercio
 electrónico de GA4. Se definió porque bajo carga el inventario se agota y la conversión cae;
 sin ese evento, la caída aparecería en el embudo **sin causa identificable**. Es
 instrumentación diseñada para responder una pregunta concreta del análisis, no para completar
 un requisito.
+
+**Cómo se verificó, y lo que eso reveló.** El evento solo se dispara cuando `/api/checkout`
+devuelve **409**, es decir cuando el stock se agota *entre* que el artículo entra al carrito y
+que se confirma el pago. Que una talla aparezca tachada en la ficha no lo dispara: ahí el
+botón está deshabilitado y nunca se pide la compra.
+
+Para verificarlo se forzó la condición: se agregó la variante `PSD-9-13-1` al carrito, se
+dejó su stock en cero en la base, y se confirmó el pago. La aplicación respondió *«Se agotó el
+stock de PSD-9-13-1 mientras pagabas»*, el contador `pisada_compras_sin_stock_total` pasó de 0
+a 1 y el evento apareció en GA4. El stock se repuso enseguida.
+
+El primer intento se hizo desde un navegador con bloqueador de anuncios y **GA4 no registró
+nada**: ni el evento ni la sesión. El contador del servidor sí subió. Repetido en un navegador
+limpio, GA4 lo registró de inmediato.
+
+Esa diferencia es un dato del trabajo, no una anécdota: **la medición del lado del cliente es
+censurable por el cliente**, y la del servidor no. Es la misma limitación que §5.7 documenta
+para k6 —que no ejecuta JavaScript y por eso es invisible para GA4— vista desde otro ángulo.
+Por eso el trabajo no descansa solo en GA4: cada evento del embudo tiene su contador
+equivalente en `/api/metricas`.
 
 ---
 
