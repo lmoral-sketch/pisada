@@ -90,9 +90,26 @@ que se hizo. Si solo sacaras una captura, saca esta.
    | ⊚ diana | Publicidad |
 
 4. Click en el **segundo icono, el de barras (Informes)**.
-5. Se abre un menú a la izquierda. Busca **«Ciclo de vida»** y dentro **«Interacción»**
-   (en algunas cuentas aparece como **«Participación»**).
-6. Click en **«Eventos»**.
+5. Se abre el menú de informes a la izquierda. **Esta propiedad usa el menú por objetivos de
+   negocio**, así que NO busques «Ciclo de vida» ni «Interacción»: no existen acá. Lo que hay
+   es esto:
+
+   ```
+   Informe panorámico
+   Resumen en tiempo real
+   Páginas en tiempo real
+   ▸ Importación de datos
+   ▾ Objetivos de negocio
+       ▸ Generar oportunidades de venta
+       ▸ Generar ventas
+       ▸ Conocer el tráfico web o de la aplicación
+       ▸ Ver la interacción y la retención   ← ESTE
+   ▾ Usuario
+   ```
+
+6. Click en la flechita **▸ de «Ver la interacción y la retención»** para desplegarlo. Es el
+   **cuarto y último** de *Objetivos de negocio*.
+7. Dentro aparece **«Eventos»**. Click ahí.
 
 > **Atajo si te pierdes:** arriba hay una barra de búsqueda que dice *"Prueba a buscar..."*.
 > Escribe **`eventos`** y en los resultados elige el informe «Eventos». Llegas igual.
