@@ -1,7 +1,7 @@
-# Guion del video — para Catalina
+# Guion del video
 
-Guion completo para **una sola presentadora**. Cada bloque dice qué tienes en pantalla y qué
-decir encima. El texto en cursiva se puede leer casi literal.
+Guion operativo para los **cinco integrantes**. Cada bloque indica quién presenta, qué tiene
+en pantalla y qué decir encima. El texto en cursiva se puede leer casi literal.
 
 **Duración objetivo:** 11 minutos
 **Sitio:** https://pisada.onrender.com
@@ -9,28 +9,38 @@ decir encima. El texto en cursiva se puede leer casi literal.
 
 ---
 
-## ⚠️ Importante antes de empezar
+## Reparto
 
-El enunciado exige que **participen todos los integrantes**. Si grabas sola, el video no
-cumple ese requisito.
+El enunciado exige que **participen todos los integrantes**. Se puede grabar por separado y
+unir después, así que nadie depende de la agenda de los demás.
 
-**Solución mínima:** pide a cada integrante que grabe **15 segundos** con su celular
-diciendo su nombre y qué parte le tocó. Son cinco clips cortos que se pegan al inicio. Con
-eso el requisito se cumple y tú presentas el resto.
+| Bloque | Minutos | Tema | Presenta |
+|---|---|---|---|
+| 1 | 0:00 – 1:00 | Presentación del equipo y del trabajo | **Catalina Araniz** |
+| 2 | 1:00 – 3:00 | Arquitectura y decisiones de diseño | **Gabriel Araya** |
+| 3 | 3:00 – 5:00 | Demostración del sitio y del pago | **Bianca Torres** |
+| 4 | 5:00 – 6:00 | Google Analytics 4 y el embudo | **Bianca Torres** |
+| 5 | 6:00 – 7:30 | Generadores de carga y modelo CBMG | **Matías Torres** |
+| 6 | 7:30 – 9:30 | Resultados y leyes verificadas | **Lucas Mora** |
+| 7 | 9:30 – 10:30 | Cuellos de botella y propuestas | **Matías Torres** |
+| 8 | 10:30 – 11:30 | Errores metodológicos y cierre | **Catalina Araniz** |
 
-**Guion para esos 15 segundos de cada uno:**
+**Tiempo por persona:** Catalina 2 min · Gabriel 2 min · Bianca 3 min · Matías 3,5 min ·
+Lucas 2 min.
 
-> *"Hola, soy [nombre]. En este trabajo me encargué de [parte]."*
+> Si alguien prefiere otro bloque, se puede cambiar. Lo único obligatorio es que **todos
+> aparezcan en cámara**, visibles y de frente.
 
-Reparto sugerido para que cada uno diga algo distinto:
+### Cómo grabar por separado
 
-| Integrante | Qué dice que hizo |
-|---|---|
-| Gabriel Araya | la arquitectura y el modelo de datos |
-| Bianca Torres | la integración con Google Analytics |
-| Lucas Mora | los generadores de carga y las mediciones |
-| Matías Torres | el análisis de resultados |
-| Catalina Araniz | la documentación y esta presentación |
+Cada uno graba **solo su bloque**, con la presentación de fondo y su cámara en una ventana.
+Después se unen los fragmentos en orden con Clipchamp. No hace falta juntarse.
+
+Para que los cortes no se noten, conviene que cada uno:
+
+- Empiece con una frase de enlace: *"Yo me encargué de..."* o *"Siguiendo con..."*
+- Use la **misma presentación** (`docs/presentacion.html`), avanzando a su lámina
+- Grabe a **1920×1080**
 
 ---
 
@@ -63,10 +73,12 @@ Reparto sugerido para que cada uno diga algo distinto:
 
 # BLOQUE 1 — Presentación (0:00 – 1:00)
 
-**Pantalla:** portada de tu presentación con el logo UTEM.
+**Presenta: Catalina Araniz**
 
-> *"Hola, somos el grupo de Desempeño de Sistemas, INFB8091. Yo soy Catalina Araniz y voy a
-> presentar nuestro trabajo semestral.*
+**Pantalla:** lámina 1 de `docs/presentacion.html`.
+
+> *"Hola, somos el grupo de Desempeño de Sistemas, INFB8091. Yo soy Catalina Araniz, y junto
+> a Gabriel, Bianca, Lucas y Matías presentamos nuestro trabajo semestral.*
 >
 > *Construimos Pisada, una tienda de zapatillas e indumentaria urbana. Pero quiero partir
 > aclarando algo importante: la tienda no es el objetivo del trabajo. Es el sujeto de
@@ -82,6 +94,8 @@ Reparto sugerido para que cada uno diga algo distinto:
 ---
 
 # BLOQUE 2 — Arquitectura (1:00 – 3:00)
+
+**Presenta: Gabriel Araya**
 
 **Pantalla:** pestaña 2, el diagrama del README en GitHub.
 
@@ -115,6 +129,8 @@ tallas.**
 ---
 
 # BLOQUE 3 — Demostración del sitio (3:00 – 5:00)
+
+**Presenta: Bianca Torres**
 
 **Pantalla:** pestaña 1, navegando en vivo.
 
@@ -156,6 +172,8 @@ tallas.**
 
 # BLOQUE 4 — Google Analytics 4 (5:00 – 6:00)
 
+**Presenta: Bianca Torres**
+
 **Pantalla:** pestaña 4, el panel de GA4.
 
 > *"Instrumentamos el sitio con Google Analytics 4. El profesor tiene acceso de Analista a
@@ -179,6 +197,8 @@ tallas.**
 ---
 
 # BLOQUE 5 — Generadores de carga (6:00 – 7:30)
+
+**Presenta: Matías Torres**
 
 **Pantalla:** pestaña 2 → `carga/escenarios/comun.js`, baja hasta donde dice `CBMG`.
 
@@ -214,6 +234,8 @@ tallas.**
 ---
 
 # BLOQUE 6 — Resultados (7:30 – 9:30)
+
+**Presenta: Lucas Mora**
 
 **Pantalla:** pestaña 2 → `docs/graficos/percentiles-escenarios.svg`
 
@@ -262,6 +284,8 @@ tallas.**
 
 # BLOQUE 7 — Cuellos de botella y mejoras (9:30 – 10:30)
 
+**Presenta: Matías Torres**
+
 **Pantalla:** pestaña 3, sección 6 del informe.
 
 > *"El cuello de botella no resultó ser el que esperábamos. No es la CPU ni la base de datos:
@@ -295,6 +319,8 @@ tallas.**
 ---
 
 # BLOQUE 8 — Honestidad metodológica y cierre (10:30 – 11:30)
+
+**Presenta: Catalina Araniz**, con los demás apareciendo al cierre si es posible.
 
 **Pantalla:** pestaña 3, sección 8 del informe.
 
