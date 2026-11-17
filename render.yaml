@@ -34,17 +34,16 @@ services:
       # cliente durante la compilación (ver ARG en el Dockerfile).
       - key: NEXT_PUBLIC_GA_ID
         sync: false
-      # Tamaño del pool, medido en el experimento E-15.
+      # Tamaño del pool de conexiones.
       #
-      # Se probó con 5, 10 y 20 contra el escenario de pico: subir de 10 a 20
-      # redujo el p(95) en un factor de 5,9 y el p(99) en 10,4, porque la cola
-      # de admisión al pool pasó de 380 peticiones esperando a 4.
-      #
-      # Se deja en 20 aunque el plan gratuito de Render entregue 0,1 CPU: el
-      # límite no estaba en la capacidad de la base sino en nuestra propia
-      # configuración del pool.
+      # Estuvo en 20 a partir del experimento E-15, que con UNA corrida por
+      # configuración mostró una mejora de 5,9x al subir de 10 a 20. El
+      # experimento E-16 lo repitió tres veces por tamaño y la diferencia no
+      # se reprodujo: los rangos de p(95) de pool 5, 10 y 20 se solapan por
+      # completo. Se vuelve a 10, que es el valor conservador contra una base
+      # de 1 CPU, y el hallazgo original queda documentado como refutado.
       - key: PG_POOL_MAX
-        value: "20"
+        value: "10"
       # Estrategia de concurrencia por defecto.
       - key: ESTRATEGIA_STOCK
         value: pesimista

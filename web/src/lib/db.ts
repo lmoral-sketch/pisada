@@ -25,18 +25,27 @@ const global_ = globalThis as unknown as { poolPg?: Pool };
  * consultas pueden ejecutarse en paralelo y, por lo tanto, cuánta espera se
  * acumula antes de llegar a la base.
  *
- * El valor por defecto es 20 porque se midió (experimento E-15). Con el
- * escenario de pico y 350 usuarios concurrentes:
+ * El valor por defecto es 10. Conviene explicar por qué NO es 20.
  *
- *   pool  5 → p(95) 1.000 ms · 141 peticiones esperando
- *   pool 10 → p(95)   916 ms · 380 peticiones esperando
- *   pool 20 → p(95)   156 ms ·   4 peticiones esperando
+ * El experimento E-15 midió una corrida por tamaño de pool y arrojó una
+ * diferencia enorme: p(95) de 916 ms con pool 10 contra 156 ms con pool 20.
+ * Sobre esa base se cambió el valor por defecto a 20 y se escribió el hallazgo
+ * en el informe. La auditoría interna marcó el riesgo de concluir desde una
+ * sola corrida (hallazgo A-3), y al repetir el experimento tres veces por
+ * tamaño el resultado NO se reprodujo (experimento E-16):
  *
- * Subir de 10 a 20 reduce el p(95) por un factor de 5,9 con el mismo hardware.
- * La CPU queda igualmente exigida en los tres casos: lo que desaparece es la
- * cola de admisión al pool.
+ *   pool  5 → p(95) entre 130 y 276 ms  (n=3)
+ *   pool 10 → p(95) entre 144 y 166 ms  (n=3)
+ *   pool 20 → p(95) entre 140 y 162 ms  (n=2)
+ *
+ * Los tres rangos se solapan por completo. La variabilidad entre corridas de
+ * la misma configuración es mayor que cualquier efecto atribuible al tamaño
+ * del pool en este rango. Con esa evidencia no hay razón medida para subirlo,
+ * y 10 es el valor conservador: menos conexiones simultáneas contra una base
+ * limitada a 1 CPU.
+ *
  */
-const TAMANO_POOL = Number(process.env.PG_POOL_MAX ?? 20);
+const TAMANO_POOL = Number(process.env.PG_POOL_MAX ?? 10);
 
 function crearPool(): Pool {
   const pool = new Pool({

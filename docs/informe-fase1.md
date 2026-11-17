@@ -29,12 +29,16 @@ cuatro escenarios de carga sintética. Los resultados principales:
   concurrentes. Con 25 usuarios el tiempo de respuesta es indistinguible de la línea base.
 - **La utilización de CPU crece linealmente** (10,4 % a 25 usuarios, 96,6 % a 350), pero la
   CPU *por usuario* decrece, lo que delata encolamiento antes de que la latencia se dispare.
-- **El cuello de botella no es la CPU sino el pool de conexiones.** A 350 usuarios se
-  midieron **222 peticiones esperando** una de las 10 conexiones disponibles.
+- **El pool de conexiones se encola antes que se agote la CPU.** A 350 usuarios se midieron
+  **222 peticiones esperando** una de las 10 conexiones disponibles. Que agrandar el pool
+  mejore el tiempo de respuesta se midió, se publicó y luego **se refutó al repetir el
+  experimento** (§7.5): queda como hipótesis, no como hallazgo.
 - **El techo de mejora del checkout es de 13,9x en carga normal y cae bajo 5x bajo
   contención**, calculado con la ley de Amdahl sobre mediciones propias.
-- El trabajo documenta además **cuatro errores metodológicos propios**, detectados y
-  corregidos, que se consideran parte del resultado.
+- El trabajo documenta además **cinco errores metodológicos propios**, detectados y
+  corregidos, que se consideran parte del resultado. El quinto —haber publicado como
+  confirmado un hallazgo que no resistió la repetición— se detectó en la auditoría interna del
+  propio trabajo.
 
 ---
 
@@ -439,10 +443,13 @@ a la CPU acercándose a su límite.
 
 El pool no es un detalle de configuración: **es el recurso que primero se agota**.
 
-**Confirmado por intervención.** Duplicar el pool a 20 conexiones hace desaparecer la cola
-—de 380 peticiones esperando a 4— y reduce el p(95) en un factor de 5,9, sin cambiar el
-hardware ni la lógica. Eso cierra la cadena causal: la cola de admisión al pool **era** la
-causa de la degradación, no un síntoma de otra cosa. Ver §7.5 y `hallazgos.md`, E-15.
+**La intervención no confirmó la causalidad.** Una primera medición sugirió que duplicar el
+pool a 20 conexiones hacía desaparecer la cola y reducía el p(95) por un factor de 5,9, lo que
+habría cerrado la cadena causal. Al repetir el experimento tres veces por configuración ese
+efecto **no se reprodujo** (§7.5 y `hallazgos.md`, E-16). Por lo tanto: la cola de admisión al
+pool está **medida** como fenómeno, pero **no está demostrada como causa** de la degradación
+del p(95). Sigue siendo la hipótesis más plausible —el mecanismo es coherente y el recurso se
+agota de forma verificable— y queda como hipótesis, no como conclusión.
 
 ---
 
@@ -499,42 +506,69 @@ distribuidos.
 La búsqueda por nombre usa `ILIKE '%texto%'` sin índice, de forma deliberada, para medir
 primero su costo. Corresponde evaluar un índice GIN con `pg_trgm` y comparar.
 
-### 7.5 Subir el pool de conexiones de 10 a 20 — PROPUESTA MEDIDA Y CONFIRMADA
+### 7.5 Subir el pool de conexiones de 10 a 20 — PROPUESTA REFUTADA POR REPETICIÓN
 
-![El tamaño del pool y la cola de admisión](graficos/tamano-pool.svg)
+Esta sección documenta el error de método más importante del trabajo, y se deja escrita como
+error porque enseña más que el hallazgo que pretendía reportar.
 
-Se ejecutó el escenario de pico completo con `PG_POOL_MAX` en 5, 10 y 20.
+**Lo que se midió primero (E-15, 16 de noviembre).** Se ejecutó el escenario de pico completo
+con `PG_POOL_MAX` en 5, 10 y 20, **una corrida por configuración**:
 
 | Pool | Mediana | p(95) | p(99) | Peticiones en espera (máx) |
 |---|---|---|---|---|
 | 5 | 49,59 ms | 1.000 ms | 1,53 s | 141 |
-| 10 | 36,73 ms | 916 ms | 2,38 s | **380** |
-| **20** | **28,99 ms** | **155,6 ms** | **228,76 ms** | **4** |
+| 10 | 36,73 ms | 916 ms | 2,38 s | 380 |
+| 20 | 28,99 ms | 155,6 ms | 228,76 ms | 4 |
 
-**Duplicar el pool reduce el p(95) en un factor de 5,9 y el p(99) en 10,4**, con el mismo
-hardware y sin tocar una línea de lógica.
+Sobre esa base se concluyó que duplicar el pool reducía el p(95) por un factor de 5,9, se
+cambió el valor por defecto en `db.ts`, `.env.example` y `render.yaml`, se graficó el hallazgo
+y se escribió en el resumen ejecutivo que era *la mejora de mayor impacto por menor costo de
+todo el trabajo*. La propia sección advertía, eso sí, que cada configuración se había medido
+una sola vez.
 
-**Por qué funciona.** La CPU se mantiene entre 92 % y 104 % en las tres configuraciones: está
-igualmente exigida. Lo que cambia es la **cola de admisión al pool**: con 10 conexiones hay
-380 peticiones esperando turno; con 20, apenas 4. El throughput casi no sube —de 30,5 a 31,5
-req/s— porque el sistema ya hacía todo el trabajo que podía. **El pool pequeño solo agregaba
-espera encima.**
+**Lo que mostró la repetición (E-16, 17 de noviembre).** La auditoría interna (§hallazgo A-3
+en `docs/auditoria-final.md`) marcó esa corrida única como riesgo y se repitió el experimento
+**tres veces por configuración**, con el mismo escenario, el mismo hardware y el mismo
+procedimiento de resembrado entre corridas:
 
-Es la distinción entre throughput y latencia en estado puro.
+| Pool | n | p(95) mínimo | p(95) máximo | p(95) mediano |
+|---|---|---|---|---|
+| 5 | 3 | 130,2 ms | 275,6 ms | 138,3 ms |
+| 10 | 3 | 144,4 ms | 165,7 ms | 152,8 ms |
+| 20 | 2 | 140,1 ms | 162,0 ms | ~151 ms |
 
-> Es la mejora de mayor impacto por menor costo de todo el trabajo: **un número en un archivo
-> de configuración**.
+**Los tres rangos se solapan por completo.** No hay diferencia demostrable entre pool 5, 10 y
+20 en este sistema. El factor 5,9 **no se reproduce**: ninguna de las ocho corridas válidas
+superó los 276 ms, mientras que la medición original había dado 916 ms y 1.000 ms con las
+configuraciones supuestamente peores.
 
-**Advertencia sobre la evidencia.** Cada configuración se midió **una vez**. La diferencia es
-grande (916 ms frente a 156 ms, no un margen estrecho), la tendencia es monótona en las tres
-configuraciones y el mecanismo es coherente con la cola de admisión medida (380 frente a 4).
-Pero este mismo trabajo demostró en §8.4 que una corrida puede engañar: repetir tres veces
-cada configuración daría al hallazgo el respaldo que merece.
+*(La novena corrida —pool 20, repetición 3— se descartó: Docker se había detenido y la
+aplicación respondió HTTP 500 al 100 % de las peticiones. La fila queda comentada en
+`carga/resultados/pool-repeticiones.tsv` en lugar de borrada. Con pool 20 ya dentro del mismo
+rango que las otras dos configuraciones en sus dos corridas válidas, una tercera no habría
+cambiado el veredicto.)*
 
-**Advertencia sobre generalizar.** Esto no generaliza a "pool grande es mejor". Para *este* sistema —consultas
-cortas, base con 1 CPU— 10 conexiones eran insuficientes. Con consultas largas el resultado
-probablemente sería el opuesto. Lo que sí generaliza es que **el tamaño del pool es un
-parámetro de capacidad que debe medirse**. Detalle en `docs/hallazgos.md`, E-15.
+**Qué se revirtió.** `PG_POOL_MAX` vuelve a 10 en `db.ts`, `web/.env.example` y `render.yaml`,
+con el motivo escrito en cada archivo. El gráfico `tamano-pool.svg` se retiró del informe.
+
+**La pregunta abierta, que vale más que el hallazgo.** ¿Por qué el 16 de noviembre las mismas
+configuraciones dieron 916 y 1.000 ms, y el 17 ninguna pasó de 276 ms? La diferencia **entre
+días** es mayor que cualquier efecto atribuible al pool. Las hipótesis que quedan sin
+discriminar son: estado de la caché de PostgreSQL y del sistema de archivos al momento de cada
+corrida, carga ajena en el equipo de desarrollo (es una máquina de uso general, no un banco de
+pruebas aislado), y el estado del catálogo según cuántas compras había absorbido la base antes
+de resembrar. Ninguna se midió, y por eso ninguna se afirma.
+
+**La lección metodológica.** Una diferencia grande no es una diferencia robusta. El factor 5,9
+parecía inmune al azar justamente por ser grande —ese fue el razonamiento explícito al
+aceptarlo— y resultó ser variabilidad entre corridas. En un sistema con colas, la varianza
+entre ejecuciones de la *misma* configuración es ella misma un resultado a medir, no un ruido
+que se promedia. El protocolo correcto es el que se aplicó en §8.4 para las estrategias de
+concurrencia: repetir, publicar el rango y declarar no concluyente cuando los rangos se tocan.
+
+**Lo que sí sigue en pie.** La cola de admisión al pool existe y se midió (§6.2): 4, 40 y 222
+peticiones esperando con 100, 200 y 350 usuarios. Que el pool se encole está medido; que
+agrandarlo mejore el tiempo de respuesta, no.
 
 ---
 
@@ -625,7 +659,26 @@ El checkout no se modificó y su ruta (`/api/checkout`) no devuelve HTML, de mod
 rediseño no debería haberla afectado. **Pero no se volvió a medir**, y se declara en lugar de
 presentarla como contemporánea del resto.
 
-### 8.8 Otras limitaciones
+**Intento de remedición y por qué no sirve.** El 17 de noviembre se intentó cerrar esta
+limitación, y el script quedó mal diseñado: ejecutó el escenario de **contención** (40 usuarios
+sobre un solo SKU) en lugar del escenario de carga normal con SKU aleatorios. Lo que midió
+—espera media de bloqueo de 271,7 ms sobre un checkout de 438,15 ms, es decir ≈62 % de fracción
+serializada— es el caso de alta contención, **no comparable** con el 7,2 % original. Confirma
+el orden de magnitud que ya reportaba §5.6 para contención (techo bajo 5x), pero la limitación
+sobre el 7,2 % en carga normal **sigue abierta**.
+
+### 8.8 Se publicó como confirmado un hallazgo que no resistió la repetición
+
+El tamaño del pool se midió una vez por configuración, la diferencia fue grande, y eso se tomó
+como suficiente: se cambiaron los valores por defecto del proyecto, se graficó el resultado y
+se escribió en el resumen ejecutivo que era la mejora de mayor impacto del trabajo. La
+repetición posterior lo refutó. El caso completo está en §7.5.
+
+El error no fue medir mal una corrida —la corrida fue correcta— sino **tratar una magnitud
+grande como garantía de robustez**. Es exactamente el error que §8.4 ya había documentado para
+las estrategias de concurrencia, cometido de nuevo tres días después sobre otra variable.
+
+### 8.9 Otras limitaciones
 
 - **Las llegadas no son de Poisson.** k6 lanza usuarios en escalones, más sincronizados que
   aleatorios. M/M/1 es una aproximación útil, no exacta.
@@ -660,10 +713,13 @@ presentarla como contemporánea del resto.
    exactitud, y la ley de Little permitió estimar el largo de una cola que no se puede
    observar directamente.
 
-6. **Medir correctamente es más difícil que medir.** Cuatro de los hallazgos de este trabajo
-   fueron errores de método propios. El más instructivo es que los resultados de contención
-   **no son reproducibles**, lo que invalida cualquier conclusión sobre cuál estrategia de
-   concurrencia es mejor con la evidencia disponible.
+6. **Medir correctamente es más difícil que medir.** Cinco de los hallazgos de este trabajo
+   fueron errores de método propios. Dos son del mismo tipo y conviene leerlos juntos: los
+   resultados de contención **no son reproducibles** (§8.4), y el hallazgo sobre el tamaño del
+   pool —publicado como confirmado, con un factor de 5,9— **tampoco se reprodujo al repetirlo**
+   (§7.5). En un sistema con colas, la varianza entre corridas de la misma configuración es un
+   resultado a medir, no un ruido a promediar. Una diferencia grande no es una diferencia
+   robusta: eso se aprendió refutando una conclusión propia ya escrita.
 
 ---
 

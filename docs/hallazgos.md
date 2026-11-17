@@ -1395,3 +1395,93 @@ como predecía la hipótesis refutada.
 
 Lo que sí generaliza es el método: **el tamaño del pool es un parámetro de capacidad que debe
 medirse, no elegirse por omisión.**
+
+---
+
+## E-16 — El hallazgo del pool no se reproduce (17 de noviembre de 2026)
+
+**Motivo.** La auditoría interna (`docs/auditoria-final.md`, hallazgo A-3) marcó que E-15 había
+concluido desde **una sola corrida por configuración**. Se repitió el experimento tres veces
+por tamaño de pool.
+
+**Procedimiento.** Mismo escenario (`carga/escenarios/pico.js`, 350 usuarios), mismo hardware,
+misma base en Docker con 1 CPU y 512 MB. Entre cada corrida: reinicio de la aplicación con el
+`PG_POOL_MAX` correspondiente y **resembrado completo del catálogo** (`npm run semilla`), para
+que todas partieran del mismo estado de inventario. Datos crudos en
+`carga/resultados/pool-repeticiones.tsv`.
+
+| Pool | Rep | Mediana | p(90) | p(95) | p(99) | Throughput | Error |
+|---|---|---|---|---|---|---|---|
+| 5 | 1 | 39,0 ms | 192,7 ms | 275,6 ms | 485,3 ms | 31,20/s | 0,01 % |
+| 5 | 2 | 28,4 ms | 97,2 ms | 130,2 ms | 198,6 ms | 31,44/s | 0,01 % |
+| 5 | 3 | 28,0 ms | 103,5 ms | 138,3 ms | 208,3 ms | 31,74/s | 0,02 % |
+| 10 | 1 | 27,9 ms | 109,0 ms | 152,8 ms | 232,8 ms | 31,48/s | 0,00 % |
+| 10 | 2 | 30,5 ms | 110,0 ms | 144,4 ms | 231,6 ms | 31,40/s | 0,01 % |
+| 10 | 3 | 33,4 ms | 122,9 ms | 165,7 ms | 248,1 ms | 31,48/s | 0,01 % |
+| 20 | 1 | 27,4 ms | 102,3 ms | 140,1 ms | 201,2 ms | 31,63/s | 0,00 % |
+| 20 | 2 | 30,9 ms | 125,7 ms | 162,0 ms | 241,9 ms | 31,42/s | 0,00 % |
+| 20 | 3 | — | — | — | — | — | **descartada** |
+
+La repetición 3 de pool 20 se descartó: Docker Desktop se había detenido y la aplicación
+respondió HTTP 500 al **100 %** de las peticiones. La fila queda comentada en el TSV, no
+borrada, porque un archivo de resultados con una fila eliminada en silencio es peor que uno con
+una fila marcada como inválida.
+
+### Veredicto
+
+| Pool | n | p(95) mínimo | p(95) máximo | p(95) mediano |
+|---|---|---|---|---|
+| 5 | 3 | 130,2 ms | 275,6 ms | 138,3 ms |
+| 10 | 3 | 144,4 ms | 165,7 ms | 152,8 ms |
+| 20 | 2 | 140,1 ms | 162,0 ms | ~151 ms |
+
+**Los tres rangos se solapan por completo.** `pool 5 vs 10`, `10 vs 20` y `5 vs 20`: en los tres
+pares los intervalos se tocan, de modo que no hay diferencia demostrable.
+
+**El resultado de E-15 no se reproduce.** Esa corrida había dado p(95) de 1.000 ms con pool 5 y
+916 ms con pool 10, frente a 155,6 ms con pool 20 —un factor de 5,9. Aquí **ninguna de las ocho
+corridas válidas superó los 276 ms**, con cualquiera de los tres tamaños.
+
+### La diferencia entre días es mayor que el efecto buscado
+
+El dato más incómodo no es que el pool no importe, sino que la **misma configuración** diera
+916 ms un día y entre 144 y 166 ms al siguiente. Hipótesis sin discriminar:
+
+1. **Estado de la caché.** PostgreSQL y el sistema de archivos del contenedor arrancan con
+   distinto contenido caliente según qué se haya ejecutado antes.
+2. **Carga ajena en el equipo.** Las mediciones corren en una máquina de uso general, no en un
+   banco aislado. El 16 de noviembre hubo trabajo de desarrollo en paralelo; el 17, las corridas
+   fueron desatendidas y consecutivas.
+3. **Estado del inventario.** En E-15 no se resembró entre configuraciones; en E-16 sí. Un
+   catálogo con stock agotado cambia el camino de código del checkout (rechazo rápido en lugar
+   de descuento con bloqueo).
+
+La hipótesis 3 es la única que apunta a un defecto concreto del protocolo de E-15, y es
+suficiente para explicar por qué el orden de las corridas pudo producir una tendencia
+aparentemente monótona. No se midió, y por eso no se afirma.
+
+### Qué se revirtió
+
+| Archivo | Antes | Ahora |
+|---|---|---|
+| `web/src/lib/db.ts` | `?? 20` | `?? 10`, con el motivo documentado |
+| `web/.env.example` | `PG_POOL_MAX=20` | `PG_POOL_MAX=10` |
+| `render.yaml` | `value: "20"` | `value: "10"` |
+| `docs/graficos/tamano-pool.svg` | Gráfico del hallazgo | Eliminado |
+| `docs/informe-fase1.md` §7.5 | «PROPUESTA MEDIDA Y CONFIRMADA» | «PROPUESTA REFUTADA POR REPETICIÓN» |
+| `docs/informe-fase1.md` §6.2 | «Confirmado por intervención» | Hipótesis plausible, no demostrada |
+
+### Lo que sobrevive de E-15
+
+La cola de admisión al pool **existe y está medida**: 4, 40 y 222 peticiones esperando con 100,
+200 y 350 usuarios (§6.2 del informe). Lo que no está demostrado es que agrandar el pool mejore
+el tiempo de respuesta. Fenómeno medido, causalidad no establecida.
+
+### Lección
+
+Al aceptar E-15 el razonamiento explícito fue: *la diferencia es demasiado grande para ser
+azar*. Resultó falso. En un sistema con colas la cola de la distribución es pesada, y una
+corrida puede caer lejos de la mediana por un factor de varias veces —este mismo trabajo ya lo
+había demostrado en E-04, donde cuatro repeticiones idénticas difirieron por un factor de 524.
+**Una diferencia grande no es una diferencia robusta.** El criterio correcto no es la magnitud
+del efecto sino la separación de los rangos entre repeticiones.

@@ -513,3 +513,19 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   catálogo, peso fuera de nuestro control y degradación de los Core Web Vitals, invalidando
   los números publicados. Verificado tras el cambio: home de 20 a 18 ms, catálogo de 44 a 47,
   bundle idéntico en 106 kB, cero archivos de imagen.
+
+## 2026-11-17 | agente: Claude Code (claude-opus-5)
+
+- **Prompt:** «alcanza con los tokens que me quedan ? si es asi hazlo . mejora las debilidades» — cerrar los hallazgos A-1 y A-3 de la auditoría final repitiendo los experimentos correspondientes, y aplicar la corrección que resulte.
+- **Cambios:**
+  - Experimento E-16: tres repeticiones del escenario de pico por cada tamaño de pool (5, 10, 20), con resembrado del catálogo entre corridas. Resultados crudos en `carga/resultados/pool-repeticiones.tsv`.
+  - **El hallazgo E-15 quedó refutado:** los rangos de p(95) de las tres configuraciones se solapan por completo. Reversión completa: `PG_POOL_MAX` vuelve a 10 en `web/src/lib/db.ts`, `web/.env.example` y `render.yaml`, con el motivo documentado en cada archivo.
+  - `docs/informe-fase1.md`: §7.5 reescrita de «PROPUESTA MEDIDA Y CONFIRMADA» a «PROPUESTA REFUTADA POR REPETICIÓN»; §6.2 pasa de «confirmado por intervención» a hipótesis no demostrada; resumen ejecutivo y conclusiones ajustados; nueva §8.8 sobre el error de haber publicado como confirmado un hallazgo no repetido; §8.7 ampliada con el defecto del script de remedición de Amdahl.
+  - `docs/hallazgos.md`: entrada E-16 con datos crudos, veredicto, hipótesis sobre la varianza entre días y la lección metodológica.
+  - `docs/auditoria-final.md`: A-3 cerrado con resultado negativo, A-1 declarado con su intento de remedición fallido, y sección de cierre.
+  - `docs/graficos/tamano-pool.svg` eliminado y `grafico_pool()` retirado de `carga/graficar.py`, con el motivo en un comentario.
+- **Defectos conocidos:**
+  - El script de remedición de Amdahl (A-1) quedó mal diseñado: ejecutó el escenario de contención en lugar de carga normal, de modo que su resultado no es comparable con el 7,2 % original. La limitación de §8.7 sigue abierta y así se declara.
+  - La repetición 3 de pool 20 se descartó porque Docker se había detenido y la aplicación devolvió HTTP 500 al 100 % de las peticiones; pool 20 queda con n=2. La fila se comentó en el TSV en lugar de borrarla.
+  - No se explica por qué la misma configuración dio 916 ms el 16 de noviembre y ~150 ms el 17. Se declara como pregunta abierta con tres hipótesis sin discriminar.
+- **Propuestas no aprobadas:** ninguna.

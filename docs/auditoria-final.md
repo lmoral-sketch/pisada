@@ -18,7 +18,7 @@ respalda.
 | 1 | El sistema no se degrada hasta 25 usuarios | E-12: 35,30 ms vs 36,12 ms | ✅ Medido |
 | 2 | El punto de saturación está en 350 usuarios | E-12: 96,6 % de CPU | ✅ Medido |
 | 3 | La CPU por usuario decrece antes que la latencia | E-03, E-12: 0,416 → 0,276 % | ✅ Medido |
-| 4 | El cuello de botella es el pool, no la CPU | E-15: CPU igual, latencia 5,9x | ✅ **Demostrado por intervención** |
+| 4 | El cuello de botella es el pool, no la CPU | E-15: CPU igual, latencia 5,9x | ❌ **Refutado en E-16: no se reproduce** |
 | 5 | La contención de stock se propaga al pool | E-12: 4 → 40 → 222 en espera | ✅ Medido |
 | 6 | `U = X · S` se cumple | E-03: 31,11 × 0,01127 = 35,1 % | ✅ Verificado |
 | 7 | El techo de Amdahl del checkout es 13,9x | E-03, E-11 | ⚠️ **Ver hallazgo A-1** |
@@ -103,21 +103,28 @@ Tras dieciocho días y treinta y siete commits, el riesgo de contradicción es r
 | E-14 conteo | 1 por configuración | ⚠️ La diferencia era del 1,4 %: nula, no ambigua |
 | E-15 pool | 1 por configuración | ⚠️ **Ver A-3** |
 
-### ⚠️ A-3 — El experimento del pool no se repitió
+### ❌ A-3 — RESUELTO, con resultado negativo
 
-El hallazgo de mayor impacto del trabajo —p(95) 5,9 veces mejor— se basa en **una corrida por
-configuración**.
+**El hallazgo era falso.** Se repitió el experimento tres veces por configuración (E-16) y la
+diferencia no se reprodujo: los rangos de p(95) de pool 5, 10 y 20 se solapan por completo, y
+ninguna de las ocho corridas válidas pasó de 276 ms, frente a los 916 y 1.000 ms que había dado
+la medición original.
 
-**Atenuantes:** la diferencia es enorme (916 ms frente a 156 ms, no un 10 %), la tendencia es
-monótona en las tres configuraciones, y el mecanismo tiene explicación coherente con la cola
-de admisión medida (380 frente a 4).
+**Los atenuantes que se habían escrito aquí resultaron ser el error.** Decían: *la diferencia es
+enorme, la tendencia es monótona, el mecanismo tiene explicación coherente*. Los tres eran
+ciertos y ninguno era suficiente. La magnitud de un efecto no dice nada sobre su robustez
+cuando la distribución tiene cola pesada; la monotonía sobre tres puntos sin repetición es
+indistinguible del azar; y un mecanismo plausible hace más fácil aceptar un resultado falso, no
+más probable que sea verdadero.
 
-**Pero** el propio trabajo demostró en E-04 que una corrida puede engañar. Repetir tres veces
-cada configuración tomaría unas 2,5 horas.
+**Lo corregido:** `PG_POOL_MAX` vuelve a 10 en `db.ts`, `.env.example` y `render.yaml`; el
+gráfico `tamano-pool.svg` se eliminó; §7.5 del informe se reescribió como propuesta refutada;
+§6.2 pasa de «confirmado por intervención» a hipótesis no demostrada; el resumen ejecutivo y las
+conclusiones se ajustaron. La bitácora E-16 tiene los datos crudos.
 
-**Recomendación:** si hay tiempo antes del miércoles, repetir. Si no, **declarar en el informe
-que el hallazgo se basa en una corrida por configuración**, igual que se declaró en los demás
-casos.
+**Valor del hallazgo A-3.** Esta auditoría encontró, y la repetición confirmó, un error que
+habría llegado al informe entregado como su conclusión más vistosa. Es el argumento más fuerte
+a favor de auditar el propio trabajo antes de entregarlo.
 
 ---
 
@@ -125,9 +132,9 @@ casos.
 
 | # | Hallazgo | Gravedad | Estado |
 |---|---|---|---|
-| A-1 | Techo de Amdahl medido antes del rediseño | Baja | ⬜ Declarar o remedir |
+| A-1 | Techo de Amdahl medido antes del rediseño | Baja | ⚠️ Declarado; la remedición salió mal diseñada |
 | A-2 | Código con pool 10 mientras el informe decía 20 | **Alta** | ✅ Corregido |
-| A-3 | El experimento del pool no se repitió | Media | ⬜ Declarar o repetir |
+| A-3 | El experimento del pool no se repitió | **Alta** | ✅ Repetido: el hallazgo era falso, revertido |
 
 ---
 
@@ -170,3 +177,27 @@ Lo que distingue a este informe de uno que solo reporta números:
 
 El punto más débil es A-3: el hallazgo de mayor impacto descansa en una sola corrida. Debe
 repetirse o declararse.
+
+---
+
+## Cierre de la auditoría — 17 de noviembre de 2026
+
+| # | Hallazgo | Desenlace |
+|---|---|---|
+| A-1 | Amdahl medido antes del rediseño | **Declarado en §8.7.** Se intentó remedir y el script quedó mal diseñado: corrió el escenario de contención (40 usuarios sobre un SKU) en lugar de carga normal con SKU aleatorios, de modo que su resultado (≈62 % de fracción serializada) no es comparable con el 7,2 % original. El defecto del script queda escrito en §8.7; la limitación sigue abierta. |
+| A-2 | Código con pool 10 mientras el informe decía 20 | **Corregido**, y luego irrelevante: E-16 refutó el hallazgo que motivaba el 20. |
+| A-3 | El experimento del pool no se repitió | **Repetido. El hallazgo era falso.** Revertido en código, configuración, gráfico e informe. |
+
+**Lo que la auditoría cambió realmente.** Encontró una conclusión falsa que iba a entregarse
+como el resultado principal del trabajo, y una discrepancia entre el código y el informe. Las
+dos se detectaron leyendo el proyecto contra sí mismo, no corriendo nada nuevo.
+
+**Lo que queda declarado y no resuelto**, por honestidad y no por falta de tiempo:
+
+1. La fracción serializada del checkout en carga normal (7,2 %) no se remidió con el diseño
+   actual (§8.7).
+2. Por qué la misma configuración dio 916 ms el 16 de noviembre y ~150 ms el 17 (E-16). La
+   varianza entre días excede cualquier efecto que el trabajo intentó medir en ese experimento,
+   y entenderla exigiría un entorno de medición aislado del que no se dispone.
+3. Los resultados de contención no son reproducibles (§8.4), así que no se concluye nada sobre
+   cuál estrategia de concurrencia es mejor.
