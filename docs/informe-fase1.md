@@ -116,6 +116,26 @@ Expuesta en `/api/metricas` en formato Prometheus.
 Las dos marcadas en negrita corresponden a las **dos colas** del sistema, y la relación entre
 ambas resultó ser el hallazgo central (sección 6).
 
+### 3.1 Configuración de Google Analytics 4
+
+Propiedad **`G-P8EWE6D7G3`**, instrumentada con `gtag.js` desde el layout de la aplicación
+(`web/src/app/layout.tsx`), con el identificador inyectado en tiempo de compilación. El rol de
+**Analista** está otorgado a `j.aranda@utem.cl`. La configuración completa, paso a paso, está
+en `docs/despliegue.md`.
+
+| Captura | Qué documenta |
+|---|---|
+| ![Flujo de datos de GA4](assets/ga4/01-flujo-de-datos.png) | El flujo apunta al sitio desplegado, con el ID de medición `G-P8EWE6D7G3` |
+| ![Acceso del profesor](assets/ga4/02-acceso-del-profesor.png) | Rol de Analista otorgado a `j.aranda@utem.cl` |
+| ![Eventos del embudo](assets/ga4/03-eventos-del-embudo.png) | Los cuatro eventos exigidos: `view_item`, `add_to_cart`, `begin_checkout`, `purchase` |
+| ![Evento propio](assets/ga4/04-evento-propio.png) | `compra_sin_stock`, evento no estándar definido para este trabajo |
+
+El cuarto evento merece una nota: `compra_sin_stock` no pertenece al esquema de comercio
+electrónico de GA4. Se definió porque bajo carga el inventario se agota y la conversión cae;
+sin ese evento, la caída aparecería en el embudo **sin causa identificable**. Es
+instrumentación diseñada para responder una pregunta concreta del análisis, no para completar
+un requisito.
+
 ---
 
 ## 4. Metodología de pruebas
