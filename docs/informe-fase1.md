@@ -439,6 +439,11 @@ a la CPU acercándose a su límite.
 
 El pool no es un detalle de configuración: **es el recurso que primero se agota**.
 
+**Confirmado por intervención.** Duplicar el pool a 20 conexiones hace desaparecer la cola
+—de 380 peticiones esperando a 4— y reduce el p(95) en un factor de 5,9, sin cambiar el
+hardware ni la lógica. Eso cierra la cadena causal: la cola de admisión al pool **era** la
+causa de la degradación, no un síntoma de otra cosa. Ver §7.5 y `hallazgos.md`, E-15.
+
 ---
 
 ## 7. Propuestas de mejora
@@ -494,10 +499,36 @@ distribuidos.
 La búsqueda por nombre usa `ILIKE '%texto%'` sin índice, de forma deliberada, para medir
 primero su costo. Corresponde evaluar un índice GIN con `pg_trgm` y comparar.
 
-### 7.5 Ajustar el tamaño del pool
+### 7.5 Subir el pool de conexiones de 10 a 20 — PROPUESTA MEDIDA Y CONFIRMADA
 
-`PG_POOL_MAX` es un parámetro de capacidad. Conviene medir con 5, 10 y 20 y observar cómo se
-desplaza el punto de saturación.
+![El tamaño del pool y la cola de admisión](graficos/tamano-pool.svg)
+
+Se ejecutó el escenario de pico completo con `PG_POOL_MAX` en 5, 10 y 20.
+
+| Pool | Mediana | p(95) | p(99) | Peticiones en espera (máx) |
+|---|---|---|---|---|
+| 5 | 49,59 ms | 1.000 ms | 1,53 s | 141 |
+| 10 | 36,73 ms | 916 ms | 2,38 s | **380** |
+| **20** | **28,99 ms** | **155,6 ms** | **228,76 ms** | **4** |
+
+**Duplicar el pool reduce el p(95) en un factor de 5,9 y el p(99) en 10,4**, con el mismo
+hardware y sin tocar una línea de lógica.
+
+**Por qué funciona.** La CPU se mantiene entre 92 % y 104 % en las tres configuraciones: está
+igualmente exigida. Lo que cambia es la **cola de admisión al pool**: con 10 conexiones hay
+380 peticiones esperando turno; con 20, apenas 4. El throughput casi no sube —de 30,5 a 31,5
+req/s— porque el sistema ya hacía todo el trabajo que podía. **El pool pequeño solo agregaba
+espera encima.**
+
+Es la distinción entre throughput y latencia en estado puro.
+
+> Es la mejora de mayor impacto por menor costo de todo el trabajo: **un número en un archivo
+> de configuración**.
+
+**Advertencia.** Esto no generaliza a "pool grande es mejor". Para *este* sistema —consultas
+cortas, base con 1 CPU— 10 conexiones eran insuficientes. Con consultas largas el resultado
+probablemente sería el opuesto. Lo que sí generaliza es que **el tamaño del pool es un
+parámetro de capacidad que debe medirse**. Detalle en `docs/hallazgos.md`, E-15.
 
 ---
 

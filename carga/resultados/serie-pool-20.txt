@@ -1,0 +1,3805 @@
+--- 13:15:11 ---
+pisada_process_cpu_seconds_total 0.203
+pisada_pool_conexiones{estado="total"} 1
+pisada_pool_conexiones{estado="ocioso"} 1
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:12 ---
+pisada_process_cpu_seconds_total 0.25
+pisada_pool_conexiones{estado="total"} 1
+pisada_pool_conexiones{estado="ocioso"} 1
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:13 ---
+pisada_process_cpu_seconds_total 0.313
+pisada_pool_conexiones{estado="total"} 1
+pisada_pool_conexiones{estado="ocioso"} 1
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:14 ---
+pisada_process_cpu_seconds_total 0.515
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:15 ---
+pisada_process_cpu_seconds_total 0.593
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:16 ---
+pisada_process_cpu_seconds_total 0.6719999999999999
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:17 ---
+pisada_process_cpu_seconds_total 0.828
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:19 ---
+pisada_process_cpu_seconds_total 1.046
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:20 ---
+pisada_process_cpu_seconds_total 1.1560000000000001
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:21 ---
+pisada_process_cpu_seconds_total 1.2500000000000002
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:22 ---
+pisada_process_cpu_seconds_total 1.2970000000000002
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:23 ---
+pisada_process_cpu_seconds_total 1.344
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:24 ---
+pisada_process_cpu_seconds_total 1.4060000000000001
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:25 ---
+pisada_process_cpu_seconds_total 1.5150000000000001
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:26 ---
+pisada_process_cpu_seconds_total 1.719
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:27 ---
+pisada_process_cpu_seconds_total 1.8130000000000002
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:29 ---
+pisada_process_cpu_seconds_total 1.9530000000000003
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:30 ---
+pisada_process_cpu_seconds_total 2.0160000000000005
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:31 ---
+pisada_process_cpu_seconds_total 2.1090000000000004
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:32 ---
+pisada_process_cpu_seconds_total 2.3130000000000006
+pisada_pool_conexiones{estado="total"} 5
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:33 ---
+pisada_process_cpu_seconds_total 2.5000000000000004
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:34 ---
+pisada_process_cpu_seconds_total 2.5780000000000003
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:35 ---
+pisada_process_cpu_seconds_total 2.7030000000000003
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:36 ---
+pisada_process_cpu_seconds_total 2.813
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:37 ---
+pisada_process_cpu_seconds_total 2.8440000000000003
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:38 ---
+pisada_process_cpu_seconds_total 3.1710000000000003
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:39 ---
+pisada_process_cpu_seconds_total 3.249
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:41 ---
+pisada_process_cpu_seconds_total 3.4530000000000003
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:42 ---
+pisada_process_cpu_seconds_total 3.7030000000000003
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:43 ---
+pisada_process_cpu_seconds_total 3.8440000000000003
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:44 ---
+pisada_process_cpu_seconds_total 3.9680000000000004
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:45 ---
+pisada_process_cpu_seconds_total 4.140000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:46 ---
+pisada_process_cpu_seconds_total 4.297000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:47 ---
+pisada_process_cpu_seconds_total 4.359000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:48 ---
+pisada_process_cpu_seconds_total 4.594000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:49 ---
+pisada_process_cpu_seconds_total 4.719000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:51 ---
+pisada_process_cpu_seconds_total 4.9220000000000015
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:52 ---
+pisada_process_cpu_seconds_total 5.0630000000000015
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:53 ---
+pisada_process_cpu_seconds_total 5.218000000000002
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:54 ---
+pisada_process_cpu_seconds_total 5.453000000000002
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:55 ---
+pisada_process_cpu_seconds_total 5.531000000000002
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:56 ---
+pisada_process_cpu_seconds_total 5.562000000000002
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:57 ---
+pisada_process_cpu_seconds_total 5.719000000000002
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:58 ---
+pisada_process_cpu_seconds_total 6.016000000000002
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:15:59 ---
+pisada_process_cpu_seconds_total 6.1400000000000015
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:00 ---
+pisada_process_cpu_seconds_total 6.4060000000000015
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:02 ---
+pisada_process_cpu_seconds_total 6.421000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:03 ---
+pisada_process_cpu_seconds_total 6.500000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:04 ---
+pisada_process_cpu_seconds_total 6.641000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:05 ---
+pisada_process_cpu_seconds_total 6.672000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:06 ---
+pisada_process_cpu_seconds_total 6.765000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:07 ---
+pisada_process_cpu_seconds_total 6.906000000000001
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:08 ---
+pisada_process_cpu_seconds_total 7.078
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:09 ---
+pisada_process_cpu_seconds_total 7.219
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:10 ---
+pisada_process_cpu_seconds_total 7.375
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:11 ---
+pisada_process_cpu_seconds_total 7.578
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:12 ---
+pisada_process_cpu_seconds_total 7.671
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:14 ---
+pisada_process_cpu_seconds_total 7.938000000000001
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:15 ---
+pisada_process_cpu_seconds_total 8.047
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:16 ---
+pisada_process_cpu_seconds_total 8.125
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:17 ---
+pisada_process_cpu_seconds_total 8.296
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:18 ---
+pisada_process_cpu_seconds_total 8.389999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:19 ---
+pisada_process_cpu_seconds_total 8.655999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:20 ---
+pisada_process_cpu_seconds_total 8.828
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:21 ---
+pisada_process_cpu_seconds_total 8.889999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:22 ---
+pisada_process_cpu_seconds_total 9.046999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:23 ---
+pisada_process_cpu_seconds_total 9.203
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:25 ---
+pisada_process_cpu_seconds_total 9.421999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:26 ---
+pisada_process_cpu_seconds_total 9.514999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:27 ---
+pisada_process_cpu_seconds_total 9.780999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:28 ---
+pisada_process_cpu_seconds_total 10.014999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:29 ---
+pisada_process_cpu_seconds_total 10.187
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:30 ---
+pisada_process_cpu_seconds_total 10.405999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:31 ---
+pisada_process_cpu_seconds_total 10.469
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:32 ---
+pisada_process_cpu_seconds_total 10.609
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:33 ---
+pisada_process_cpu_seconds_total 10.734
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:34 ---
+pisada_process_cpu_seconds_total 10.922
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:36 ---
+pisada_process_cpu_seconds_total 11.125
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:37 ---
+pisada_process_cpu_seconds_total 11.453
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:38 ---
+pisada_process_cpu_seconds_total 11.562999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:39 ---
+pisada_process_cpu_seconds_total 11.780999999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:40 ---
+pisada_process_cpu_seconds_total 11.858999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:41 ---
+pisada_process_cpu_seconds_total 11.999999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:42 ---
+pisada_process_cpu_seconds_total 12.124999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:43 ---
+pisada_process_cpu_seconds_total 12.280999999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:44 ---
+pisada_process_cpu_seconds_total 12.374999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:45 ---
+pisada_process_cpu_seconds_total 12.640999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:47 ---
+pisada_process_cpu_seconds_total 12.702999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:48 ---
+pisada_process_cpu_seconds_total 12.796999999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:49 ---
+pisada_process_cpu_seconds_total 13.030999999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:50 ---
+pisada_process_cpu_seconds_total 13.202999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:51 ---
+pisada_process_cpu_seconds_total 13.342999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:52 ---
+pisada_process_cpu_seconds_total 13.452999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:53 ---
+pisada_process_cpu_seconds_total 13.608999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:54 ---
+pisada_process_cpu_seconds_total 13.733999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:55 ---
+pisada_process_cpu_seconds_total 13.952999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:56 ---
+pisada_process_cpu_seconds_total 14.077999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:58 ---
+pisada_process_cpu_seconds_total 14.327999999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:16:59 ---
+pisada_process_cpu_seconds_total 14.405999999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:00 ---
+pisada_process_cpu_seconds_total 14.514999999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:01 ---
+pisada_process_cpu_seconds_total 14.546999999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:02 ---
+pisada_process_cpu_seconds_total 14.717999999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:03 ---
+pisada_process_cpu_seconds_total 14.921999999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:04 ---
+pisada_process_cpu_seconds_total 15.046999999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:05 ---
+pisada_process_cpu_seconds_total 15.108999999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:06 ---
+pisada_process_cpu_seconds_total 15.311999999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:07 ---
+pisada_process_cpu_seconds_total 15.499999999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:08 ---
+pisada_process_cpu_seconds_total 15.577999999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:10 ---
+pisada_process_cpu_seconds_total 15.749999999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:11 ---
+pisada_process_cpu_seconds_total 15.921999999999997
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:12 ---
+pisada_process_cpu_seconds_total 16.061999999999998
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:13 ---
+pisada_process_cpu_seconds_total 16.249999999999996
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:14 ---
+pisada_process_cpu_seconds_total 16.311999999999998
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:15 ---
+pisada_process_cpu_seconds_total 16.421999999999997
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:16 ---
+pisada_process_cpu_seconds_total 16.562999999999995
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:17 ---
+pisada_process_cpu_seconds_total 16.702999999999996
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:18 ---
+pisada_process_cpu_seconds_total 16.780999999999995
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:19 ---
+pisada_process_cpu_seconds_total 16.921999999999993
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:21 ---
+pisada_process_cpu_seconds_total 17.030999999999995
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:22 ---
+pisada_process_cpu_seconds_total 17.140999999999995
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:23 ---
+pisada_process_cpu_seconds_total 17.296999999999993
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:24 ---
+pisada_process_cpu_seconds_total 17.561999999999994
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:25 ---
+pisada_process_cpu_seconds_total 17.670999999999996
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:26 ---
+pisada_process_cpu_seconds_total 17.983999999999995
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:27 ---
+pisada_process_cpu_seconds_total 18.030999999999995
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:28 ---
+pisada_process_cpu_seconds_total 18.186999999999994
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:29 ---
+pisada_process_cpu_seconds_total 18.233999999999995
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:31 ---
+pisada_process_cpu_seconds_total 18.420999999999996
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:32 ---
+pisada_process_cpu_seconds_total 18.561999999999994
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:33 ---
+pisada_process_cpu_seconds_total 18.702999999999992
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:34 ---
+pisada_process_cpu_seconds_total 18.859999999999992
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:35 ---
+pisada_process_cpu_seconds_total 19.046999999999993
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:36 ---
+pisada_process_cpu_seconds_total 19.077999999999992
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:37 ---
+pisada_process_cpu_seconds_total 19.249999999999993
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:38 ---
+pisada_process_cpu_seconds_total 19.358999999999995
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:39 ---
+pisada_process_cpu_seconds_total 19.624999999999993
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:40 ---
+pisada_process_cpu_seconds_total 19.874999999999993
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:41 ---
+pisada_process_cpu_seconds_total 19.921999999999993
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:43 ---
+pisada_process_cpu_seconds_total 20.092999999999993
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:44 ---
+pisada_process_cpu_seconds_total 20.170999999999992
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:45 ---
+pisada_process_cpu_seconds_total 20.46899999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:46 ---
+pisada_process_cpu_seconds_total 20.63999999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:47 ---
+pisada_process_cpu_seconds_total 20.71899999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:48 ---
+pisada_process_cpu_seconds_total 20.89099999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:49 ---
+pisada_process_cpu_seconds_total 21.14099999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:50 ---
+pisada_process_cpu_seconds_total 21.28199999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:51 ---
+pisada_process_cpu_seconds_total 21.49999999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:52 ---
+pisada_process_cpu_seconds_total 21.71899999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:54 ---
+pisada_process_cpu_seconds_total 21.78099999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 5
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:55 ---
+pisada_process_cpu_seconds_total 22.04699999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:56 ---
+pisada_process_cpu_seconds_total 22.20299999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:57 ---
+pisada_process_cpu_seconds_total 22.42199999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:58 ---
+pisada_process_cpu_seconds_total 22.59399999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:17:59 ---
+pisada_process_cpu_seconds_total 22.71899999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:00 ---
+pisada_process_cpu_seconds_total 22.87499999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:01 ---
+pisada_process_cpu_seconds_total 22.98399999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:02 ---
+pisada_process_cpu_seconds_total 23.217999999999993
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:03 ---
+pisada_process_cpu_seconds_total 23.40599999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:05 ---
+pisada_process_cpu_seconds_total 23.54699999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:06 ---
+pisada_process_cpu_seconds_total 23.70299999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:07 ---
+pisada_process_cpu_seconds_total 23.87499999999999
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:08 ---
+pisada_process_cpu_seconds_total 24.015999999999988
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:09 ---
+pisada_process_cpu_seconds_total 24.187999999999988
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:10 ---
+pisada_process_cpu_seconds_total 24.46799999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:11 ---
+pisada_process_cpu_seconds_total 24.71899999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:12 ---
+pisada_process_cpu_seconds_total 24.827999999999992
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:13 ---
+pisada_process_cpu_seconds_total 24.906999999999993
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:14 ---
+pisada_process_cpu_seconds_total 25.171999999999993
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:15 ---
+pisada_process_cpu_seconds_total 25.281999999999993
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:17 ---
+pisada_process_cpu_seconds_total 25.343999999999994
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:18 ---
+pisada_process_cpu_seconds_total 25.515999999999995
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:19 ---
+pisada_process_cpu_seconds_total 25.687999999999995
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:20 ---
+pisada_process_cpu_seconds_total 26.045999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:21 ---
+pisada_process_cpu_seconds_total 26.108999999999995
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:22 ---
+pisada_process_cpu_seconds_total 26.327999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:23 ---
+pisada_process_cpu_seconds_total 26.609999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:24 ---
+pisada_process_cpu_seconds_total 26.749999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:25 ---
+pisada_process_cpu_seconds_total 26.920999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:26 ---
+pisada_process_cpu_seconds_total 27.093999999999994
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:27 ---
+pisada_process_cpu_seconds_total 27.327999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:29 ---
+pisada_process_cpu_seconds_total 27.467999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:30 ---
+pisada_process_cpu_seconds_total 27.639999999999997
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:31 ---
+pisada_process_cpu_seconds_total 27.921999999999997
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:32 ---
+pisada_process_cpu_seconds_total 28.234999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:33 ---
+pisada_process_cpu_seconds_total 28.421999999999997
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:34 ---
+pisada_process_cpu_seconds_total 28.718999999999998
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:35 ---
+pisada_process_cpu_seconds_total 28.936999999999998
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:18:36 ---
+pisada_process_cpu_seconds_total 29.281999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:37 ---
+pisada_process_cpu_seconds_total 29.577999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:38 ---
+pisada_process_cpu_seconds_total 29.858999999999995
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:40 ---
+pisada_process_cpu_seconds_total 30.248999999999995
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:41 ---
+pisada_process_cpu_seconds_total 30.562999999999995
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:42 ---
+pisada_process_cpu_seconds_total 30.670999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:43 ---
+pisada_process_cpu_seconds_total 30.952999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:44 ---
+pisada_process_cpu_seconds_total 31.077999999999996
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:45 ---
+pisada_process_cpu_seconds_total 31.390999999999995
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:46 ---
+pisada_process_cpu_seconds_total 31.889999999999993
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:47 ---
+pisada_process_cpu_seconds_total 32.18699999999999
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:48 ---
+pisada_process_cpu_seconds_total 32.59299999999999
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:49 ---
+pisada_process_cpu_seconds_total 32.85899999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:51 ---
+pisada_process_cpu_seconds_total 33.045999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:52 ---
+pisada_process_cpu_seconds_total 33.21899999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:53 ---
+pisada_process_cpu_seconds_total 33.499999999999986
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:54 ---
+pisada_process_cpu_seconds_total 33.81199999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:55 ---
+pisada_process_cpu_seconds_total 34.045999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:56 ---
+pisada_process_cpu_seconds_total 34.234999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:57 ---
+pisada_process_cpu_seconds_total 34.499999999999986
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:58 ---
+pisada_process_cpu_seconds_total 34.79699999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:18:59 ---
+pisada_process_cpu_seconds_total 35.07799999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:00 ---
+pisada_process_cpu_seconds_total 35.43699999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:02 ---
+pisada_process_cpu_seconds_total 35.68799999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:03 ---
+pisada_process_cpu_seconds_total 35.95299999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:04 ---
+pisada_process_cpu_seconds_total 36.170999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:05 ---
+pisada_process_cpu_seconds_total 36.46899999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 9
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:06 ---
+pisada_process_cpu_seconds_total 36.70299999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:07 ---
+pisada_process_cpu_seconds_total 36.89099999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:08 ---
+pisada_process_cpu_seconds_total 37.093999999999994
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:09 ---
+pisada_process_cpu_seconds_total 37.28099999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:10 ---
+pisada_process_cpu_seconds_total 37.483999999999995
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:11 ---
+pisada_process_cpu_seconds_total 37.608999999999995
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:13 ---
+pisada_process_cpu_seconds_total 37.78099999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:14 ---
+pisada_process_cpu_seconds_total 37.983999999999995
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:15 ---
+pisada_process_cpu_seconds_total 38.187
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:16 ---
+pisada_process_cpu_seconds_total 38.358999999999995
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:17 ---
+pisada_process_cpu_seconds_total 38.42099999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:18 ---
+pisada_process_cpu_seconds_total 38.59299999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:19 ---
+pisada_process_cpu_seconds_total 38.95299999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:20 ---
+pisada_process_cpu_seconds_total 39.09399999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:21 ---
+pisada_process_cpu_seconds_total 39.359999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:22 ---
+pisada_process_cpu_seconds_total 39.499999999999986
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:24 ---
+pisada_process_cpu_seconds_total 39.70299999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:25 ---
+pisada_process_cpu_seconds_total 39.95299999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:26 ---
+pisada_process_cpu_seconds_total 40.21799999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:27 ---
+pisada_process_cpu_seconds_total 40.35899999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:28 ---
+pisada_process_cpu_seconds_total 40.530999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:29 ---
+pisada_process_cpu_seconds_total 40.68799999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:30 ---
+pisada_process_cpu_seconds_total 40.79699999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:31 ---
+pisada_process_cpu_seconds_total 40.93799999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:32 ---
+pisada_process_cpu_seconds_total 41.155999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:33 ---
+pisada_process_cpu_seconds_total 41.405999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:34 ---
+pisada_process_cpu_seconds_total 41.57799999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:36 ---
+pisada_process_cpu_seconds_total 41.79699999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:37 ---
+pisada_process_cpu_seconds_total 42.014999999999986
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:38 ---
+pisada_process_cpu_seconds_total 42.045999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:39 ---
+pisada_process_cpu_seconds_total 42.249999999999986
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:40 ---
+pisada_process_cpu_seconds_total 42.374999999999986
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:41 ---
+pisada_process_cpu_seconds_total 42.67199999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:42 ---
+pisada_process_cpu_seconds_total 42.859999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:43 ---
+pisada_process_cpu_seconds_total 43.124999999999986
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:44 ---
+pisada_process_cpu_seconds_total 43.31199999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:46 ---
+pisada_process_cpu_seconds_total 43.484999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:47 ---
+pisada_process_cpu_seconds_total 43.71899999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:48 ---
+pisada_process_cpu_seconds_total 43.85899999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:49 ---
+pisada_process_cpu_seconds_total 44.170999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:50 ---
+pisada_process_cpu_seconds_total 44.37399999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:51 ---
+pisada_process_cpu_seconds_total 44.49899999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:52 ---
+pisada_process_cpu_seconds_total 44.71799999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:53 ---
+pisada_process_cpu_seconds_total 44.96899999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:19:54 ---
+pisada_process_cpu_seconds_total 45.124999999999986
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:55 ---
+pisada_process_cpu_seconds_total 45.34299999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:56 ---
+pisada_process_cpu_seconds_total 45.46799999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:58 ---
+pisada_process_cpu_seconds_total 45.59299999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:19:59 ---
+pisada_process_cpu_seconds_total 45.874999999999986
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:00 ---
+pisada_process_cpu_seconds_total 46.10899999999999
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:01 ---
+pisada_process_cpu_seconds_total 46.280999999999985
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:02 ---
+pisada_process_cpu_seconds_total 46.42199999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:03 ---
+pisada_process_cpu_seconds_total 46.74899999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:04 ---
+pisada_process_cpu_seconds_total 46.93699999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:05 ---
+pisada_process_cpu_seconds_total 47.09299999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:06 ---
+pisada_process_cpu_seconds_total 47.29699999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:07 ---
+pisada_process_cpu_seconds_total 47.57799999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:09 ---
+pisada_process_cpu_seconds_total 47.87499999999998
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:10 ---
+pisada_process_cpu_seconds_total 48.046999999999976
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:11 ---
+pisada_process_cpu_seconds_total 48.09399999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:12 ---
+pisada_process_cpu_seconds_total 48.311999999999976
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 9
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:13 ---
+pisada_process_cpu_seconds_total 48.577999999999975
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:14 ---
+pisada_process_cpu_seconds_total 48.796999999999976
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:15 ---
+pisada_process_cpu_seconds_total 49.10899999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:16 ---
+pisada_process_cpu_seconds_total 49.37499999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:17 ---
+pisada_process_cpu_seconds_total 49.53099999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:18 ---
+pisada_process_cpu_seconds_total 49.90599999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:20 ---
+pisada_process_cpu_seconds_total 50.06299999999997
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:21 ---
+pisada_process_cpu_seconds_total 50.420999999999964
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:22 ---
+pisada_process_cpu_seconds_total 50.68699999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:23 ---
+pisada_process_cpu_seconds_total 50.92199999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:24 ---
+pisada_process_cpu_seconds_total 51.23399999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:25 ---
+pisada_process_cpu_seconds_total 51.515999999999956
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 9
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:26 ---
+pisada_process_cpu_seconds_total 51.87499999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:27 ---
+pisada_process_cpu_seconds_total 52.20299999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:28 ---
+pisada_process_cpu_seconds_total 52.48399999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:29 ---
+pisada_process_cpu_seconds_total 52.79699999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:31 ---
+pisada_process_cpu_seconds_total 53.23399999999996
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:32 ---
+pisada_process_cpu_seconds_total 53.71899999999996
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:33 ---
+pisada_process_cpu_seconds_total 53.98399999999996
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:34 ---
+pisada_process_cpu_seconds_total 54.37499999999996
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:35 ---
+pisada_process_cpu_seconds_total 54.655999999999956
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:36 ---
+pisada_process_cpu_seconds_total 54.98399999999996
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:37 ---
+pisada_process_cpu_seconds_total 55.35899999999996
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:38 ---
+pisada_process_cpu_seconds_total 55.76499999999996
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:39 ---
+pisada_process_cpu_seconds_total 56.07799999999996
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:20:40 ---
+pisada_process_cpu_seconds_total 56.43699999999996
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:42 ---
+pisada_process_cpu_seconds_total 56.859999999999964
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:43 ---
+pisada_process_cpu_seconds_total 57.26599999999996
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:44 ---
+pisada_process_cpu_seconds_total 57.593999999999966
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:45 ---
+pisada_process_cpu_seconds_total 57.968999999999966
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:46 ---
+pisada_process_cpu_seconds_total 58.29699999999997
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:47 ---
+pisada_process_cpu_seconds_total 58.63999999999997
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:48 ---
+pisada_process_cpu_seconds_total 58.98399999999997
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:49 ---
+pisada_process_cpu_seconds_total 59.23399999999997
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:50 ---
+pisada_process_cpu_seconds_total 59.546999999999976
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:51 ---
+pisada_process_cpu_seconds_total 59.96899999999997
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:53 ---
+pisada_process_cpu_seconds_total 60.37499999999997
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:54 ---
+pisada_process_cpu_seconds_total 60.78099999999997
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:55 ---
+pisada_process_cpu_seconds_total 61.06199999999997
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:56 ---
+pisada_process_cpu_seconds_total 61.37499999999997
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:57 ---
+pisada_process_cpu_seconds_total 61.71899999999997
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:58 ---
+pisada_process_cpu_seconds_total 61.99999999999997
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:20:59 ---
+pisada_process_cpu_seconds_total 62.49999999999997
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:21:00 ---
+pisada_process_cpu_seconds_total 62.79599999999997
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:01 ---
+pisada_process_cpu_seconds_total 63.03099999999997
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:02 ---
+pisada_process_cpu_seconds_total 63.48499999999997
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:04 ---
+pisada_process_cpu_seconds_total 63.84299999999997
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:05 ---
+pisada_process_cpu_seconds_total 64.18799999999997
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:06 ---
+pisada_process_cpu_seconds_total 64.70299999999997
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:07 ---
+pisada_process_cpu_seconds_total 64.96899999999998
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:08 ---
+pisada_process_cpu_seconds_total 65.39099999999998
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:09 ---
+pisada_process_cpu_seconds_total 65.68699999999998
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:10 ---
+pisada_process_cpu_seconds_total 65.95299999999999
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:11 ---
+pisada_process_cpu_seconds_total 66.344
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:12 ---
+pisada_process_cpu_seconds_total 66.624
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:13 ---
+pisada_process_cpu_seconds_total 66.969
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:14 ---
+pisada_process_cpu_seconds_total 67.32799999999999
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:16 ---
+pisada_process_cpu_seconds_total 67.59299999999999
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:17 ---
+pisada_process_cpu_seconds_total 67.984
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:18 ---
+pisada_process_cpu_seconds_total 68.28099999999999
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:19 ---
+pisada_process_cpu_seconds_total 68.65599999999999
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:20 ---
+pisada_process_cpu_seconds_total 69.01599999999999
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:21 ---
+pisada_process_cpu_seconds_total 69.49999999999999
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:22 ---
+pisada_process_cpu_seconds_total 69.79699999999998
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:23 ---
+pisada_process_cpu_seconds_total 70.07799999999999
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:24 ---
+pisada_process_cpu_seconds_total 70.42099999999999
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:25 ---
+pisada_process_cpu_seconds_total 70.87499999999999
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:27 ---
+pisada_process_cpu_seconds_total 71.18699999999998
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:28 ---
+pisada_process_cpu_seconds_total 71.46899999999998
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:29 ---
+pisada_process_cpu_seconds_total 71.88999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:30 ---
+pisada_process_cpu_seconds_total 72.13999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:31 ---
+pisada_process_cpu_seconds_total 72.43699999999998
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:32 ---
+pisada_process_cpu_seconds_total 72.65599999999998
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:33 ---
+pisada_process_cpu_seconds_total 72.98399999999998
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:34 ---
+pisada_process_cpu_seconds_total 73.42199999999998
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:35 ---
+pisada_process_cpu_seconds_total 73.71799999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:36 ---
+pisada_process_cpu_seconds_total 73.99999999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:37 ---
+pisada_process_cpu_seconds_total 74.34399999999998
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:39 ---
+pisada_process_cpu_seconds_total 74.62499999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:40 ---
+pisada_process_cpu_seconds_total 74.89099999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:41 ---
+pisada_process_cpu_seconds_total 75.26499999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:42 ---
+pisada_process_cpu_seconds_total 75.70299999999999
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:43 ---
+pisada_process_cpu_seconds_total 75.984
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:44 ---
+pisada_process_cpu_seconds_total 76.515
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:45 ---
+pisada_process_cpu_seconds_total 76.75
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:46 ---
+pisada_process_cpu_seconds_total 77.203
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:47 ---
+pisada_process_cpu_seconds_total 77.656
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:48 ---
+pisada_process_cpu_seconds_total 78.031
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:50 ---
+pisada_process_cpu_seconds_total 78.281
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:51 ---
+pisada_process_cpu_seconds_total 78.67200000000001
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:52 ---
+pisada_process_cpu_seconds_total 79.07800000000002
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:53 ---
+pisada_process_cpu_seconds_total 79.35900000000002
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:54 ---
+pisada_process_cpu_seconds_total 79.64000000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:55 ---
+pisada_process_cpu_seconds_total 80.11000000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:56 ---
+pisada_process_cpu_seconds_total 80.51600000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:57 ---
+pisada_process_cpu_seconds_total 80.82800000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:58 ---
+pisada_process_cpu_seconds_total 81.15600000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:21:59 ---
+pisada_process_cpu_seconds_total 81.31200000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:00 ---
+pisada_process_cpu_seconds_total 81.82800000000005
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:02 ---
+pisada_process_cpu_seconds_total 82.14100000000005
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:03 ---
+pisada_process_cpu_seconds_total 82.54600000000005
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:04 ---
+pisada_process_cpu_seconds_total 83.00000000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:05 ---
+pisada_process_cpu_seconds_total 83.23500000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:06 ---
+pisada_process_cpu_seconds_total 83.64100000000005
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:07 ---
+pisada_process_cpu_seconds_total 83.95300000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:08 ---
+pisada_process_cpu_seconds_total 84.39000000000004
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:09 ---
+pisada_process_cpu_seconds_total 84.70300000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:10 ---
+pisada_process_cpu_seconds_total 85.14100000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:11 ---
+pisada_process_cpu_seconds_total 85.43800000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:12 ---
+pisada_process_cpu_seconds_total 85.81200000000004
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:14 ---
+pisada_process_cpu_seconds_total 86.14000000000004
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:15 ---
+pisada_process_cpu_seconds_total 86.54600000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:16 ---
+pisada_process_cpu_seconds_total 86.92200000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:17 ---
+pisada_process_cpu_seconds_total 87.21800000000006
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:18 ---
+pisada_process_cpu_seconds_total 87.53100000000006
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:19 ---
+pisada_process_cpu_seconds_total 87.82800000000006
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:20 ---
+pisada_process_cpu_seconds_total 88.25000000000006
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:21 ---
+pisada_process_cpu_seconds_total 88.57800000000006
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:22 ---
+pisada_process_cpu_seconds_total 88.93700000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:23 ---
+pisada_process_cpu_seconds_total 89.18700000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:24 ---
+pisada_process_cpu_seconds_total 89.56300000000006
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:26 ---
+pisada_process_cpu_seconds_total 89.96900000000007
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:27 ---
+pisada_process_cpu_seconds_total 90.26600000000006
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:28 ---
+pisada_process_cpu_seconds_total 90.64000000000006
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:29 ---
+pisada_process_cpu_seconds_total 90.93700000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:30 ---
+pisada_process_cpu_seconds_total 91.23400000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:31 ---
+pisada_process_cpu_seconds_total 91.45300000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:32 ---
+pisada_process_cpu_seconds_total 91.70300000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:33 ---
+pisada_process_cpu_seconds_total 92.06300000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:34 ---
+pisada_process_cpu_seconds_total 92.40600000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:36 ---
+pisada_process_cpu_seconds_total 92.70300000000005
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:37 ---
+pisada_process_cpu_seconds_total 93.06300000000005
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:38 ---
+pisada_process_cpu_seconds_total 93.34300000000005
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:39 ---
+pisada_process_cpu_seconds_total 93.82800000000005
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:40 ---
+pisada_process_cpu_seconds_total 94.12500000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:41 ---
+pisada_process_cpu_seconds_total 94.49900000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:42 ---
+pisada_process_cpu_seconds_total 94.84300000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:43 ---
+pisada_process_cpu_seconds_total 95.21900000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:44 ---
+pisada_process_cpu_seconds_total 95.76500000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:45 ---
+pisada_process_cpu_seconds_total 96.09400000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:46 ---
+pisada_process_cpu_seconds_total 96.79700000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:48 ---
+pisada_process_cpu_seconds_total 97.23400000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:49 ---
+pisada_process_cpu_seconds_total 97.65600000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:50 ---
+pisada_process_cpu_seconds_total 98.10900000000004
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:51 ---
+pisada_process_cpu_seconds_total 98.57800000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:52 ---
+pisada_process_cpu_seconds_total 99.14000000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:53 ---
+pisada_process_cpu_seconds_total 99.67200000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:54 ---
+pisada_process_cpu_seconds_total 100.12500000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:55 ---
+pisada_process_cpu_seconds_total 100.67200000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:56 ---
+pisada_process_cpu_seconds_total 101.23400000000002
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:57 ---
+pisada_process_cpu_seconds_total 101.82800000000002
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:22:59 ---
+pisada_process_cpu_seconds_total 102.35900000000002
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:00 ---
+pisada_process_cpu_seconds_total 102.87500000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:01 ---
+pisada_process_cpu_seconds_total 103.53100000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:02 ---
+pisada_process_cpu_seconds_total 104.06300000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:23:03 ---
+pisada_process_cpu_seconds_total 104.70300000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:04 ---
+pisada_process_cpu_seconds_total 105.32800000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:05 ---
+pisada_process_cpu_seconds_total 105.87500000000003
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:06 ---
+pisada_process_cpu_seconds_total 106.46900000000002
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:07 ---
+pisada_process_cpu_seconds_total 107.15600000000002
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:08 ---
+pisada_process_cpu_seconds_total 107.78100000000002
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:10 ---
+pisada_process_cpu_seconds_total 108.42200000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:11 ---
+pisada_process_cpu_seconds_total 108.96800000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:12 ---
+pisada_process_cpu_seconds_total 109.45300000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:13 ---
+pisada_process_cpu_seconds_total 110.12500000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:14 ---
+pisada_process_cpu_seconds_total 110.76600000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:15 ---
+pisada_process_cpu_seconds_total 111.37500000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:16 ---
+pisada_process_cpu_seconds_total 111.92200000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:17 ---
+pisada_process_cpu_seconds_total 112.37500000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:18 ---
+pisada_process_cpu_seconds_total 113.03100000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:19 ---
+pisada_process_cpu_seconds_total 113.62500000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:20 ---
+pisada_process_cpu_seconds_total 114.25000000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:22 ---
+pisada_process_cpu_seconds_total 114.81300000000003
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:23 ---
+pisada_process_cpu_seconds_total 115.37400000000004
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:24 ---
+pisada_process_cpu_seconds_total 115.89000000000004
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:25 ---
+pisada_process_cpu_seconds_total 116.45300000000005
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:26 ---
+pisada_process_cpu_seconds_total 117.06300000000005
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:27 ---
+pisada_process_cpu_seconds_total 117.62500000000004
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:28 ---
+pisada_process_cpu_seconds_total 118.10900000000004
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:29 ---
+pisada_process_cpu_seconds_total 118.67200000000004
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:30 ---
+pisada_process_cpu_seconds_total 119.28200000000004
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:31 ---
+pisada_process_cpu_seconds_total 119.82800000000005
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:33 ---
+pisada_process_cpu_seconds_total 120.59400000000005
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:34 ---
+pisada_process_cpu_seconds_total 121.28100000000005
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:35 ---
+pisada_process_cpu_seconds_total 121.99900000000005
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:36 ---
+pisada_process_cpu_seconds_total 122.75000000000006
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:37 ---
+pisada_process_cpu_seconds_total 123.42200000000005
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:38 ---
+pisada_process_cpu_seconds_total 124.03100000000005
+pisada_pool_conexiones{estado="total"} 18
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:39 ---
+pisada_process_cpu_seconds_total 124.76600000000005
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:40 ---
+pisada_process_cpu_seconds_total 125.25000000000004
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:41 ---
+pisada_process_cpu_seconds_total 125.75000000000004
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:42 ---
+pisada_process_cpu_seconds_total 126.31300000000005
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:44 ---
+pisada_process_cpu_seconds_total 126.92200000000004
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:45 ---
+pisada_process_cpu_seconds_total 127.45300000000005
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:46 ---
+pisada_process_cpu_seconds_total 128.09300000000005
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:47 ---
+pisada_process_cpu_seconds_total 128.76500000000004
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:48 ---
+pisada_process_cpu_seconds_total 129.31300000000005
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:49 ---
+pisada_process_cpu_seconds_total 130.15600000000003
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:50 ---
+pisada_process_cpu_seconds_total 130.68700000000004
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:51 ---
+pisada_process_cpu_seconds_total 131.28100000000003
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:52 ---
+pisada_process_cpu_seconds_total 132.07800000000003
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:53 ---
+pisada_process_cpu_seconds_total 132.82800000000003
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:54 ---
+pisada_process_cpu_seconds_total 133.42100000000002
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:56 ---
+pisada_process_cpu_seconds_total 134.03100000000003
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:57 ---
+pisada_process_cpu_seconds_total 134.76600000000005
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:58 ---
+pisada_process_cpu_seconds_total 135.37500000000006
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:23:59 ---
+pisada_process_cpu_seconds_total 136.31200000000007
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:00 ---
+pisada_process_cpu_seconds_total 137.09400000000008
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:01 ---
+pisada_process_cpu_seconds_total 137.59300000000007
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:02 ---
+pisada_process_cpu_seconds_total 138.26500000000007
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:03 ---
+pisada_process_cpu_seconds_total 138.93700000000007
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:04 ---
+pisada_process_cpu_seconds_total 139.50000000000006
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:06 ---
+pisada_process_cpu_seconds_total 140.14000000000004
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:07 ---
+pisada_process_cpu_seconds_total 140.76500000000004
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:08 ---
+pisada_process_cpu_seconds_total 141.54700000000005
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:09 ---
+pisada_process_cpu_seconds_total 142.17100000000005
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:10 ---
+pisada_process_cpu_seconds_total 142.75000000000006
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:11 ---
+pisada_process_cpu_seconds_total 143.36000000000007
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:12 ---
+pisada_process_cpu_seconds_total 143.92200000000008
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:13 ---
+pisada_process_cpu_seconds_total 144.4530000000001
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:14 ---
+pisada_process_cpu_seconds_total 145.01600000000008
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:16 ---
+pisada_process_cpu_seconds_total 145.78200000000007
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:17 ---
+pisada_process_cpu_seconds_total 146.37500000000006
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:18 ---
+pisada_process_cpu_seconds_total 146.81200000000007
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:19 ---
+pisada_process_cpu_seconds_total 147.48400000000007
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:20 ---
+pisada_process_cpu_seconds_total 148.12500000000006
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:21 ---
+pisada_process_cpu_seconds_total 148.81300000000005
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:22 ---
+pisada_process_cpu_seconds_total 149.64100000000005
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:23 ---
+pisada_process_cpu_seconds_total 150.29600000000005
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:25 ---
+pisada_process_cpu_seconds_total 150.93700000000004
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:26 ---
+pisada_process_cpu_seconds_total 151.71900000000005
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:27 ---
+pisada_process_cpu_seconds_total 152.48500000000004
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:28 ---
+pisada_process_cpu_seconds_total 153.12500000000003
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:29 ---
+pisada_process_cpu_seconds_total 153.87500000000003
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:30 ---
+pisada_process_cpu_seconds_total 154.48500000000004
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:31 ---
+pisada_process_cpu_seconds_total 155.03100000000003
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:32 ---
+pisada_process_cpu_seconds_total 155.56200000000004
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:33 ---
+pisada_process_cpu_seconds_total 156.39100000000005
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:35 ---
+pisada_process_cpu_seconds_total 157.07800000000006
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:36 ---
+pisada_process_cpu_seconds_total 157.60900000000007
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:37 ---
+pisada_process_cpu_seconds_total 158.10900000000007
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:38 ---
+pisada_process_cpu_seconds_total 158.65700000000007
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:39 ---
+pisada_process_cpu_seconds_total 159.20300000000006
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:40 ---
+pisada_process_cpu_seconds_total 159.65600000000006
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:41 ---
+pisada_process_cpu_seconds_total 160.37500000000006
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:42 ---
+pisada_process_cpu_seconds_total 160.89100000000005
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:43 ---
+pisada_process_cpu_seconds_total 161.53100000000003
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:45 ---
+pisada_process_cpu_seconds_total 162.12500000000003
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:46 ---
+pisada_process_cpu_seconds_total 162.92200000000003
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:47 ---
+pisada_process_cpu_seconds_total 163.51500000000001
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:48 ---
+pisada_process_cpu_seconds_total 164.109
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:49 ---
+pisada_process_cpu_seconds_total 164.96800000000002
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 14
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:24:50 ---
+pisada_process_cpu_seconds_total 165.68800000000002
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:51 ---
+pisada_process_cpu_seconds_total 166.312
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 14
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:52 ---
+pisada_process_cpu_seconds_total 166.84400000000002
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:53 ---
+pisada_process_cpu_seconds_total 167.59400000000002
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:55 ---
+pisada_process_cpu_seconds_total 168.25000000000003
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:56 ---
+pisada_process_cpu_seconds_total 168.84400000000002
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:57 ---
+pisada_process_cpu_seconds_total 169.34400000000002
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:58 ---
+pisada_process_cpu_seconds_total 169.984
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:24:59 ---
+pisada_process_cpu_seconds_total 170.578
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:00 ---
+pisada_process_cpu_seconds_total 171.219
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:01 ---
+pisada_process_cpu_seconds_total 171.781
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:02 ---
+pisada_process_cpu_seconds_total 172.51600000000002
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:25:04 ---
+pisada_process_cpu_seconds_total 173.04600000000002
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:05 ---
+pisada_process_cpu_seconds_total 173.54700000000003
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:06 ---
+pisada_process_cpu_seconds_total 174.235
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:07 ---
+pisada_process_cpu_seconds_total 174.781
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:25:08 ---
+pisada_process_cpu_seconds_total 175.344
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:09 ---
+pisada_process_cpu_seconds_total 175.999
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:10 ---
+pisada_process_cpu_seconds_total 176.547
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:11 ---
+pisada_process_cpu_seconds_total 177.078
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:12 ---
+pisada_process_cpu_seconds_total 177.875
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:14 ---
+pisada_process_cpu_seconds_total 178.703
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:15 ---
+pisada_process_cpu_seconds_total 179.422
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:16 ---
+pisada_process_cpu_seconds_total 180.18699999999998
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:17 ---
+pisada_process_cpu_seconds_total 180.938
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:18 ---
+pisada_process_cpu_seconds_total 181.82799999999997
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 14
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:19 ---
+pisada_process_cpu_seconds_total 182.46899999999997
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:20 ---
+pisada_process_cpu_seconds_total 183.29599999999996
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:21 ---
+pisada_process_cpu_seconds_total 184.13999999999996
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:23 ---
+pisada_process_cpu_seconds_total 185.01599999999996
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 14
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:24 ---
+pisada_process_cpu_seconds_total 185.79699999999997
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:25 ---
+pisada_process_cpu_seconds_total 186.67099999999996
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:26 ---
+pisada_process_cpu_seconds_total 187.64099999999996
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 14
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:25:27 ---
+pisada_process_cpu_seconds_total 188.35899999999995
+pisada_pool_conexiones{estado="total"} 15
+pisada_pool_conexiones{estado="ocioso"} 14
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:28 ---
+pisada_process_cpu_seconds_total 189.29599999999996
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:29 ---
+pisada_process_cpu_seconds_total 190.31199999999995
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:30 ---
+pisada_process_cpu_seconds_total 191.17199999999997
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:32 ---
+pisada_process_cpu_seconds_total 192.10999999999996
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:33 ---
+pisada_process_cpu_seconds_total 193.24999999999994
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 14
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:34 ---
+pisada_process_cpu_seconds_total 194.59399999999994
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:35 ---
+pisada_process_cpu_seconds_total 195.42199999999994
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:36 ---
+pisada_process_cpu_seconds_total 196.49999999999994
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:25:37 ---
+pisada_process_cpu_seconds_total 197.37499999999994
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:38 ---
+pisada_process_cpu_seconds_total 198.43699999999995
+pisada_pool_conexiones{estado="total"} 16
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:39 ---
+pisada_process_cpu_seconds_total 199.90599999999995
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 0
+pisada_pool_conexiones{estado="en_espera"} 5
+--- 13:25:40 ---
+pisada_process_cpu_seconds_total 201.01499999999996
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:42 ---
+pisada_process_cpu_seconds_total 201.99899999999997
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:43 ---
+pisada_process_cpu_seconds_total 203.13999999999996
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:44 ---
+pisada_process_cpu_seconds_total 204.03099999999995
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:45 ---
+pisada_process_cpu_seconds_total 204.92099999999994
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:46 ---
+pisada_process_cpu_seconds_total 205.96799999999993
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:47 ---
+pisada_process_cpu_seconds_total 207.10899999999992
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:48 ---
+pisada_process_cpu_seconds_total 208.10999999999993
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:49 ---
+pisada_process_cpu_seconds_total 208.98399999999992
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:51 ---
+pisada_process_cpu_seconds_total 210.23399999999992
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 9
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:25:52 ---
+pisada_process_cpu_seconds_total 211.32799999999992
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:53 ---
+pisada_process_cpu_seconds_total 212.32799999999992
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:54 ---
+pisada_process_cpu_seconds_total 213.26499999999993
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:55 ---
+pisada_process_cpu_seconds_total 214.31199999999993
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:56 ---
+pisada_process_cpu_seconds_total 215.31299999999993
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:57 ---
+pisada_process_cpu_seconds_total 216.24999999999994
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:25:58 ---
+pisada_process_cpu_seconds_total 217.24999999999994
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:26:00 ---
+pisada_process_cpu_seconds_total 218.13999999999993
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:01 ---
+pisada_process_cpu_seconds_total 219.04699999999994
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:02 ---
+pisada_process_cpu_seconds_total 220.26499999999993
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 4
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:26:03 ---
+pisada_process_cpu_seconds_total 221.40599999999992
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:04 ---
+pisada_process_cpu_seconds_total 222.4219999999999
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:05 ---
+pisada_process_cpu_seconds_total 223.3899999999999
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:06 ---
+pisada_process_cpu_seconds_total 224.5149999999999
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:07 ---
+pisada_process_cpu_seconds_total 225.5779999999999
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:08 ---
+pisada_process_cpu_seconds_total 226.54699999999988
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:26:10 ---
+pisada_process_cpu_seconds_total 227.31199999999987
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:11 ---
+pisada_process_cpu_seconds_total 228.49999999999986
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:12 ---
+pisada_process_cpu_seconds_total 229.59399999999985
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:13 ---
+pisada_process_cpu_seconds_total 230.46799999999985
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:14 ---
+pisada_process_cpu_seconds_total 231.48399999999984
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:15 ---
+pisada_process_cpu_seconds_total 232.57799999999983
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:26:16 ---
+pisada_process_cpu_seconds_total 233.85899999999984
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 14
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:17 ---
+pisada_process_cpu_seconds_total 234.74999999999983
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:19 ---
+pisada_process_cpu_seconds_total 236.04699999999983
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:20 ---
+pisada_process_cpu_seconds_total 236.9369999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:21 ---
+pisada_process_cpu_seconds_total 238.01499999999982
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:22 ---
+pisada_process_cpu_seconds_total 238.9369999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:23 ---
+pisada_process_cpu_seconds_total 239.8589999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:24 ---
+pisada_process_cpu_seconds_total 240.9369999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:25 ---
+pisada_process_cpu_seconds_total 241.8589999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:26 ---
+pisada_process_cpu_seconds_total 242.7969999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:28 ---
+pisada_process_cpu_seconds_total 243.8899999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:29 ---
+pisada_process_cpu_seconds_total 244.90599999999978
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:30 ---
+pisada_process_cpu_seconds_total 245.98399999999978
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:31 ---
+pisada_process_cpu_seconds_total 246.99999999999977
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:32 ---
+pisada_process_cpu_seconds_total 248.04699999999977
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:33 ---
+pisada_process_cpu_seconds_total 249.40599999999978
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 2
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:34 ---
+pisada_process_cpu_seconds_total 250.43699999999978
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:26:35 ---
+pisada_process_cpu_seconds_total 251.3899999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:37 ---
+pisada_process_cpu_seconds_total 252.3129999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:38 ---
+pisada_process_cpu_seconds_total 253.53099999999978
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:39 ---
+pisada_process_cpu_seconds_total 254.53199999999978
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:40 ---
+pisada_process_cpu_seconds_total 255.4849999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:41 ---
+pisada_process_cpu_seconds_total 256.3739999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:42 ---
+pisada_process_cpu_seconds_total 257.6249999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:43 ---
+pisada_process_cpu_seconds_total 258.59399999999977
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:44 ---
+pisada_process_cpu_seconds_total 259.6869999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:46 ---
+pisada_process_cpu_seconds_total 260.8749999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:47 ---
+pisada_process_cpu_seconds_total 261.7489999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:26:48 ---
+pisada_process_cpu_seconds_total 262.7649999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:49 ---
+pisada_process_cpu_seconds_total 263.8279999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:50 ---
+pisada_process_cpu_seconds_total 264.9059999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:51 ---
+pisada_process_cpu_seconds_total 266.01499999999976
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:52 ---
+pisada_process_cpu_seconds_total 267.13999999999976
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:53 ---
+pisada_process_cpu_seconds_total 268.26499999999976
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:54 ---
+pisada_process_cpu_seconds_total 269.23399999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:56 ---
+pisada_process_cpu_seconds_total 270.06299999999976
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:57 ---
+pisada_process_cpu_seconds_total 271.23399999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 14
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:58 ---
+pisada_process_cpu_seconds_total 272.29599999999976
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:26:59 ---
+pisada_process_cpu_seconds_total 273.3119999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:00 ---
+pisada_process_cpu_seconds_total 274.21899999999977
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:01 ---
+pisada_process_cpu_seconds_total 274.9999999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:02 ---
+pisada_process_cpu_seconds_total 276.09399999999977
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:03 ---
+pisada_process_cpu_seconds_total 277.10899999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:05 ---
+pisada_process_cpu_seconds_total 277.99899999999974
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:06 ---
+pisada_process_cpu_seconds_total 278.95299999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:27:07 ---
+pisada_process_cpu_seconds_total 280.20299999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:08 ---
+pisada_process_cpu_seconds_total 281.06299999999976
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:09 ---
+pisada_process_cpu_seconds_total 282.17199999999974
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:10 ---
+pisada_process_cpu_seconds_total 283.23399999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:11 ---
+pisada_process_cpu_seconds_total 284.40699999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:12 ---
+pisada_process_cpu_seconds_total 285.48399999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:13 ---
+pisada_process_cpu_seconds_total 286.34299999999973
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:15 ---
+pisada_process_cpu_seconds_total 287.35899999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:27:16 ---
+pisada_process_cpu_seconds_total 288.42099999999976
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:17 ---
+pisada_process_cpu_seconds_total 289.4999999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:18 ---
+pisada_process_cpu_seconds_total 290.5309999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:19 ---
+pisada_process_cpu_seconds_total 291.4529999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 16
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:20 ---
+pisada_process_cpu_seconds_total 292.2189999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:21 ---
+pisada_process_cpu_seconds_total 293.2969999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:22 ---
+pisada_process_cpu_seconds_total 294.2189999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:24 ---
+pisada_process_cpu_seconds_total 295.3589999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:27:25 ---
+pisada_process_cpu_seconds_total 296.40599999999984
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:26 ---
+pisada_process_cpu_seconds_total 297.42199999999985
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:27 ---
+pisada_process_cpu_seconds_total 298.28099999999984
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:27:28 ---
+pisada_process_cpu_seconds_total 299.32799999999986
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:29 ---
+pisada_process_cpu_seconds_total 300.35899999999987
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:30 ---
+pisada_process_cpu_seconds_total 301.6399999999999
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:27:31 ---
+pisada_process_cpu_seconds_total 302.73399999999987
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:33 ---
+pisada_process_cpu_seconds_total 303.76599999999985
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:34 ---
+pisada_process_cpu_seconds_total 304.6399999999999
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:27:35 ---
+pisada_process_cpu_seconds_total 305.6399999999999
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 18
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:36 ---
+pisada_process_cpu_seconds_total 306.70299999999986
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:37 ---
+pisada_process_cpu_seconds_total 307.68699999999984
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:38 ---
+pisada_process_cpu_seconds_total 308.65599999999984
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:39 ---
+pisada_process_cpu_seconds_total 309.62499999999983
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:40 ---
+pisada_process_cpu_seconds_total 310.7029999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:41 ---
+pisada_process_cpu_seconds_total 311.7809999999998
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:43 ---
+pisada_process_cpu_seconds_total 312.73399999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:44 ---
+pisada_process_cpu_seconds_total 313.67199999999974
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:45 ---
+pisada_process_cpu_seconds_total 314.60899999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:46 ---
+pisada_process_cpu_seconds_total 315.54699999999974
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:47 ---
+pisada_process_cpu_seconds_total 316.5309999999997
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:48 ---
+pisada_process_cpu_seconds_total 317.70299999999975
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:49 ---
+pisada_process_cpu_seconds_total 318.51599999999974
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:50 ---
+pisada_process_cpu_seconds_total 319.6869999999997
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:52 ---
+pisada_process_cpu_seconds_total 320.5149999999997
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:27:53 ---
+pisada_process_cpu_seconds_total 321.7179999999997
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:54 ---
+pisada_process_cpu_seconds_total 322.6719999999997
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 17
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:55 ---
+pisada_process_cpu_seconds_total 323.6239999999997
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 14
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:56 ---
+pisada_process_cpu_seconds_total 324.3909999999997
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:57 ---
+pisada_process_cpu_seconds_total 325.40599999999966
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:27:58 ---
+pisada_process_cpu_seconds_total 326.31299999999965
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 19
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:27:59 ---
+pisada_process_cpu_seconds_total 327.18699999999967
+pisada_pool_conexiones{estado="total"} 19
+pisada_pool_conexiones{estado="ocioso"} 15
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:01 ---
+pisada_process_cpu_seconds_total 328.04599999999965
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:02 ---
+pisada_process_cpu_seconds_total 328.95299999999963
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:03 ---
+pisada_process_cpu_seconds_total 329.74999999999966
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:04 ---
+pisada_process_cpu_seconds_total 330.45299999999963
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:05 ---
+pisada_process_cpu_seconds_total 331.2809999999996
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:06 ---
+pisada_process_cpu_seconds_total 331.9219999999996
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:07 ---
+pisada_process_cpu_seconds_total 332.6409999999996
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:08 ---
+pisada_process_cpu_seconds_total 333.4219999999996
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:09 ---
+pisada_process_cpu_seconds_total 333.95299999999963
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:28:11 ---
+pisada_process_cpu_seconds_total 334.7969999999996
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:12 ---
+pisada_process_cpu_seconds_total 335.38999999999965
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:13 ---
+pisada_process_cpu_seconds_total 336.10899999999964
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:14 ---
+pisada_process_cpu_seconds_total 336.54599999999965
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:15 ---
+pisada_process_cpu_seconds_total 337.09399999999965
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:16 ---
+pisada_process_cpu_seconds_total 337.67099999999965
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:17 ---
+pisada_process_cpu_seconds_total 338.20299999999963
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 4
+--- 13:28:18 ---
+pisada_process_cpu_seconds_total 338.84399999999965
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:20 ---
+pisada_process_cpu_seconds_total 339.35899999999964
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:21 ---
+pisada_process_cpu_seconds_total 339.8119999999996
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:22 ---
+pisada_process_cpu_seconds_total 340.2809999999996
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:23 ---
+pisada_process_cpu_seconds_total 340.8439999999996
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:24 ---
+pisada_process_cpu_seconds_total 341.29699999999957
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:25 ---
+pisada_process_cpu_seconds_total 341.68699999999956
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:26 ---
+pisada_process_cpu_seconds_total 342.12499999999955
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:27 ---
+pisada_process_cpu_seconds_total 342.40599999999955
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:28 ---
+pisada_process_cpu_seconds_total 342.84399999999954
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:30 ---
+pisada_process_cpu_seconds_total 343.17099999999954
+pisada_pool_conexiones{estado="total"} 20
+pisada_pool_conexiones{estado="ocioso"} 20
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:31 ---
+pisada_process_cpu_seconds_total 343.51599999999956
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:32 ---
+pisada_process_cpu_seconds_total 343.79699999999957
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:33 ---
+pisada_process_cpu_seconds_total 344.2029999999996
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:34 ---
+pisada_process_cpu_seconds_total 344.48499999999956
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:35 ---
+pisada_process_cpu_seconds_total 344.76599999999956
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:36 ---
+pisada_process_cpu_seconds_total 345.0779999999996
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:37 ---
+pisada_process_cpu_seconds_total 345.4529999999996
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:38 ---
+pisada_process_cpu_seconds_total 345.68699999999956
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:40 ---
+pisada_process_cpu_seconds_total 345.87499999999955
+pisada_pool_conexiones{estado="total"} 13
+pisada_pool_conexiones{estado="ocioso"} 13
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:41 ---
+pisada_process_cpu_seconds_total 346.03099999999955
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:42 ---
+pisada_process_cpu_seconds_total 346.24999999999955
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:43 ---
+pisada_process_cpu_seconds_total 346.38999999999953
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:44 ---
+pisada_process_cpu_seconds_total 346.54599999999954
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:45 ---
+pisada_process_cpu_seconds_total 346.68699999999956
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:46 ---
+pisada_process_cpu_seconds_total 346.81199999999956
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:47 ---
+pisada_process_cpu_seconds_total 346.90599999999955
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:49 ---
+pisada_process_cpu_seconds_total 346.96899999999954
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:50 ---
+pisada_process_cpu_seconds_total 347.04599999999954
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:51 ---
+pisada_process_cpu_seconds_total 347.2029999999995
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:52 ---
+pisada_process_cpu_seconds_total 347.34399999999954
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:53 ---
+pisada_process_cpu_seconds_total 347.3589999999995
+pisada_pool_conexiones{estado="total"} 12
+pisada_pool_conexiones{estado="ocioso"} 12
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:54 ---
+pisada_process_cpu_seconds_total 347.4529999999995
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:55 ---
+pisada_process_cpu_seconds_total 347.5619999999995
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:56 ---
+pisada_process_cpu_seconds_total 347.6409999999995
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:58 ---
+pisada_process_cpu_seconds_total 347.7189999999995
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:28:59 ---
+pisada_process_cpu_seconds_total 347.7189999999995
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:00 ---
+pisada_process_cpu_seconds_total 347.7649999999995
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:01 ---
+pisada_process_cpu_seconds_total 347.82799999999946
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:02 ---
+pisada_process_cpu_seconds_total 347.95299999999946
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:03 ---
+pisada_process_cpu_seconds_total 347.95299999999946
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:04 ---
+pisada_process_cpu_seconds_total 347.9999999999995
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:05 ---
+pisada_process_cpu_seconds_total 348.0309999999995
+pisada_pool_conexiones{estado="total"} 11
+pisada_pool_conexiones{estado="ocioso"} 11
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:06 ---
+pisada_process_cpu_seconds_total 348.1099999999995
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:07 ---
+pisada_process_cpu_seconds_total 348.1099999999995
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:09 ---
+pisada_process_cpu_seconds_total 348.1709999999995
+pisada_pool_conexiones{estado="total"} 10
+pisada_pool_conexiones{estado="ocioso"} 10
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:10 ---
+pisada_process_cpu_seconds_total 348.20299999999946
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0
+--- 13:29:11 ---
+pisada_process_cpu_seconds_total 348.26599999999945
+pisada_pool_conexiones{estado="total"} 6
+pisada_pool_conexiones{estado="ocioso"} 6
+pisada_pool_conexiones{estado="en_espera"} 0

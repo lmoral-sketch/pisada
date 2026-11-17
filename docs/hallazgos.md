@@ -1308,3 +1308,90 @@ Las tres eliminan la consulta en vez de abaratarla, que es donde está el costo 
 
 Este trabajo prefiere publicar una propuesta propia refutada por su propia medición antes que
 dejarla enunciada y sin probar.
+
+---
+
+## E-15 — El tamaño del pool: la propuesta que sí funciona
+
+**Fecha:** 18 de noviembre de 2026
+**Escenario:** `pico.js` completo (25 → 350 usuarios en escalones) con `PG_POOL_MAX` en 5, 10
+y 20. Base y catálogo regenerados antes de cada corrida.
+
+La sección 7.5 del informe proponía ajustar el tamaño del pool, sin indicar en qué dirección
+ni cuánto. Esta corrida lo resuelve.
+
+### Resultados
+
+| Pool | Mediana | p(90) | **p(95)** | p(99) | Throughput | Error |
+|---|---|---|---|---|---|---|
+| 5 | 49,59 ms | 736,05 ms | **1.000 ms** | 1,53 s | 30,30 req/s | 0,01 % |
+| 10 | 36,73 ms | 461,16 ms | **916 ms** | 2,38 s | 30,51 req/s | 0,01 % |
+| **20** | **28,99 ms** | **112,99 ms** | **155,6 ms** | **228,76 ms** | **31,48 req/s** | 0,02 % |
+
+**Duplicar el pool de 10 a 20 reduce el p(95) en un factor de 5,9** —de 916 ms a 155,6 ms— y
+el p(99) en un factor de **10,4**.
+
+### Estado interno del sistema
+
+| Pool | CPU a 350 VU | Conexiones en uso | **Peticiones en espera (máx)** | Espera media por conexión |
+|---|---|---|---|---|
+| 5 | 103,6 % | 5 de 5 | **141** | 65,8 ms |
+| 10 | 95,8 % | 10 de 10 | **380** | 28,5 ms |
+| **20** | 92,1 % | 20 de 20 | **4** | **0,01 ms** |
+
+Con pool de 5 y 10 el pool está **completamente ocupado** y detrás se acumulan 141 y 380
+peticiones esperando. Con pool de 20, también está ocupado, pero **la cola prácticamente
+desaparece**: un máximo de 4 peticiones y una espera media de 10 microsegundos.
+
+### Qué demuestra
+
+**El pool era el cuello de botella, y era un límite que nosotros mismos impusimos.**
+
+La CPU se mantiene entre 92 % y 104 % en las tres configuraciones: está igualmente exigida.
+Lo que cambia radicalmente es la **latencia**, y la causa es la cola de admisión al pool.
+
+Con 10 conexiones, 380 peticiones esperan turno. Con 20, ninguna espera de forma apreciable.
+El trabajo que la base alcanza a hacer es prácticamente el mismo —el throughput sube solo de
+30,5 a 31,5 req/s— pero **el tiempo que las peticiones pasan esperando se desploma**.
+
+Es la distinción entre **throughput y latencia** en estado puro: el sistema ya estaba
+haciendo todo el trabajo que podía; el pool pequeño solo agregaba espera encima.
+
+### Una hipótesis propia, refutada
+
+Antes de correr el experimento se anticipó el resultado **contrario**: que un pool más grande
+empeoraría las cosas, razonando que la base corre en un contenedor con **1 CPU** y que veinte
+consultas simultáneas sobre un solo núcleo competirían entre sí, pagando costo de cambio de
+contexto sin ganar paralelismo.
+
+Esa predicción era **incorrecta**. PostgreSQL maneja veinte conexiones concurrentes sin
+degradarse: las consultas de este sistema son cortas, de modo que las conexiones pasan la
+mayor parte del tiempo ociosas y el servidor las multiplexa sin problema. El límite real no
+estaba en la capacidad de la base sino en **nuestra configuración del pool**.
+
+> Se registra porque es el tercer caso en este trabajo en que un razonamiento plausible
+> resulta falso al medirlo. Los otros dos fueron la interpretación del costo del `COUNT(*)`
+> (E-14) y el comportamiento esperado de la estrategia optimista (E-01).
+
+### Recomendación concreta
+
+> **Subir `PG_POOL_MAX` de 10 a 20.** Reduce el p(95) en un factor de 5,9 y el p(99) en 10,4,
+> con el mismo hardware y sin tocar una línea de lógica.
+
+Es, con diferencia, la mejora de mayor impacto por menor costo del trabajo: **un número en un
+archivo de configuración**.
+
+Queda una pregunta abierta: dónde está el óptimo. La curva entre 10 y 20 es muy pronunciada,
+de modo que el valor ideal podría estar más arriba, o 20 podría estar ya cerca del punto en
+que la base empieza a sufrir. Determinarlo exigiría probar 30, 40 y 60, y observar dónde el
+p(95) deja de mejorar.
+
+### Advertencia sobre generalizar
+
+Este resultado **no significa que un pool grande sea siempre mejor**. Significa que, para
+*este* sistema —consultas cortas, base con 1 CPU, 350 usuarios concurrentes—, 10 conexiones
+eran insuficientes. Un sistema con consultas largas o pesadas probablemente se comportaría
+como predecía la hipótesis refutada.
+
+Lo que sí generaliza es el método: **el tamaño del pool es un parámetro de capacidad que debe
+medirse, no elegirse por omisión.**

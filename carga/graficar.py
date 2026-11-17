@@ -268,6 +268,41 @@ def grafico_descomposicion():
     guardar('descomposicion-tiempo.svg', s)
 
 
+# ---------------------------------------------------------------------------
+# Gráfico 6 — El tamaño del pool y la cola de admisión
+# ---------------------------------------------------------------------------
+
+def grafico_pool():
+    pools = ['5', '10', '20']
+    p95 = [1000.0, 916.0, 155.6]
+    espera = [141, 380, 4]
+
+    s = lienzo(680, 400,
+               'Tamano del pool: el p(95) y la cola de admision',
+               'Escenario de pico completo. Misma CPU, misma logica: solo cambia PG_POOL_MAX.')
+    x0, y0, an, al = 70, 78, 560, 230
+    ejes(s, x0, y0, an, al, 1100, pools, 'p(95) en milisegundos')
+
+    paso = an / len(pools)
+    for i, (v, e) in enumerate(zip(p95, espera)):
+        cx = x0 + paso * i + paso / 2
+        h = al * v / 1100
+        y = y0 + al - h
+        color = SERIE_B if i == 2 else SERIE_A
+        s.append(f'<rect x="{cx-42:.1f}" y="{y:.1f}" width="84" height="{h:.1f}" '
+                 f'fill="{color}" rx="3"/>')
+        s.append(f'<text x="{cx:.1f}" y="{y-24:.1f}" font-size="14" font-weight="700" '
+                 f'fill="{color}" text-anchor="middle">{v:.0f} ms</text>')
+        s.append(f'<text x="{cx:.1f}" y="{y-7:.1f}" font-size="10" fill="{SUAVE}" '
+                 f'text-anchor="middle">{e} en espera</text>')
+
+    s.append(f'<text x="{x0+an/2:.0f}" y="{y0+al+42:.0f}" font-size="10" fill="{SUAVE}" '
+             f'text-anchor="middle">PG_POOL_MAX</text>')
+    s.append(f'<text x="24" y="378" font-size="11" fill="{TINTA}">'
+             f'De 10 a 20 conexiones: el p(95) cae 5,9 veces y la cola pasa de 380 peticiones a 4.</text>')
+    guardar('tamano-pool.svg', s)
+
+
 if __name__ == '__main__':
     print('Generando graficos en docs/graficos/:')
     grafico_utilizacion()
@@ -275,4 +310,5 @@ if __name__ == '__main__':
     grafico_percentiles()
     grafico_amdahl()
     grafico_descomposicion()
+    grafico_pool()
     print('Listo.')

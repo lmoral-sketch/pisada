@@ -34,10 +34,17 @@ services:
       # cliente durante la compilación (ver ARG en el Dockerfile).
       - key: NEXT_PUBLIC_GA_ID
         sync: false
-      # Tamaño del pool. Con 0,1 CPU conviene un pool pequeño: más conexiones
-      # no dan más paralelismo real y sí más contención.
+      # Tamaño del pool, medido en el experimento E-15.
+      #
+      # Se probó con 5, 10 y 20 contra el escenario de pico: subir de 10 a 20
+      # redujo el p(95) en un factor de 5,9 y el p(99) en 10,4, porque la cola
+      # de admisión al pool pasó de 380 peticiones esperando a 4.
+      #
+      # Se deja en 20 aunque el plan gratuito de Render entregue 0,1 CPU: el
+      # límite no estaba en la capacidad de la base sino en nuestra propia
+      # configuración del pool.
       - key: PG_POOL_MAX
-        value: "5"
+        value: "20"
       # Estrategia de concurrencia por defecto.
       - key: ESTRATEGIA_STOCK
         value: pesimista

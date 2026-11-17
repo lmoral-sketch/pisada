@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" width="680" height="400" font-family="Aptos, Montserrat, Arial, Helvetica, sans-serif">
+<rect width="680" height="400" fill="#ffffff"/>
+<text x="24" y="30" font-size="16" font-weight="600" fill="#1a1a1a">Tamano del pool: el p(95) y la cola de admision</text>
+<text x="24" y="50" font-size="11" fill="#8a8a8a">Escenario de pico completo. Misma CPU, misma logica: solo cambia PG_POOL_MAX.</text>
+<line x1="70" y1="308.0" x2="630" y2="308.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="312.0" font-size="10" fill="#8a8a8a" text-anchor="end">0</text>
+<line x1="70" y1="262.0" x2="630" y2="262.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="266.0" font-size="10" fill="#8a8a8a" text-anchor="end">220</text>
+<line x1="70" y1="216.0" x2="630" y2="216.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="220.0" font-size="10" fill="#8a8a8a" text-anchor="end">440</text>
+<line x1="70" y1="170.0" x2="630" y2="170.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="174.0" font-size="10" fill="#8a8a8a" text-anchor="end">660</text>
+<line x1="70" y1="124.0" x2="630" y2="124.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="128.0" font-size="10" fill="#8a8a8a" text-anchor="end">880</text>
+<line x1="70" y1="78.0" x2="630" y2="78.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="62" y="82.0" font-size="10" fill="#8a8a8a" text-anchor="end">1100</text>
+<text x="26" y="193" font-size="10" fill="#8a8a8a" text-anchor="middle" transform="rotate(-90 26 193)">p(95) en milisegundos</text>
+<text x="70.0" y="326" font-size="10" fill="#8a8a8a" text-anchor="middle">5</text>
+<text x="350.0" y="326" font-size="10" fill="#8a8a8a" text-anchor="middle">10</text>
+<text x="630.0" y="326" font-size="10" fill="#8a8a8a" text-anchor="middle">20</text>
+<rect x="121.3" y="98.9" width="84" height="209.1" fill="#004EAA" rx="3"/>
+<text x="163.3" y="74.9" font-size="14" font-weight="700" fill="#004EAA" text-anchor="middle">1000 ms</text>
+<text x="163.3" y="91.9" font-size="10" fill="#8a8a8a" text-anchor="middle">141 en espera</text>
+<rect x="308.0" y="116.5" width="84" height="191.5" fill="#004EAA" rx="3"/>
+<text x="350.0" y="92.5" font-size="14" font-weight="700" fill="#004EAA" text-anchor="middle">916 ms</text>
+<text x="350.0" y="109.5" font-size="10" fill="#8a8a8a" text-anchor="middle">380 en espera</text>
+<rect x="494.7" y="275.5" width="84" height="32.5" fill="#00B6ED" rx="3"/>
+<text x="536.7" y="251.5" font-size="14" font-weight="700" fill="#00B6ED" text-anchor="middle">156 ms</text>
+<text x="536.7" y="268.5" font-size="10" fill="#8a8a8a" text-anchor="middle">4 en espera</text>
+<text x="350" y="350" font-size="10" fill="#8a8a8a" text-anchor="middle">PG_POOL_MAX</text>
+<text x="24" y="378" font-size="11" fill="#1a1a1a">De 10 a 20 conexiones: el p(95) cae 5,9 veces y la cola pasa de 380 peticiones a 4.</text>
+</svg>
