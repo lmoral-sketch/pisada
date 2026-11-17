@@ -18,8 +18,9 @@ set -u
 
 REPETICIONES=${1:-5}
 VARIANTE=${2:-1500}
+VU_MAX=${3:-120}
 STOCK=30000
-SALIDA="carga/resultados/contencion-repeticiones.tsv"
+SALIDA="carga/resultados/contencion-vu${VU_MAX}.tsv"
 
 export PATH="$PATH:/c/Program Files/k6:/c/Users/lucas/AppData/Local/Programs/DockerDesktop/resources/bin"
 
@@ -34,7 +35,7 @@ for ESTRATEGIA in pesimista optimista; do
       -c "UPDATE variante SET stock=$STOCK WHERE id=$VARIANTE;" > /dev/null 2>&1
 
     TMP=$(mktemp)
-    k6 run -e VARIANTE_ID="$VARIANTE" -e ESTRATEGIA="$ESTRATEGIA" \
+    k6 run -e VARIANTE_ID="$VARIANTE" -e ESTRATEGIA="$ESTRATEGIA" -e VU_MAX="$VU_MAX" \
       --summary-export="$TMP" carga/escenarios/contencion.js > /dev/null 2>&1
 
     # Extraer las cifras del resumen JSON de k6.

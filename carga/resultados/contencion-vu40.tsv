@@ -1,0 +1,11 @@
+estrategia	repeticion	p95_ms	p99_ms	media_ms	throughput	error_pct	compras
+pesimista	1	36.0	65.3	16.3	23.95	0.00	2760
+pesimista	2	25.2	260.6	65.7	22.80	0.19	2629
+pesimista	3	50.4	14122.5	343.7	17.86	2.43	2078
+pesimista	4	28.0	95.6	14.9	23.78	0.00	2768
+pesimista	5	183.8	18550.5	934.2	12.13	6.58	1308
+optimista	1	35.0	401.4	141.0	21.31	0.22	2458
+optimista	2	33.1	231.9	95.0	22.31	0.06	2569
+optimista	3	19.7	162.7	54.2	23.05	0.17	2656
+optimista	4	22.7	10004.6	269.3	19.06	2.02	2147
+optimista	5	19.0	10007.0	269.9	19.07	2.21	2201

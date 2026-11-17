@@ -444,12 +444,30 @@ El pool no es un detalle de configuración: **es el recurso que primero se agota
 
 Ordenadas por relación entre impacto y costo.
 
-### 7.1 Eliminar el conteo exacto de la paginación
+### 7.1 El conteo de la paginación — propuesta PROBADA Y REFUTADA
 
-**Evidencia:** 4,55 ms por petición, el 54 % del costo del listado, sin devolver datos.
+**Evidencia inicial:** 4,55 ms por petición, el 54 % del costo del listado, sin devolver datos.
 
-**Propuestas:** estimación mediante `pg_class.reltuples`, cacheo del conteo por combinación
-de filtros, o paginación por cursor. El contraste antes/después es medible.
+**Propuesta original:** reemplazar el `COUNT(*)` exacto por una estimación desde
+`pg_class.reltuples`.
+
+**Se implementó y se midió. No funciona.**
+
+| | Conteo exacto | Conteo estimado |
+|---|---|---|
+| Costo de la consulta | 5,03 ms | **4,96 ms** |
+| p(95) de la página | 31,31 ms | **52,29 ms** |
+
+**Por qué la propuesta estaba equivocada.** El razonamiento asumía que esos milisegundos eran
+*trabajo de cómputo*. Con 240 productos, contar es trivial: los ~5 ms son **costo fijo por
+consulta** —viaje de ida y vuelta, planificación, manejo del resultado—. Reemplazar una
+consulta barata por otra consulta barata no ahorra nada.
+
+**Lo que sí serviría** es *eliminar* la consulta, no abaratarla: paginación por cursor,
+cachear el total por combinación de filtros, o reemplazar el paginador por un "cargar más".
+
+> El número era correcto; la **interpretación** del número era falsa. Detalle en
+> `docs/hallazgos.md`, E-14.
 
 ### 7.2 No retener la conexión mientras se espera el bloqueo
 
@@ -517,9 +535,16 @@ orden entre estrategias se invirtió:
 | pesimista p(95) | 63,88 ms | 7,85 s |
 | optimista p(95) | 9,96 s | 49,63 ms |
 
-**Conclusión honesta: con una corrida por configuración no se puede determinar qué estrategia
-es mejor.** La diferencia observada está dentro del ruido. Se requieren al menos cinco
-repeticiones reportando mediana y rango.
+**Conclusión honesta: no se puede determinar qué estrategia es mejor.**
+
+Se repitió el experimento con **cinco repeticiones por estrategia a 40 usuarios**, fuera del
+régimen inestable. La varianza bajó de 524x a 7,3x, pero **los rangos siguen solapándose en
+las tres métricas centrales** (p(95), media y throughput), y la mediana favorece a una
+estrategia en unas métricas y a la otra en otras.
+
+Se observa un patrón en las colas —la pesimista tuvo dos excursiones con p(99) sobre 14 s,
+la optimista ninguna— pero dos casos en cinco corridas **no alcanzan para afirmarlo**.
+Confirmarlo exigiría del orden de veinte repeticiones. Detalle en `docs/hallazgos.md`, E-13.
 
 ### 8.5 El sandbox de pago se integró como camino paralelo
 

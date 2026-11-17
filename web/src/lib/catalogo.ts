@@ -8,6 +8,15 @@
 
 import { consultar } from './db';
 
+/**
+ * Activa el conteo estimado de la paginación en lugar del exacto.
+ *
+ * Existe para poder medir la propuesta de mejora 7.1 del informe con datos, en
+ * vez de solo proponerla. Se controla por entorno para que ambas versiones sean
+ * ejercitables por el mismo escenario de carga.
+ */
+const CONTEO_ESTIMADO = process.env.CONTEO_ESTIMADO === 'si';
+
 // -----------------------------------------------------------------------------
 // Tipos
 // -----------------------------------------------------------------------------
@@ -177,15 +186,29 @@ export async function buscarProductos(
 
   // El conteo total se ejecuta como consulta aparte para poder medir su costo
   // por separado: en catálogos grandes suele ser más caro que el propio listado.
-  const [conteo] = await consultar<{ total: string }>(
-    'catalogo_conteo',
-    `SELECT COUNT(*)::text AS total
-       FROM producto p
-       JOIN marca     m ON m.id = p.marca_id
-       JOIN categoria c ON c.id = p.categoria_id
-       ${donde}`,
-    valores,
-  );
+  //
+  // La propuesta de mejora 7.1 del informe sostiene que este COUNT exacto cuesta
+  // un 54 % de lo que cuesta el listado sin devolver una sola fila de datos. Para
+  // poder MEDIR esa propuesta en vez de solo enunciarla, el conteo tiene dos
+  // implementaciones intercambiables por variable de entorno.
+  const [conteo] = CONTEO_ESTIMADO && condiciones.length === 0
+    ? // Sin filtros, el total es el del catálogo completo, y PostgreSQL ya lo
+      // mantiene aproximado en pg_class.reltuples, actualizado por el autovacuum.
+      // Es una estimación, no un valor exacto: aceptable para una paginación.
+      await consultar<{ total: string }>(
+        'catalogo_conteo_estimado',
+        `SELECT GREATEST(reltuples, 0)::bigint::text AS total
+           FROM pg_class WHERE relname = 'producto'`,
+      )
+    : await consultar<{ total: string }>(
+        'catalogo_conteo',
+        `SELECT COUNT(*)::text AS total
+           FROM producto p
+           JOIN marca     m ON m.id = p.marca_id
+           JOIN categoria c ON c.id = p.categoria_id
+           ${donde}`,
+        valores,
+      );
 
   return { productos, total: Number(conteo?.total ?? 0) };
 }

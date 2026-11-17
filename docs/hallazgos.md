@@ -1196,3 +1196,115 @@ cantidad de muestras no sostiene.
 
 Es el mismo error de fondo que el experimento E-04: **conclusiones sacadas de pocas muestras**.
 Esta vez se detectó antes de escribirlo en el informe.
+
+---
+
+## E-13 — Estrategias de concurrencia fuera del régimen inestable
+
+**Fecha:** 17 de noviembre de 2026
+**Carga:** 40 usuarios virtuales, cinco repeticiones por estrategia, inventario repuesto antes
+de cada corrida.
+
+El experimento E-04 dejó abierta la comparación entre las dos estrategias de control de
+concurrencia, porque a 120 usuarios el p(95) variaba por un factor de 524 entre corridas
+idénticas. Esta corrida baja la carga para salir de ese régimen.
+
+### Bajar la carga sí redujo la varianza
+
+| Métrica | Varianza a 120 VU | Varianza a 40 VU |
+|---|---|---|
+| p(95) pesimista | 524x | **7,3x** |
+| p(95) optimista | — | **1,8x** |
+
+El sistema salió del régimen caótico. Pero **no lo suficiente para separar las estrategias**.
+
+### Resultados
+
+| Métrica | Pesimista (mediana) | Optimista (mediana) | ¿Se solapan los rangos? |
+|---|---|---|---|
+| p(95) | 36,0 ms | 22,7 ms | **Sí** |
+| Media | 65,7 ms | 141,0 ms | **Sí** |
+| Throughput | 22,8 req/s | 21,3 req/s | **Sí** |
+
+**En las tres métricas centrales los rangos se solapan.** La mediana del p(95) favorece a la
+optimista y la de la media favorece a la pesimista, lo que por sí solo ya indica que no hay
+una diferencia consistente.
+
+> **Conclusión: con cinco repeticiones por estrategia no se puede afirmar que una sea mejor
+> que la otra.** Es el mismo veredicto del E-04, ahora con menos ruido y por lo tanto más
+> sólido.
+
+### Un patrón en las colas, que no alcanza para afirmar
+
+Donde sí se observa una diferencia es en los valores extremos:
+
+| | Pesimista | Optimista |
+|---|---|---|
+| p(99) mediana | 260,6 ms | 401,4 ms |
+| **p(99) máximo** | **18.550 ms** | 10.007 ms |
+| Error máximo | **6,58 %** | 2,22 % |
+
+La estrategia pesimista tuvo **dos excursiones graves** en cinco corridas: p(99) de 14,1 s y
+18,6 s, con 2,4 % y 6,6 % de error. La optimista no superó los 10 s ni el 2,2 %.
+
+Es coherente con el mecanismo: la pesimista **bloquea y espera**, de modo que varias
+transacciones encadenadas acumulan espera; la optimista **reintenta**, así que ninguna queda
+bloqueada indefinidamente.
+
+**Pero dos excursiones en cinco corridas no son evidencia suficiente.** Podrían ser
+coincidencia. Se deja anotado como observación, no como conclusión, y confirmarlo exigiría
+del orden de veinte repeticiones por estrategia.
+
+---
+
+## E-14 — La propuesta del `COUNT(*)`, refutada por medición
+
+**Fecha:** 17 de noviembre de 2026
+**Carga:** 25 usuarios virtuales, 3 minutos, con cada implementación.
+
+La sección 7.1 del informe proponía reemplazar el conteo exacto de la paginación por una
+estimación desde `pg_class.reltuples`, con el argumento de que el `COUNT(*)` costaba 4,55 ms
+—un 54 % del listado— sin devolver una sola fila de datos.
+
+Se implementó la propuesta y se midió.
+
+### Resultados
+
+| | Conteo exacto | Conteo estimado |
+|---|---|---|
+| Costo de la consulta de conteo | **5,03 ms** | **4,96 ms** |
+| p(95) de la página de catálogo | **31,31 ms** | **52,29 ms** |
+| Throughput | 5,12 req/s | 5,13 req/s |
+
+**La optimización no ahorra nada.** El conteo estimado cuesta prácticamente lo mismo que el
+exacto: 4,96 ms frente a 5,03 ms, una diferencia del 1,4 % que está dentro del ruido.
+
+### Por qué la propuesta estaba equivocada
+
+El razonamiento original asumía que los 4,55 ms del `COUNT(*)` eran **trabajo de cómputo**:
+recorrer filas para contarlas. Si así fuera, estimar en vez de contar ahorraría ese trabajo.
+
+La medición muestra que no es así. Con 240 productos, contar es trivial; los ~5 ms son
+**costo fijo por consulta**: el viaje de ida y vuelta al servidor, la planificación y el
+manejo del resultado. Reemplazar una consulta barata por otra consulta barata **no ahorra
+nada, porque sigue siendo una consulta**.
+
+### Qué sí serviría
+
+La mejora real no es *reemplazar* la consulta sino **eliminarla**:
+
+- **Paginación por cursor** (`WHERE id > ultimo LIMIT n`), que no necesita total.
+- **Cachear el total** por combinación de filtros, con invalidación por tiempo.
+- **No mostrar el total** y usar un "cargar más", que es lo que hacen muchos catálogos
+  grandes.
+
+Las tres eliminan la consulta en vez de abaratarla, que es donde está el costo real.
+
+### Lección metodológica
+
+> Una propuesta de optimización derivada de un número **no es una conclusión hasta que se
+> mide**. El número era correcto —el conteo sí cuesta 4,55 ms— pero la **interpretación** de
+> ese número era falsa, y de ahí salió una propuesta que no funciona.
+
+Este trabajo prefiere publicar una propuesta propia refutada por su propia medición antes que
+dejarla enunciada y sin probar.

@@ -65,6 +65,16 @@ import {
 
 const VARIANTE_ID = Number(__ENV.VARIANTE_ID || 0);
 
+/**
+ * Nivel máximo de usuarios virtuales.
+ *
+ * El experimento E-04 mostró que a 120 usuarios el sistema entra en un régimen
+ * inestable donde el p(95) varía dos órdenes de magnitud entre corridas
+ * idénticas. Bajar este valor permite comparar las estrategias fuera de ese
+ * régimen, que es donde la comparación tiene sentido.
+ */
+const VU_MAX = Number(__ENV.VU_MAX || 120);
+
 export const options = {
   scenarios: {
     contencion: {
@@ -73,10 +83,12 @@ export const options = {
       stages: [
         // Escalones cortos: la contención se manifiesta de inmediato, no
         // requiere mesetas largas como las degradaciones progresivas.
-        { duration: '15s', target: 10 }, { duration: '45s', target: 10 },
-        { duration: '15s', target: 30 }, { duration: '45s', target: 30 },
-        { duration: '15s', target: 60 }, { duration: '45s', target: 60 },
-        { duration: '15s', target: 120 }, { duration: '45s', target: 120 },
+        { duration: '15s', target: Math.round(VU_MAX / 4) },
+        { duration: '45s', target: Math.round(VU_MAX / 4) },
+        { duration: '15s', target: Math.round(VU_MAX / 2) },
+        { duration: '60s', target: Math.round(VU_MAX / 2) },
+        { duration: '15s', target: VU_MAX },
+        { duration: '60s', target: VU_MAX },
         { duration: '20s', target: 0 },
       ],
       gracefulRampDown: '20s',
