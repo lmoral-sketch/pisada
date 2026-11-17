@@ -525,7 +525,13 @@ Es la distinción entre throughput y latencia en estado puro.
 > Es la mejora de mayor impacto por menor costo de todo el trabajo: **un número en un archivo
 > de configuración**.
 
-**Advertencia.** Esto no generaliza a "pool grande es mejor". Para *este* sistema —consultas
+**Advertencia sobre la evidencia.** Cada configuración se midió **una vez**. La diferencia es
+grande (916 ms frente a 156 ms, no un margen estrecho), la tendencia es monótona en las tres
+configuraciones y el mecanismo es coherente con la cola de admisión medida (380 frente a 4).
+Pero este mismo trabajo demostró en §8.4 que una corrida puede engañar: repetir tres veces
+cada configuración daría al hallazgo el respaldo que merece.
+
+**Advertencia sobre generalizar.** Esto no generaliza a "pool grande es mejor". Para *este* sistema —consultas
 cortas, base con 1 CPU— 10 conexiones eran insuficientes. Con consultas largas el resultado
 probablemente sería el opuesto. Lo que sí generaliza es que **el tamaño del pool es un
 parámetro de capacidad que debe medirse**. Detalle en `docs/hallazgos.md`, E-15.
@@ -609,7 +615,17 @@ prompt completo y resumen de los cambios generados. Se agregaron dos campos prop
 
 El registro está en `logs/prompts.md`, con 15 entradas que cubren todo el desarrollo.
 
-### 8.7 Otras limitaciones
+### 8.7 El techo de Amdahl se midió antes del rediseño
+
+La fracción serializada del checkout —7,2 %, de la que sale el techo de 13,9x— se midió el 4
+de noviembre, **antes del rediseño** que aumentó el peso de las páginas y obligó a repetir el
+resto de las mediciones.
+
+El checkout no se modificó y su ruta (`/api/checkout`) no devuelve HTML, de modo que el
+rediseño no debería haberla afectado. **Pero no se volvió a medir**, y se declara en lugar de
+presentarla como contemporánea del resto.
+
+### 8.8 Otras limitaciones
 
 - **Las llegadas no son de Poisson.** k6 lanza usuarios en escalones, más sincronizados que
   aleatorios. M/M/1 es una aproximación útil, no exacta.

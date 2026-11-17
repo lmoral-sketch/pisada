@@ -22,10 +22,21 @@ const global_ = globalThis as unknown as { poolPg?: Pool };
  * Tamaño del pool.
  *
  * Es un parámetro de capacidad, no un detalle de configuración: acota cuántas
- * consultas pueden ejecutarse en paralelo y, por lo tanto, dónde aparece el
- * punto de saturación. Se deja configurable para poder estudiarlo en la Fase 2.
+ * consultas pueden ejecutarse en paralelo y, por lo tanto, cuánta espera se
+ * acumula antes de llegar a la base.
+ *
+ * El valor por defecto es 20 porque se midió (experimento E-15). Con el
+ * escenario de pico y 350 usuarios concurrentes:
+ *
+ *   pool  5 → p(95) 1.000 ms · 141 peticiones esperando
+ *   pool 10 → p(95)   916 ms · 380 peticiones esperando
+ *   pool 20 → p(95)   156 ms ·   4 peticiones esperando
+ *
+ * Subir de 10 a 20 reduce el p(95) por un factor de 5,9 con el mismo hardware.
+ * La CPU queda igualmente exigida en los tres casos: lo que desaparece es la
+ * cola de admisión al pool.
  */
-const TAMANO_POOL = Number(process.env.PG_POOL_MAX ?? 10);
+const TAMANO_POOL = Number(process.env.PG_POOL_MAX ?? 20);
 
 function crearPool(): Pool {
   const pool = new Pool({

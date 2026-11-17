@@ -300,6 +300,7 @@ estrategias se invirtió:
 | `docs/marco-teorico.md` | Formalismo del ramo aplicado al sistema |
 | `docs/decisiones.md` | Las 8 decisiones de diseño |
 | `docs/auditoria.md` | Cumplimiento del enunciado |
+| `docs/auditoria-final.md` | **Auditoría de calidad**: si las conclusiones se sostienen |
 | `docs/guion-video.md` | Guion del video |
 | `docs/manual-ejecucion.md` | Comandos para operar las mediciones |
 | `docs/despliegue.md` | GA4, base de datos y despliegue |
