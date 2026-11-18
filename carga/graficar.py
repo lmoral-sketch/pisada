@@ -168,8 +168,8 @@ def grafico_cpu_por_usuario():
 
 def grafico_percentiles():
     escenarios = ['Baja\n5 VU', 'Normal\n25 VU', 'Pico\n350 VU']
-    p95 = [54.03, 35.30, 1560.0]
-    p99 = [118.61, 48.34, 2330.0]
+    p95 = [54.03, 35.30, 1568.16]
+    p99 = [118.62, 48.35, 2339.29]
 
     s = lienzo(680, 380,
                'Percentiles de tiempo de respuesta por escenario',

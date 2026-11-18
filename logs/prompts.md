@@ -567,3 +567,15 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   - Los 56 segundos del recorrido de compra (00:15–01:11) son los que más ganarían con una grabación continua; la hoja de sincronización conserva las señales de tiempo para reemplazarlos sin descuadrar el resto.
   - El pedido mostrado es el 43, no el 41 que mencionaba el prompt original: el número depende de las compras acumuladas en la base.
 - **Propuestas no aprobadas:** ninguna.
+
+## 2026-11-18 | agente: Claude Code (claude-opus-5)
+
+- **Prompt:** «que archivos tengo que subir a canvas entonces ya tenemos el video» → «Sí, genéralo» (el informe en PDF).
+- **Cambios:**
+  - `docs/Informe-Pisada-INFB8091.pdf`: 21 páginas, tamaño Carta, con la portada UTEM como primera página, pie con numeración, las 22 tablas formateadas y las 8 figuras incrustadas (4 gráficos vectoriales y 4 capturas de GA4).
+  - Generado convirtiendo `docs/informe-fase1.md` a HTML con hoja de estilos propia según el Manual de Identidad Visual UTEM —celeste `#00B6ED` predominante, azul `#004EAA` en títulos, Aptos con Montserrat de alternativa— e imprimiendo con Chrome headless. Las herramientas (`markdown`, `pypdf`, `puppeteer-core`) se instalaron fuera del proyecto para no sumar dependencias.
+  - **Corrección:** `carga/graficar.py` tenía los valores del escenario de pico escritos a mano como 1560 y 2330 ms. Se actualizaron a 1568,16 y 2339,29 y se regeneró `docs/graficos/percentiles-escenarios.svg`, que contradecía la tabla del informe ya corregida el día anterior.
+- **Defectos conocidos:**
+  - El PDF se genera por un procedimiento manual, no reproducible con un comando del repositorio: si el informe cambia, hay que repetirlo.
+  - `docs/hallazgos.md` conserva las cifras redondeadas antiguas, por ser bitácora fechada.
+- **Propuestas no aprobadas:** ninguna.
