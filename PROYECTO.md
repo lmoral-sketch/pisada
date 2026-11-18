@@ -131,7 +131,7 @@ inventario.
 |---|---|---|---|---|---|
 | Baja | 5 | 54,03 ms* | 118,61 ms* | — | 0,00 % |
 | Normal | 25 | 35,30 ms | 48,34 ms | 4,94 req/s | 0,00 % |
-| Pico | 350 | **1.560 ms** | 2.330 ms | 29,51 req/s | 0,01 % |
+| Pico | 350 | **1.568,16 ms** | 2.339,29 ms | 29,51 req/s | 0,01 % |
 
 \* Solo 235 peticiones: el percentil no es confiable. Usar la mediana, 20,02 ms.
 

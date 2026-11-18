@@ -540,3 +540,14 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   - `docs/presentacion.html`: lámina 8 pasa de «No era el recurso obvio» a «Tres colas encadenadas» sin afirmar causalidad; lámina 9 marca las dos propuestas refutadas con tachado; lámina 10 pasa de cuatro a cinco errores; lámina 11 cambia la cita de cierre.
 - **Defectos conocidos:** las marcas de tiempo por segmento dentro de cada bloque son estimaciones de lectura, no medidas; el guion recomienda que cada integrante cronometre una pasada en seco.
 - **Propuestas no aprobadas:** ninguna.
+
+## 2026-11-17 | agente: Claude Code (claude-opus-5)
+
+- **Prompt:** «mira mi compañera me mando un prompt para generar un video, ve si esta adaptado al guion, y si es asi toma en cuenta a la perfeccion el prompt» + prompt de montaje redactado por Catalina Araniz.
+- **Cambios:**
+  - `docs/prompt-video.md` nuevo: el prompt de montaje verificado contra el repositorio, con las seis correcciones necesarias y la tabla de lo que se comprobó.
+  - **Corrección de datos en el informe:** el p(95) del escenario de pico decía 1.560 ms y el dato crudo de `carga/resultados/pico.json` es **1.568,16 ms**; el p(99) decía 2.330 y es 2.339,29. También se ajustaron mediana y throughput de los escenarios baja y normal contra los JSON. Propagado a `PROYECTO.md` y `docs/auditoria.md`. El error lo detectó el prompt de Catalina, que traía la cifra correcta.
+- **Defectos conocidos:**
+  - `docs/hallazgos.md` conserva las cifras redondeadas antiguas: es una bitácora fechada y no se reescribe cuando cambian los números, por la misma razón que E-15 se mantiene aunque E-16 lo refute.
+  - Tres archivos que el prompt da por existentes (`Pisada_guion_y_prompt.md`, `Pisada_demo_checkout.mp4`, `Pisada_resultados_k6.mp4`) no están en el repositorio; quedan declarados para que se adjunten a mano.
+- **Propuestas no aprobadas:** ninguna.

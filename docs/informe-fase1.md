@@ -227,13 +227,13 @@ agotando inventario, que es lo esperable.
 
 | Escenario | VU | Mediana | p(95) | p(99) | Throughput | Error |
 |---|---|---|---|---|---|---|
-| Baja | 5 | 20,02 ms | 54,03 ms* | 118,61 ms* | — | 0,00 % |
-| Normal | 25 | 18,44 ms | **35,30 ms** | 48,34 ms | 4,94 req/s | 0,00 % |
-| Pico | 350 | 66,54 ms | **1.560 ms** | 2.330 ms | 29,51 req/s | 0,01 % |
+| Baja | 5 | 20,03 ms | 54,03 ms* | 118,62 ms* | 0,90 req/s | 0,00 % |
+| Normal | 25 | 18,44 ms | **35,30 ms** | 48,35 ms | 4,95 req/s | 0,00 % |
+| Pico | 350 | 66,55 ms | **1.568,16 ms** | 2.339,29 ms | 29,51 req/s | 0,01 % |
 
 \* **El p(95) de la carga baja no es confiable.** Ese escenario genera solo 235 peticiones,
 de modo que el percentil se calcula sobre unas 12 muestras en la cola y un par de peticiones
-lentas lo desplazan por completo. Para la línea base debe usarse la **mediana** (20,02 ms),
+lentas lo desplazan por completo. Para la línea base debe usarse la **mediana** (20,03 ms),
 que sí es estable y coincide con los 21 ms medidos directamente. Se declara en lugar de
 reportar un percentil que la cantidad de muestras no sostiene.
 
