@@ -551,3 +551,19 @@ resumen de lo que ese prompt generó. Las entradas se agregan **al final**, en o
   - `docs/hallazgos.md` conserva las cifras redondeadas antiguas: es una bitácora fechada y no se reescribe cuando cambian los números, por la misma razón que E-15 se mantiene aunque E-16 lo refute.
   - Tres archivos que el prompt da por existentes (`Pisada_guion_y_prompt.md`, `Pisada_demo_checkout.mp4`, `Pisada_resultados_k6.mp4`) no están en el repositorio; quedan declarados para que se adjunten a mano.
 - **Propuestas no aprobadas:** ninguna.
+
+## 2026-11-17 | agente: Claude Code (claude-opus-5)
+
+- **Prompt:** «haz el video tu el prompt es para ti» — ejecutar el prompt de montaje de `docs/prompt-video.md`.
+- **Cambios:**
+  - `video/Pisada_fondo_12min.mp4`: 1920×1080, 30 fps, **720 segundos exactos**, sin pista de audio, montado contra los seis bloques del guion.
+  - `video/hoja-sincronizacion.md`: 48 filas con tiempo de entrada, salida, frase del guion y evidencia visible.
+  - `video/README.md`: cómo usarlo, de dónde salió cada pantalla y la limitación declarada.
+  - Procedimiento: capturas a 1920×1080 **nativos** con Chrome headless conducido por `puppeteer-core` (instalado en el directorio temporal, no en el proyecto, para no sumar dependencias), y montaje con `ffmpeg` instalado por `winget`.
+  - Se recorrió el flujo completo de **Webpay Plus en el ambiente de integración** de Transbank: tarjeta de prueba, autenticación del banco simulado y retorno con el pedido creado (pedido 43, autorización 1213, 289 ms de respuesta). Las tarjetas son las que Transbank publica para pruebas y no se mueve dinero real.
+  - Para capturar se levantó la aplicación en `localhost:3000` apuntando a la misma base de Neon, para no depender de los arranques en frío de Render. `web/.env` quedó restaurado a su valor original.
+- **Defectos conocidos:**
+  - Cada plano es una **captura fija sostenida**, no una grabación continua con el cursor en movimiento. La secuencia es real y está en orden, pero las transiciones son cortes.
+  - Los 56 segundos del recorrido de compra (00:15–01:11) son los que más ganarían con una grabación continua; la hoja de sincronización conserva las señales de tiempo para reemplazarlos sin descuadrar el resto.
+  - El pedido mostrado es el 43, no el 41 que mencionaba el prompt original: el número depende de las compras acumuladas en la base.
+- **Propuestas no aprobadas:** ninguna.
